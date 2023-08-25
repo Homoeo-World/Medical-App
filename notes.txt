@@ -14,3 +14,20 @@ npx expo install react-native-safe-area-context
 
 For Icons:
 npm install @expo/vector-icons
+
+
+
+
+
+
+
+
+
+
+
+///
+"scripts": {
+    "start": "set NODE_ENV=dev NODE_CONFIG_DIR=./src/config/ && nodemon -w src --exec \"babel-node src/app.js --presets es2015,stage-0\"",
+    "test": "set NODE_ENV=test NODE_CONFIG_DIR=./src/config/ && mocha --timeout 10000 --compilers js:babel-core/register ./src/test/*.js ",
+    "populatedb": "babel-node --presets es2015 ./node_modules/pow-mongodb-fixtures/bin/mongofixtures node-express-skeleton-dev ./src/test/fixtures"
+  },
