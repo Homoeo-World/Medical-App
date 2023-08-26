@@ -73,36 +73,6 @@ function Signup() {
         <TouchableOpacity onPress={() => navigation.navigate("Login")} ><Text style={styles.signupText}> Login </Text></TouchableOpacity>
       </View>
 
-      {/* Username or Email Input Field */}
-      {/* <View style={styles.buttonStyle}>
-        
-        <View style={styles.emailInput}>
-          <Input
-            InputLeftElement={
-              <Icon
-                as={<FontAwesome5 name="user-secret" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
-            }
-            variant="outline"
-            placeholder="Username"
-            _light={{
-              placeholderTextColor: "blueGray.400",
-            }}
-            _dark={{
-              placeholderTextColor: "blueGray.50",
-            }}
-            onChange={handleUsernameInputChange}
-          />
-        </View>
-      </View> */}
 
       {/*Username or Email Input Field */}
       <View style={styles.buttonStyleX}>
@@ -222,50 +192,30 @@ function Signup() {
 
       {/* Box */}
       <View style={styles.boxStyle}>
-      <Box 
-        onPress={() => navigation.navigate("#")}  // for navigation
-        style={{height:80, width:80}} 
+      <Box
+      onPress={() => navigation.navigate("#")} // for navigation
+      style={{ flexDirection: 'row', alignItems: 'center', height: 40, width: '100%' }}
         shadow={3}
         _light={{
-          backgroundColor: "gray.50",
-        }}
-        _dark={{
-          backgroundColor: "gray.700",
-        }}
+        backgroundColor: "gray.50",
+      }}
+      _dark={{
+      backgroundColor: "gray.700",
+      }}
       >
-        <AspectRatio ratio={1 / 1}>
-          <Image
-            roundedTop="lg"
-            source={{
-              uri: "https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png",
-            }}
-            alt="image"
-          />
-        </AspectRatio>
+      <Image
+        source={{
+        uri: "https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png",
+      }}
+      alt="image"
+      style={{ width: 40, height: 40, marginRight: 10 }}
+      />
+      <HStack space={2} alignItems="center">
+      <Text>Signup with Google</Text>
+      </HStack>
       </Box>
-      <Box 
-        onPress={() => navigation.navigate("#")}  // for navigation
-        style={styles.imageStyle}
-        shadow={3}
-        _light={{
-          backgroundColor: "gray.50",
-        }}
-        _dark={{
-          backgroundColor: "gray.700",
-        }}
-      >
-        <AspectRatio ratio={1 / 1}>
-          <Image
-            
-            roundedTop="lg"
-            source={{
-              uri: "https://www.transparentpng.com/thumb/facebook-logo-png/photo-facebook-logo-png-hd-25.png",
-            }}
-            alt="image"
-          />
-        </AspectRatio>
-      </Box>
-      <Box 
+      
+      {/* <Box 
         onPress={() => navigation.navigate("#")}  // for navigation
         style={styles.imageStyle}
         shadow={3}
@@ -286,29 +236,8 @@ function Signup() {
             alt="image"
           />
         </AspectRatio>
-      </Box>
-      <Box 
-        onPress={() => navigation.navigate("#")}  // for navigation
-        style={styles.imageStyle}
-        shadow={3}
-        _light={{
-          backgroundColor: "gray.50",
-        }}
-        _dark={{
-          backgroundColor: "gray.700",
-        }}
-      >
-        <AspectRatio ratio={1 / 1}>
-          <Image
-            
-            roundedTop="lg"
-            source={{
-              uri: "https://www.transparentpng.com/thumb/apple-logo/RRgURB-apple-logo-clipart-hd.png",
-            }}
-            alt="image"
-          />
-        </AspectRatio>
-      </Box>
+      </Box> */}
+      
       </View>
       <StatusBar style="auto" />
     </View>
