@@ -15,7 +15,7 @@ export const postLoginCreds = async (req, res) => {
         const salt = await bcrypt.genSalt();
         const hashedPassword = await bcrypt.hash(req.body.password,salt);
 
-        const creds = new login({username: username, password: hashedPassword })
+        const creds = new Login({username: username, password: hashedPassword })
 
         await creds.save();
         res.status(201).json();
@@ -28,9 +28,8 @@ export const postLoginCreds = async (req, res) => {
 //authenticate 
 // validate: username and pswd
 export const validateCreds = async(req, res) => {
-
     const user = await Login.findOne({ username: req.body.username });
-    
+
     if(user == null){
         return res.status(400).send('Cannot find user')
     }
