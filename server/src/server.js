@@ -2,6 +2,7 @@
 
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import mongoose from'mongoose';
 // import morgan from 'morgan';
 import jwt from'jsonwebtoken';
@@ -14,6 +15,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 // app.use(morgan('dev'));
 app.use('/login', loginRoutes);
 

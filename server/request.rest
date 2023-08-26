@@ -1,17 +1,17 @@
 
-POST http://localhost:5001/login
+POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "username": "Rathii",
+    "username": "Pankaj",
     "password" : "123"
 }
 
 ###
-POST http://localhost:5001/login/validate
+POST http://localhost:5000/login/validate
 Content-Type: application/json
 
 {
-    "username": "Ameya",
-    "password" : "1234"
+    "username": "Dharmik",
+    "password" : "123"
 }

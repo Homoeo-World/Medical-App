@@ -1,14 +1,68 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Input, NativeBaseProvider, Button, Icon, Box, Image, AspectRatio } from 'native-base';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { alignContent, flex, flexDirection, width } from 'styled-system';
+import * as api from 'client/src/utils/apis/api.js';
 
 
 function Signup() {
-    const navigation = useNavigation();
+
+  // const navigation = useNavigation();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [canRegister, setCanRegister] = useState(true);
+
+
+  const handleEmailInputChange = (value) => {
+    setEmail(value);
+    console.log(email);
+  }
+
+  const handlePasswordInputChange = (value) => {
+    setPassword(value)
+    console.log(password);
+  }
+
+  const handleConfirmPasswordInputChange = (value) => {
+    setConfirmPassword(value)
+    setPasswordsMatch(value === password);
+    console.log(confirmPassword);
+  }
+
+  const register = async () => {
+
+    if(email!='' && password!='' && passwordsMatch) 
+      setCanRegister(true);
+    else {
+      setCanRegister(false);
+      console.log('Registration conditions are not met. Exiting gracefully.');
+      return;  
+    }
+    //temperorily, remove it
+    navigation.navigate("Login")
+
+    //api call to post the login creds in login collection
+    try {
+      const creds = {username: email, password : password}
+
+      const response = await api.postCredentials(creds)
+      console.log('User registered');
+
+      navigation.navigate("Login") // after successfull sign in navigate it to home page
+    } 
+    catch (error) {
+      console.error('Error registering user:', error);
+    } 
+  };
+  
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <View style={styles.Middle}>
@@ -20,7 +74,7 @@ function Signup() {
       </View>
 
       {/* Username or Email Input Field */}
-      <View style={styles.buttonStyle}>
+      {/* <View style={styles.buttonStyle}>
         
         <View style={styles.emailInput}>
           <Input
@@ -45,12 +99,12 @@ function Signup() {
             _dark={{
               placeholderTextColor: "blueGray.50",
             }}
-
+            onChange={handleUsernameInputChange}
           />
         </View>
-      </View>
+      </View> */}
 
-      {/* Username or Email Input Field */}
+      {/*Username or Email Input Field */}
       <View style={styles.buttonStyleX}>
         
         <View style={styles.emailInput}>
@@ -76,7 +130,8 @@ function Signup() {
             _dark={{
               placeholderTextColor: "blueGray.50",
             }}
-
+            onChangeText={handleEmailInputChange}
+            value={email}
           />
         </View>
       </View>
@@ -108,11 +163,13 @@ function Signup() {
             _dark={{
               placeholderTextColor: "blueGray.50",
             }}
+            onChangeText={handlePasswordInputChange}
+            value={password}
           />
         </View>
       </View>
 
-      {/* Password Input Field */}
+      {/*Confirm Password Input Field */}
       <View style={styles.buttonStyleX}>
         
         <View style={styles.emailInput}>
@@ -139,15 +196,19 @@ function Signup() {
             _dark={{
               placeholderTextColor: "blueGray.50",
             }}
+            onChangeText={handleConfirmPasswordInputChange}
+            value={confirmPassword}
           />
+          {!passwordsMatch && <Text style={{ color: 'red' }}>Passwords do not match</Text>}
         </View>
       </View>
 
       {/* Button */}
       <View style={styles.buttonStyle}>
-        <Button style={styles.buttonDesign}>
+        <Button onPress={register} style={styles.buttonDesign}>
             REGISTER NOW
         </Button>
+        {!canRegister && <Text style={{color: 'red' }}>Please enter appropriate details</Text>}
       </View>
 
       {/* Line */}
@@ -308,6 +369,10 @@ const styles = StyleSheet.create({
   buttonDesign:{
     backgroundColor:'#026efd'
   },
+  // disabledButton: { 
+  //   opacity: 0.6, 
+  //   backgroundColor:"red"
+  // },
   lineStyle:{
     flexDirection:'row',
     marginTop:30,

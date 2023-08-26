@@ -8,7 +8,7 @@ const router = express.Router();
 
 //post login creds 
 export const postLoginCreds = async (req, res) => {
-
+    console.log('inside postLoginCreds')
     try{
         const { username, password } = req.body;
 
@@ -28,6 +28,7 @@ export const postLoginCreds = async (req, res) => {
 //authenticate 
 // validate: username and pswd
 export const validateCreds = async(req, res) => {
+    console.log('inside validateCreds')
     const user = await Login.findOne({ username: req.body.username });
 
     if(user == null){
@@ -35,10 +36,10 @@ export const validateCreds = async(req, res) => {
     }
     try{
         if(await bcrypt.compare(req.body.password, user.password)){
-            res.send('Success')
+            res.status(200).send('Success')
         }
         else{
-            res.send('Authentication failed!')
+            res.status.send(200).send('Authentication failed!')
         }
     }catch{
         res.status(500).send()

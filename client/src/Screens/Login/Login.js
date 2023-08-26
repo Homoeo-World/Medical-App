@@ -1,14 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Input, NativeBaseProvider, Button, Icon, Box, Image, AspectRatio } from 'native-base';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { alignContent, flex, flexDirection, width } from 'styled-system';
+import * as api from 'client/src/utils/apis/api.js';
 
 
 function Login() {
     const navigation = useNavigation();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleEmailInputChange = (value) => {
+      setEmail(value);
+      console.log(email);
+    }
+  
+    const handlePasswordInputChange = (value) => {
+      setPassword(value)
+      console.log(password);
+    }
+
+    const login = async () =>{
+      console.log('login button pressed')
+      try{
+        const creds = {username: email, password : password}
+        const response = await api.validateCredentials(creds)
+        navigation.navigate('Signup')
+        console.log('Authentication is successful');
+      }
+      catch(error){
+        console.error('Error logging in user:', error);
+      }
+      
+    }
+
   return (
     <View style={styles.container}>
       <View style={styles.Middle}>
@@ -45,7 +74,7 @@ function Login() {
             _dark={{
               placeholderTextColor: "blueGray.50",
             }}
-
+            onChangeText={handleEmailInputChange}
           />
         </View>
       </View>
@@ -77,13 +106,14 @@ function Login() {
             _dark={{
               placeholderTextColor: "blueGray.50",
             }}
+            onChangeText={handlePasswordInputChange}
           />
         </View>
       </View>
 
       {/* Button */}
       <View style={styles.buttonStyle}>
-        <Button style={styles.buttonDesign}>
+        <Button onPress={login} style={styles.buttonDesign}>
             LOGIN
         </Button>
       </View>

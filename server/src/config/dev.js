@@ -2,7 +2,7 @@ const host = process.env.DB_HOST || 'localhost';
 
 const config = {
   server: {
-    port: 5001
+    port: 5000
   },
   database: {
     //   make username and psd urlencoded
