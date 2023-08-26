@@ -13,6 +13,7 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [canLogin, setCanLogin] = useState(true);
 
     const handleEmailInputChange = (value) => {
       setEmail(value);
@@ -26,6 +27,15 @@ function Login() {
 
     const login = async () =>{
       console.log('login button pressed')
+
+      if(email!='' && password!='') 
+        setCanLogin(true);
+      else {
+        setCanLogin(false);
+        console.log('Cannot Login! Enter all the details');
+        return;  
+      }
+
       try{
         const creds = {username: email, password : password}
         const response = await api.validateCredentials(creds)
@@ -116,6 +126,7 @@ function Login() {
         <Button onPress={login} style={styles.buttonDesign}>
             LOGIN
         </Button>
+        {!canLogin && <Text style={{color: 'red' }}>Please enter all the details</Text>}
       </View>
 
       {/* Line */}
