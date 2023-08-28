@@ -10,7 +10,7 @@ import * as api from 'client/src/utils/apis/api.js';
 
 function Signup() {
 
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -60,8 +60,6 @@ function Signup() {
       console.error('Error registering user:', error);
     } 
   };
-  
-  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>

@@ -39,7 +39,7 @@ function Login() {
       try{
         const creds = {username: email, password : password}
         const response = await api.validateCredentials(creds)
-        navigation.navigate('Signup')
+        navigation.navigate('ProductList')
         console.log('Authentication is successful');
       }
       catch(error){
