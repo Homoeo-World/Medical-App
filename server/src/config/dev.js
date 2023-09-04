@@ -11,6 +11,9 @@ const config = {
         useNewUrlParser: true, useUnifiedTopology: true
     }
   },
+  id:{
+    product_id: parseInt(process.env.PRODUCT_ID)
+  },
   key: {
     privateKey: '',
     tokenExpireInSeconds: 1440

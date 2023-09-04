@@ -13,7 +13,7 @@ export const postLoginCreds = async (req, res) => {
         const { username, password } = req.body;
 
         const salt = await bcrypt.genSalt();
-        const hashedPassword = await bcrypt.hash(req.body.password,salt);
+        const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
         const creds = new Login({username: username, password: hashedPassword })
 

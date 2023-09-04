@@ -1,9 +1,36 @@
 
+GET http://localhost:5000/product/searchproducts
+Content-Type: application/json
+
+{
+    "searchTerm": "Omez"
+}
+
+
+###
+POST http://localhost:5000/product
+Content-Type: application/json
+
+{
+    "id": 3,
+    "title" : "Omez1 mm nn hu",
+    "company":"Mankind",
+    "quantity":"10 pc",
+    "price": "Rs 10",
+    "description" : "lorem ipsum lorem ipsum"
+}
+
+###
+GET http://localhost:5000/product/allproducts
+
+
+
+###
 POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "username": "Pankaj",
+    "username": "Pankaj1234",
     "password" : "123"
 }
 
