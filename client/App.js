@@ -12,9 +12,11 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="ProductList" component={ProductList} options={{title: 'Medicines'}}/> 
+      
       <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
       <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
+      <Stack.Screen name="ProductList" component={ProductList} options={{title: 'Medicines'}}/> 
+      
       
     </Stack.Navigator>
   );

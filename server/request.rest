@@ -3,7 +3,7 @@ GET http://localhost:5000/product/searchproducts
 Content-Type: application/json
 
 {
-    "searchTerm": "Omez"
+    "searchTerm": "omez"
 }
 
 
@@ -12,8 +12,8 @@ POST http://localhost:5000/product
 Content-Type: application/json
 
 {
-    "id": 3,
-    "title" : "Omez1 mm nn hu",
+    "id" : "107",
+    "title" : "laradin",
     "company":"Mankind",
     "quantity":"10 pc",
     "price": "Rs 10",
@@ -39,6 +39,6 @@ POST http://localhost:5000/login/validate
 Content-Type: application/json
 
 {
-    "username": "Dharmik",
+    "username": "Ameya",
     "password" : "123"
 }

@@ -31,6 +31,10 @@ const ProductCard = ({ product }) => {
   >
     <Text style={{ color: 'red' }}>Buy</Text>
   </Button>
+  {/* after clicking on add to cart */}
+  {
+
+  }
 
   <Button
     small

@@ -31,9 +31,9 @@ export const searchAutocompleteProducts = async (req, res) => {
                 '$search': {
                     index: 'autoCompleteProducts',
                     "autocomplete": {
-                      query: 'om',
+                      query: req.body.searchTerm,
                       path: 'title',
-                      fuzzy:{}
+                      //fuzzy:{}
                     },
                 }
             },
@@ -43,7 +43,7 @@ export const searchAutocompleteProducts = async (req, res) => {
                 }
             },
             {
-                "$limit": 7
+                "$limit": 9
             }
             ]);
         //send result of search query from mongodb

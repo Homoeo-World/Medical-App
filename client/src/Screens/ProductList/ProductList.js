@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import { View, FlatList, TextInput } from 'react-native';
+import { View, FlatList } from 'react-native';
 import {NativeBaseProvider} from 'native-base';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import ProductCard from 'client/src/components/ProductCard/ProductCard';
+import AutocompleteSearchBar from 'client/src/components/AutoCompleteSearchBar/AutocompleteSearchBar.js';
 
 const products = [
   // Array of product objects
@@ -21,31 +22,12 @@ const products = [
 ];
 
 function ProductList(){
-  const [searchQuery, setSearchQuery] = useState('');
-
-  // const filteredProducts = products.filter(product => {
-  //   return product.title.toLowerCase().includes(searchQuery.toLowerCase());
-  // });
 
   return (
     <View style={{ flex: 1, padding: 8, backgroundColor:'white'}}>
 
-      {/*search-bar component */}
-      <TextInput
-        placeholder="Search for product"
-        value={searchQuery}
-        onChangeText={text => setSearchQuery(text)}
-        style={{
-          backgroundColor: '#f5f5f5',
-          padding: 10,
-          borderRadius: 5,
-          marginBottom: 10,
-          borderColor:'red',
-          borderWidth: 0.4,
-        }}
-      >
-        </TextInput>
-
+      <AutocompleteSearchBar/>
+     
       <FlatList
         data={products}
         numColumns={2} // Display two cards side by side
@@ -54,7 +36,6 @@ function ProductList(){
         renderItem={({ item }) => <ProductCard product={item}
         />}
       />
-      {/* <Text>inside  productList component...</Text> */}
     </View>
   );
 };
