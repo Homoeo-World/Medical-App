@@ -11,12 +11,12 @@ const SingleProduct = ({ product }) => {
             <Text style={styles.productCompany}>{product.company}</Text>
         </View>
 
-    {/* <View style={styles.line} />  Line below the image */}
+    <View style={styles.line} />  
         <Image
             source={medicineImage}
             style={styles.productImage}
         />
-    {/* <View style={styles.line} /> Line below the image */}
+    <View style={styles.line} /> 
 
         <Text style={styles.productPrice}>{product.price}</Text>
         <Text style={styles.productMRP}>MRP 29.85</Text>
@@ -105,7 +105,7 @@ const SingleProduct = ({ product }) => {
       line: {
         width: '100%',
         height: 1, // Specify the height of the line
-        backgroundColor: 'black', // Specify the line color
+        backgroundColor: 'lightgrey', // Specify the line color
         marginBottom: 8, // Adjust the margin as needed
       },
 

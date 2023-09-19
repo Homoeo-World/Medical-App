@@ -6,7 +6,7 @@ import SingleProduct from '../../components/SingleProduct/SingleProduct';
 
 function ProductDetail(){
 
-    const product = { id: 1, title: 'Lecope 5mg 10 Tablets', company: 'MANKIND PHARMA LTD (MANKIND)', quantity:'10pc', image: 'image_url', price: '₹ 19.39' };
+    const product = { id: 1, title: 'Lecope 5mg 10 Tablets', company: 'Mankind Pharma Private Ltd', quantity:'10pc', image: 'image_url', price: '₹ 19.39' };
 
   return (
     <ScrollView style={{ flex: 1, padding: 8, backgroundColor:'white'}}>
