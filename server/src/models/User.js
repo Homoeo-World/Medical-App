@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
-const loginSchema = mongoose.Schema({
-    username: {
+const userSchema = mongoose.Schema({
+    username: { //email
         type: String,
         unique: true,
         required: true
@@ -12,6 +12,6 @@ const loginSchema = mongoose.Schema({
     }
 })
 
-var Login = mongoose.model('login', loginSchema);
+var User = mongoose.model('user', userSchema);
 
-export default Login;
+export default User;

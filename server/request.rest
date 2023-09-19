@@ -30,7 +30,7 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "username": "Pankaj1234",
+    "username": "Shobha",
     "password" : "123"
 }
 
@@ -42,3 +42,8 @@ Content-Type: application/json
     "username": "Ameya",
     "password" : "123"
 }
+
+###
+GET http://localhost:5000/login/protected
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY1MDk1MjhjMmQxNDI4NDlhMTAzY2ZlOSIsInVzZXJuYW1lIjoiQW1leWEiLCJwYXNzd29yZCI6IiQyYiQxMCRHSmVENVFFdWxlTUgvcWEwYS85ckllM2p3RzMwcnR5MTdKM090QUVuVEIvOWVWbFpwRlUxZSIsIl9fdiI6MH0sImlhdCI6MTY5NTEyNDEwNn0.ehhVnmN9-0c5KLWxZzkAPT-F0WRMc9et5QQBp8FQSdM
