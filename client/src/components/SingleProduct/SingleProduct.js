@@ -18,10 +18,13 @@ const SingleProduct = ({ product }) => {
         />
     <View style={styles.line} /> 
 
-        <Text style={styles.productPrice}>{product.price}</Text>
-        <Text style={styles.productMRP}>MRP 29.85</Text>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Text style={styles.productPrice}>{product.price}</Text>
+          <Text style={styles.productMRP}>MRP 29.85</Text>
+        </View>
+        
 
-        <View style={{flexDirection: 'row',justifyContent: 'center', padding: 20}}>
+        <View style={{flexDirection: 'row', justifyContent: 'center', padding: 20}}>
             <Button bordered style={styles.buyNow}>
                 <Text style={{ color: 'red' }}>Buy Now</Text>
             </Button>
@@ -76,14 +79,14 @@ const SingleProduct = ({ product }) => {
       fontSize: 18,
       fontWeight: 'bold',
       color: 'black',
-      paddingLeft: 10
+      paddingLeft: 10,
     },
     productMRP: {
         fontSize: 11,
         fontWeight: '100',
         color: 'grey',
         textDecorationLine:'line-through',
-        paddingLeft: 10
+        paddingLeft: 10,
       },
       buyNow:{
         width:100,height:40,

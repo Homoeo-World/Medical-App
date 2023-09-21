@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //login-signup
-const url = 'http://192.168.0.123:5000/login';
+const url = 'http://192.168.0.124:5000/login';
 
 export const postCredentials = async (creds) => await axios.post(url,creds)  //on signup page
 
