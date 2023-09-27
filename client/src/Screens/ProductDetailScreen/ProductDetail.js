@@ -6,11 +6,13 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 
 function ProductDetail(){
+  console.log('productDetails')
 
   const route = useRoute();
   const { product } = route.params;
 
-  console.log(product)
+  console.log(route.params);
+  console.log('product.....');console.log(product);
 
   // product = { id: 1, title: 'Lecope 5mg 10 Tablets', company: 'Mankind Pharma Private Ltd', quantity:'10pc', image: 'image_url', price: '₹ 19.39', description: 'In the PRINCE2 project management method, a product description is a structured format that presents information about a project product. It is a management product, usually created by the project manager during the process of initiating a project in the initial stage of the PRINCE2 project management method.' };
 

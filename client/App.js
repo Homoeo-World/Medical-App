@@ -36,7 +36,7 @@ function App() {
             <Icon as={FontAwesome5} name="shopping-cart" size={5} color="blue" style={{marginRight: 0, justifyContent:'center'}}/>
            </TouchableOpacity>
         )}}/> 
-      <Stack.Screen name="Product Detail" component={ProductDetail} options={{headerStyle: {
+      <Stack.Screen name="Product Details" component={ProductDetail} options={{headerStyle: {
          borderBottomWidth: 1, // Add a 1-pixel border at the bottom
          borderBottomColor: '#ccc', // Set the border color to grey
        }}} />

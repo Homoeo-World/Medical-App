@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
   const handleCardPress = () => {
     console.log('handleCardPress...'); 
     console.log(product);
-    navigation.navigate('Product Detail', {product});
+    navigation.navigate('Product Details', {product});
   }
 
   const handleBuyPress = () => {

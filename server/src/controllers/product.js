@@ -23,7 +23,7 @@ export const postNewProduct = async (req, res) => {
 
 // get products based on search-query | search-term
 export const searchAutocompleteProducts = async (req, res) => {
-    console.log('searching for:-' + req.body.searchTerm);
+    console.log('searching for:-' + req.query.searchTerm);
     try {
         
         const searchResults = await Product.aggregate([
@@ -31,7 +31,7 @@ export const searchAutocompleteProducts = async (req, res) => {
                 '$search': {
                     index: 'autoCompleteProducts',
                     "autocomplete": {
-                      query: req.body.searchTerm,
+                      query: req.query.searchTerm,
                       path: 'title',
                     //   fuzzy:{
                     //       maxEdits:2,
@@ -42,13 +42,15 @@ export const searchAutocompleteProducts = async (req, res) => {
             },
             { 
                 "$project": {
-                  "title": 1
+                  "title": 1,
+                  "_id":0
                 }
             },
             {
                 "$limit": 9
             }
             ]);
+            console.log(searchResults)
         //send result of search query from mongodb
         res.status(200).json(searchResults);
     }
@@ -90,4 +92,21 @@ export const getProducts = async (req, res) => {
         console.error(error);
         res.status(500).json({ message: 'Server error' });
     }
+}
+
+//get Product by Title
+export const getProductByTitle = async(req, res) => {
+    console.log('getProductByTitle...');
+    console.log(req.query)
+    
+    try{
+        const product = await Product.findOne({title : req.query.title})
+        console.log(product);
+        res.status(200).json(product);
+    }
+    catch(error){
+        console.log(error)
+        res.send(500).json(error);
+    }
+    
 }
