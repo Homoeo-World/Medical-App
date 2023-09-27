@@ -73,3 +73,21 @@ export const getAllproducts = async (req,res) => {
 }
 
 //get paginated response
+export const getProducts = async (req, res) => {
+    console.log('getProducts...')
+    console.log(req.query)
+    try{
+        const page = parseInt(req.query.page) || 1;
+        const pageSize = parseInt(req.query.pageSize) || 10;
+
+        const skip = (page-1)*pageSize;
+
+        const products = await Product.find().skip(skip).limit(pageSize);
+
+        res.json(products);
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { View, FlatList, ActivityIndicator } from 'react-native';
-import {NativeBaseProvider, Icon, Text} from 'native-base';
+import {NativeBaseProvider, Icon, Text, Spinner} from 'native-base';
 import { FontAwesaome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import ProductCard from 'client/src/components/ProductCard/ProductCard';
@@ -16,19 +16,25 @@ function ProductList(){
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [loadingMore, setLoadingMore] = useState(true);
+  const [hasMore, setHasMore] = useState(true);
 
   const pageSize = 10;
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await api.getAllproducts(); // console.log(response.data)
+        // const response = await api.getAllproducts(); //console.log(response.data)
+        const response = await api.getProducts(page, pageSize); 
         // setProducts(response.data);
 
         // paginated response
         if(response.data.length !== 0){
           setProducts((prevProducts) => [...prevProducts, ...response.data]);
         }
+        else{
+          setHasMore(false);
+        }
+
         setLoading(false); 
         setLoadingMore(false);
       } catch (error) {
@@ -39,13 +45,16 @@ function ProductList(){
       
     }
 
-    fetchData();
+    if(hasMore){
+      fetchData();
+    }
+    
     console.log(products)
-  }, [page]);
+  }, [page, hasMore]);
 
   const loadMore = () => {
-    setPage((prevPage) => prevPage + 1);
     setLoadingMore(true);
+    setPage((prevPage) => prevPage + 1);
   }
 
 
@@ -63,7 +72,7 @@ function ProductList(){
           onEndReachedThreshold={0.1}
           onEndReached={loadMore}
         />
-       {loadingMore && (<ActivityIndicator size="small" color="blue"  />)}
+       {loadingMore && hasMore && (<Spinner size="small" color="blue"  />)}
     </View>
   );
 };
