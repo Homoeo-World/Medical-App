@@ -33,7 +33,10 @@ export const searchAutocompleteProducts = async (req, res) => {
                     "autocomplete": {
                       query: req.body.searchTerm,
                       path: 'title',
-                      //fuzzy:{}
+                    //   fuzzy:{
+                    //       maxEdits:2,
+                    //       maxExpansions: 1
+                    //   }
                     },
                 }
             },
@@ -61,10 +64,12 @@ export const getAllproducts = async (req,res) => {
     console.log('inside getAllproducts');
     try{
         const products = await Product.find();
+        console.log(products)
         res.status(201).json(products);
     }
     catch(error){
         res.status(500).json({ message: error.message });
-    }
-    
+    }  
 }
+
+//get paginated response

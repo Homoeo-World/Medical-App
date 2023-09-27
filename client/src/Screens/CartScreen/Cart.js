@@ -20,33 +20,31 @@ function Cart(){
             
       const renderCartItem = (item) => (
           <View style={{flexDirection:'column', backgroundColor: 'white', marginBottom: 20}}>
-        <View style={styles.cartItem} key={item.id}>
+            <View style={styles.cartItem} key={item.id}>
 
-          <View style={styles.cartItemInfo}>
-            <Text style={styles.itemName}>{item.name}</Text>
-            <Text style={styles.itemPrice}>{item.price}</Text>
-          </View>
+              <View style={styles.cartItemInfo}>
+                <Text style={styles.itemName}>{item.name}</Text>
+                <Text style={styles.itemPrice}>{item.price}</Text>
+              </View>
 
-          <View style={styles.quantityContainer}>
-            <TouchableOpacity style={styles.quantityButton}>
-              <Text style={styles.quantityButtonText}>-</Text>
-            </TouchableOpacity>
+              <View style={styles.quantityContainer}>
+                <TouchableOpacity style={styles.quantityButton}>
+                  <Text style={styles.quantityButtonText}>-</Text>
+                </TouchableOpacity>
 
-            <Text style={styles.quantity}>{item.quantity}</Text>
+                <Text style={styles.quantity}>{item.quantity}</Text>
 
-            <TouchableOpacity style={styles.quantityButton}>
-              <Text style={styles.quantityButtonText}>+</Text>
-            </TouchableOpacity>
-          </View>
-
-        </View>
-
-        <View style={{alignItems:'center', paddingBottom: 20}}>
-            <TouchableOpacity >
-            <Text style={{color:'blue'}}>Remove</Text>
-            </TouchableOpacity>
-        </View>
-        
+                <TouchableOpacity style={styles.quantityButton}>
+                  <Text style={styles.quantityButtonText}>+</Text>
+                </TouchableOpacity>
+              </View>
+              
+            </View>
+            <View style={{alignItems:'center', paddingBottom: 20}}>
+                <TouchableOpacity >
+                <Text style={{color:'blue'}}>Remove</Text>
+                </TouchableOpacity>
+            </View>
         </View>
 
       );

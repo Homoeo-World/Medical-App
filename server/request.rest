@@ -3,7 +3,7 @@ GET http://localhost:5000/product/searchproducts
 Content-Type: application/json
 
 {
-    "searchTerm": "omez"
+    "searchTerm": "rabvid"
 }
 
 
@@ -11,14 +11,20 @@ Content-Type: application/json
 POST http://localhost:5000/product
 Content-Type: application/json
 
-{
-    "id" : "107",
-    "title" : "laradin",
-    "company":"Mankind",
-    "quantity":"10 pc",
-    "price": "Rs 10",
-    "description" : "lorem ipsum lorem ipsum"
-}
+{ "title": "Betadine", 
+  "company": "Torrento Pharmaceuticals", 
+  "quantity":"10pc", 
+  "image": "image_url", 
+  "price": "₹ 19.39", 
+ "description": "In the PRINCE2 project management method, a product description is a structured format that presents information about a project product. It is a management product, usually created by the project manager during the process of initiating a project in the initial stage of the PRINCE2 project management method." }
+
+# {
+#     "title" : "Omez 365",
+#     "company":"Mankind",
+#     "quantity":"10 pc",
+#     "price": "Rs 10",
+#     "description" : "lorem ipsum lorem ipsum"
+# }
 
 ###
 GET http://localhost:5000/product/allproducts

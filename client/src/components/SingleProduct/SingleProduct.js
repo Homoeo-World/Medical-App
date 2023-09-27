@@ -1,9 +1,19 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, Dimensions } from 'react-native';
 import { Container, Content, Card, CardItem, Body, Button } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
 const medicineImage = require('client/assets/default-medicine.jpg');
 
 const SingleProduct = ({ product }) => {
+
+  const navigation = useNavigation();
+
+  const handleBuyPress = () => {
+    console.log('handleBuyPress...')
+    console.log(product);
+    navigation.navigate('Cart');
+  }
+
     return (
     <View style={styles.productDetails}>
         <View>
@@ -25,7 +35,10 @@ const SingleProduct = ({ product }) => {
         
 
         <View style={{flexDirection: 'row', justifyContent: 'center', padding: 20}}>
-            <Button bordered style={styles.buyNow}>
+            <Button 
+            onPress={handleBuyPress}
+            bordered 
+            style={styles.buyNow}>
                 <Text style={{ color: 'red' }}>Buy Now</Text>
             </Button>
             <Button style={styles.addtoCart}>
