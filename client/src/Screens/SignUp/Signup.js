@@ -5,7 +5,7 @@ import { Input, NativeBaseProvider, Button, Icon, Box, Image, HStack, AspectRati
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { alignContent, flex, flexDirection, width } from 'styled-system';
-import * as api from 'client/src/utils/apis/api.js';
+import * as api from 'client/src/utils/api.js';
 
 
 function Signup() {

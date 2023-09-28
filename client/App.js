@@ -24,8 +24,8 @@ function App() {
       <Stack.Navigator>
       {/* working on this screen -- temp*/}
       
-      {/* <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/> */}
+      <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
       <Stack.Screen 
         name="ProductList" 
         component={ProductList}

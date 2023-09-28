@@ -5,7 +5,9 @@ import { Input, NativeBaseProvider, Button, Icon, Box, Image, AspectRatio, HStac
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { alignContent, flex, flexDirection, width } from 'styled-system';
-import * as api from 'client/src/utils/apis/api.js';
+import * as api from 'client/src/utils/api.js';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import auth from 'client/src/utils/auth.js'
 
 
 function Login() {
@@ -39,8 +41,23 @@ function Login() {
       try{
         const creds = {username: email, password : password}
         const response = await api.validateCredentials(creds)
-        navigation.navigate('ProductList')
-        console.log('Authentication is successful');
+
+        //store the token in AsyncStorage
+        console.log('token response..')
+        const token = response.data.token;
+        console.log(token)
+
+        if(token!=null){
+          await AsyncStorage.setItem('authToken', JSON.stringify(token));
+          navigation.navigate('ProductList')
+          console.log('Authentication is successful');
+        }
+        else
+          console.log('---null token---');
+
+        // const storedToken = await AsyncStorage.getItem('authToken');
+        // authToken = JSON.parse(storedToken);
+        // console.log('Stored authToken:', authToken);
       }
       catch(error){
         console.error('Error logging in user:', error);

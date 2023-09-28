@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Card, Button, Icon } from 'native-base';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 const medicineImage = require('client/assets/default-medicine.jpg');
+import auth from 'client/src/utils/auth.js'
 
 const ProductCard = ({ product }) => {
 
   const navigation = useNavigation();
+
+  const [addedToCart, setAddedToCart] = useState(false);
 
   const handleCardPress = () => {
     console.log('handleCardPress...'); 
@@ -19,6 +22,37 @@ const ProductCard = ({ product }) => {
     console.log('handleBuyPress...')
     console.log(product);
     navigation.navigate('Cart');
+  }
+
+  const handleAddtoCartPress = async () => {
+    console.log('handleAddtoCartPress...');
+    setAddedToCart(true); //remove
+
+    try{
+      const { authToken, cart } = await auth.getAuthAndCartData();
+      console.log('authToken: ', authToken);
+      console.log('cart: ',cart);
+      // const existingItemIndex = cart.findIndex((item) => item.title === product.title);
+      // let updatedCart;
+
+      // if(existingItemIndex !== -1){
+      //   updatedCart = [...cart];
+      //   updatedCart[existingItemIndex].quantity += 1;
+      // }
+      // else{
+      //   const itemToAdd = {title: product.title, quantity: 1, price: product.price};
+      //   updatedCart = [...cart, itemToAdd];
+      // }
+      // await auth.storeAuthAndCartData(authToken, updatedCart);
+      // console.log('Item added to cart:', updatedCart);
+      setAddedToCart(true);
+
+    }
+    catch(error){
+      console.error('Error adding item to cart:', error);
+
+    }
+    
   }
 
   return (
@@ -50,11 +84,9 @@ const ProductCard = ({ product }) => {
                   <Text style={{ color: 'red' }}>Buy</Text>
                 </Button>
                 {/* after clicking on add to cart */}
-                {
-
-                }
-
-                <Button
+                {!addedToCart ? 
+                (<Button
+                  onPress={handleAddtoCartPress}
                   small
                   style={{
                     width:80,height:40,
@@ -72,7 +104,22 @@ const ProductCard = ({ product }) => {
                   style={{ marginRight: 5 }}
                 />
                 <Text style={{ color: 'white' }}>Add</Text>
-              </Button>
+              </Button>): 
+                (<Button
+                  small
+                  style={{
+                    width:80,height:40,
+                    backgroundColor: 'red',
+                    paddingHorizontal: 10,
+                    borderRadius: 5,
+                    flexDirection: 'row', 
+                    alignItems: 'center', 
+                  }}
+                >
+                <Text style={{ color: 'white' }}>Added to cart</Text>
+              </Button>)
+                }
+                
       </View>
             </View>
           </Card>

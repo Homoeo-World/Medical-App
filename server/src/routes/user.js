@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post('/', postLoginCreds);
 router.post('/validate', validateCreds);
-router.get('/protected', authenticateJWT, authTest)
+router.get('/authtest', authenticateJWT, authTest)
 
  
 export default router;

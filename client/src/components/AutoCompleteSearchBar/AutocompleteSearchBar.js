@@ -3,7 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Input, List, Text } from 'native-base'
 import { useNavigation, useRoute } from '@react-navigation/native';
-import * as api from 'client/src/utils/apis/api.js';
+import * as api from 'client/src/utils/api.js';
 
 
 const AutocompleteSearchBar = () => {
