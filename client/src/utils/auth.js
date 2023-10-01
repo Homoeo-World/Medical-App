@@ -9,6 +9,7 @@ export const storeAuthAndCartData = async (authToken, cartData) => {
     };
     const combinedDataJson = JSON.stringify(combinedData);
     await AsyncStorage.setItem('authAndCartData', combinedDataJson);
+    
   } catch (error) {
     console.error('Error storing auth and cart data:', error);
   }
@@ -29,3 +30,12 @@ export const getAuthAndCartData = async () => {
     return null;
   }
 };
+
+export const clearAllData = async () => {
+  try {
+    await AsyncStorage.clear();
+    console.log('All data in AsyncStorage cleared');
+  } catch (error) {
+    console.error('Error clearing AsyncStorage:', error);
+  }
+}

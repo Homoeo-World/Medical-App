@@ -3,8 +3,9 @@ import { View, Text, Image, TouchableOpacity, TouchableWithoutFeedback } from 'r
 import { Card, Button, Icon } from 'native-base';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const medicineImage = require('client/assets/default-medicine.jpg');
-import auth from 'client/src/utils/auth.js'
+import * as auth from 'client/src/utils/auth.js' 
 
 const ProductCard = ({ product }) => {
 
@@ -25,35 +26,48 @@ const ProductCard = ({ product }) => {
   }
 
   const handleAddtoCartPress = async () => {
-    console.log('handleAddtoCartPress...');
-    setAddedToCart(true); //remove
+    try {
+      console.log('handleAddtoCartPress...');
+      
+      let authToken;
+      let updatedCart = [];
 
-    try{
-      const { authToken, cart } = await auth.getAuthAndCartData();
-      console.log('authToken: ', authToken);
-      console.log('cart: ',cart);
-      // const existingItemIndex = cart.findIndex((item) => item.title === product.title);
-      // let updatedCart;
-
-      // if(existingItemIndex !== -1){
-      //   updatedCart = [...cart];
-      //   updatedCart[existingItemIndex].quantity += 1;
-      // }
-      // else{
-      //   const itemToAdd = {title: product.title, quantity: 1, price: product.price};
-      //   updatedCart = [...cart, itemToAdd];
-      // }
-      // await auth.storeAuthAndCartData(authToken, updatedCart);
-      // console.log('Item added to cart:', updatedCart);
-      setAddedToCart(true);
-
-    }
-    catch(error){
+      const response = await auth.getAuthAndCartData();
+      console.log('response', response);
+  
+      if (response && response.authToken && response.cart) {
+        authToken = response.authToken;
+        const cart = response.cart;
+        console.log('authToken: ', authToken);
+        console.log('cart: ', cart);
+  
+        const existingItemIndex = cart.findIndex((item) => item.title === product.title);
+  
+        if (existingItemIndex !== -1) {
+          updatedCart = [...cart];
+          updatedCart[existingItemIndex].quantity += 1;
+        } else {
+          updatedCart = [...cart, { title: product.title, quantity: 1, price: product.price }];
+        }
+      } 
+      else {
+        console.log('response is null...')
+        const storedToken = await AsyncStorage.getItem('authToken');
+        authToken = JSON.parse(storedToken);
+        console.log('authToken... ', authToken);
+        updatedCart = [{ title: product.title, price: product.price, quantity: 1 }];
+      }
+  
+      if (authToken !== null && updatedCart !== null) {
+        await auth.storeAuthAndCartData(authToken, updatedCart);
+        console.log('Item added to cart:', updatedCart);
+        setAddedToCart(true);
+      }
+    } catch (error) {
       console.error('Error adding item to cart:', error);
-
     }
-    
-  }
+  };
+  
 
   return (
     <TouchableWithoutFeedback onPress={handleCardPress}>

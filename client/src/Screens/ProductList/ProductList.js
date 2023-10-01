@@ -23,9 +23,7 @@ function ProductList(){
   useEffect(() => {
     async function fetchData() {
       try {
-        // const response = await api.getAllproducts(); //console.log(response.data)
         const response = await api.getProducts(page, pageSize); 
-        // setProducts(response.data);
 
         // paginated response
         if(response.data.length !== 0){
@@ -52,12 +50,11 @@ function ProductList(){
     console.log(products)
   }, [page, hasMore]);
 
+
   const loadMore = () => {
     setLoadingMore(true);
     setPage((prevPage) => prevPage + 1);
   }
-
-
 
   return (
     <View style={{ flex: 1, padding: 8, backgroundColor: 'white'}}>

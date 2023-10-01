@@ -1,16 +1,107 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, FlatList, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import {NativeBaseProvider, Card} from 'native-base';
-import { fontSize } from 'styled-system';
+import * as auth from 'client/src/utils/auth.js' 
 
 
 function Cart(){
-    const cartItems = [
-        { id: '1', name: 'Lecopene', price: '₹10.00', quantity: 2 },
-        { id: '2', name: 'oxymoron', price: '₹15.07', quantity: 1 },
-        { id: '3', name: 'oxybenzene 18 Omez 30', price: '₹20.00', quantity: 3 },
-       
-      ];
+
+    const [cartItems, setCartItems] = useState([]);
+    const [authToken, setAuthToken] = useState('');
+
+    useEffect(() => {
+      async function fetchData(){
+        console.log('fetchData...');
+        try{
+          const response = await auth.getAuthAndCartData();
+
+          if(response){
+            setAuthToken(response.authToken);
+            const cart = response.cart;
+            setCartItems(cart);
+          }
+        }
+        catch(error){
+          console.error('Error fetching the cart data:', error);
+        }
+      }
+
+      fetchData();
+    },[]);
+
+    useEffect(() => {
+      console.log('cartItems changed:', cartItems);
+    }, [cartItems]);
+    
+
+    const removeItemfromCart = async (index) => {
+      console.log('removeItemfromCart...');
+
+      const indexToRemove = index;
+
+      if(indexToRemove>=0 && indexToRemove < cartItems.length){
+
+        setCartItems((prevCartItems) => {
+          // Create a copy of the previous cartItems to make modifications
+          const newCartItems = [...prevCartItems];
+          newCartItems.splice(indexToRemove, 1);
+          return newCartItems; // Return the new state
+        });
+  
+        const response = await auth.storeAuthAndCartData(authToken, cartItems);
+        console.log(response);
+      }
+      else{
+        console.error('invalid index to remove:', indexToRemove)
+      }
+        
+    }
+
+    const incrementQuantity = async (index) => {
+      console.log('increment quantity...')
+
+      try{  
+        const response = await auth.getAuthAndCartData();
+        console.log(response);
+
+        setCartItems((prevCartItems) => {
+          // Create a copy of the previous cartItems to make modifications
+          const newCartItems = [...prevCartItems];
+          newCartItems[index].quantity += 1;
+          return newCartItems; // Return the new state
+        });    
+      }
+      catch(error){
+        console.error('Error while incrementing: ',error)
+      }
+    } 
+
+    const decrementQuantity = async (index) => {
+      console.log('decrement quantity...')
+
+      try{  
+        const response = await auth.getAuthAndCartData();
+        console.log(response);
+        setCartItems((prevCartItems) => {
+          // Create a copy of the previous cartItems to make modifications
+          const newCartItems = [...prevCartItems];
+          newCartItems[index].quantity -= 1;
+          return newCartItems; // Return the new state
+        });
+    
+
+        if(cartItems[index].quantity <= 0){
+          await removeItemfromCart(index)
+        }
+        
+      }
+      catch(error){
+        console.error('Error while decrementing: ',error)
+      }
+    }
+    
+    
+
 
       // Sample payment details
         const cartTotal = 100;
@@ -18,30 +109,30 @@ function Cart(){
         const couponDiscount = 5;
         const orderTotal = cartTotal - medicineDiscount - couponDiscount;
             
-      const renderCartItem = (item) => (
+      const renderCartItem = (item, index) => (
           <View style={{flexDirection:'column', backgroundColor: 'white', marginBottom: 20}}>
-            <View style={styles.cartItem} key={item.id}>
+            <View style={styles.cartItem} key={index}>
 
               <View style={styles.cartItemInfo}>
-                <Text style={styles.itemName}>{item.name}</Text>
+                <Text style={styles.itemName}>{item.title}</Text>
                 <Text style={styles.itemPrice}>{item.price}</Text>
               </View>
 
               <View style={styles.quantityContainer}>
-                <TouchableOpacity style={styles.quantityButton}>
+                <TouchableOpacity onPress={() => decrementQuantity(index)} style={styles.quantityButton}>
                   <Text style={styles.quantityButtonText}>-</Text>
                 </TouchableOpacity>
 
                 <Text style={styles.quantity}>{item.quantity}</Text>
 
-                <TouchableOpacity style={styles.quantityButton}>
+                <TouchableOpacity onPress={() => incrementQuantity(index)} style={styles.quantityButton}>
                   <Text style={styles.quantityButtonText}>+</Text>
                 </TouchableOpacity>
               </View>
               
             </View>
             <View style={{alignItems:'center', paddingBottom: 20}}>
-                <TouchableOpacity >
+                <TouchableOpacity onPress={() => removeItemfromCart(index)}>
                 <Text style={{color:'blue'}}>Remove</Text>
                 </TouchableOpacity>
             </View>
@@ -51,41 +142,47 @@ function Cart(){
     
       const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     
-      return (
-        <View style={styles.container}>
-          <ScrollView showsVerticalScrollIndicator={false} style={styles.cartList}>
-            {cartItems.map((item) => renderCartItem(item))}
-
-            {/* Payment Details Card */}
-            <Text style={{fontSize: 18, marginVertical: 12}}>Payment Details</Text>    
-            <Card style={styles.paymentDetailsContainer}>
+        return (
+          <View style={styles.container}>
             
-            <View style={styles.detailRow}>
-                <Text>Cart Total:</Text>
-                <Text>{cartTotal}</Text>
-            </View>
+            <ScrollView showsVerticalScrollIndicator={false} style={styles.cartList}>
+              {cartItems.length!==0 && 
+                <>
+                  {cartItems.map((item, index) => renderCartItem(item, index))}
+                  <Text style={{fontSize: 18, marginVertical: 12}}>Payment Details</Text>    
+                  <Card style={styles.paymentDetailsContainer}>
+                  
+                <View style={styles.detailRow}>
+                    <Text>Cart Total:</Text>
+                    <Text>{cartTotal}</Text>
+                </View>
 
-            <View style={styles.detailRow}>
-                <Text>Medicine Discount:</Text>
-                <Text>{medicineDiscount}</Text>
-            </View>
+                <View style={styles.detailRow}>
+                    <Text>Medicine Discount:</Text>
+                    <Text>{medicineDiscount}</Text>
+                </View>
 
-            <View style={styles.detailRow}>
-                <Text>Coupon Discount:</Text>
-                <Text>{couponDiscount}</Text>
-            </View>
+                <View style={styles.detailRow}>
+                    <Text>Coupon Discount:</Text>
+                    <Text>{couponDiscount}</Text>
+                </View>
 
-            <View style={styles.detailRow}>
-                <Text style={styles.orderTotalText}>Order Total:</Text>
-                <Text style={styles.orderTotal}>{orderTotal}</Text>
-            </View>
-            </Card>
-          </ScrollView>
+                <View style={styles.detailRow}>
+                    <Text style={styles.orderTotalText}>Order Total:</Text>
+                    <Text style={styles.orderTotal}>{orderTotal}</Text>
+                </View>
+                </Card>
+              </>
+            }         
 
-            
+        </ScrollView>
 
+        {cartItems.length === 0 &&
+          <Text>No items in the Cart</Text>
+        }
+          
           <TouchableOpacity style={styles.checkoutButton}>
-            <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
+            <Text style={styles.checkoutButtonText}>Select Address</Text>
           </TouchableOpacity>
         </View>
       );
@@ -188,7 +285,7 @@ const styles = StyleSheet.create({
     },
     checkoutButtonText: {
       color: 'white',
-      fontSize: 18,
+      fontSize: 14,
       fontWeight: 'bold',
     },
     paymentDetailsContainer: {
