@@ -67,7 +67,7 @@ export const authTest = async(req, res) => {
 export const getAddressesbyUser = async(req, res) => {
     console.log('inside getAddressesbyUser...');
 
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ username: req.query.username });
 
     if(user == null){
         return res.status(400).send('Cannot find user')
