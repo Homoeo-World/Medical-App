@@ -13,12 +13,12 @@ dotenv.config()
 export const postLoginCreds = async (req, res) => {
     console.log('inside postLoginCreds')
     try{
-        const { username, password } = req.body;
+        const { username, password, address } = req.body;
 
         const salt = await bcrypt.genSalt();
-        const hashedPassword = await bcrypt.hash(req.body.password, salt);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
-        const creds = new User({username: username, password: hashedPassword })
+        const creds = new User({username: username, password: hashedPassword, address: address })
 
         await creds.save();
         res.status(201).json('successfully user added!');
@@ -55,12 +55,30 @@ export const validateCreds = async(req, res) => {
 
 //jwt-testing
 export const authTest = async(req, res) => {
-    console.log('inside authTest...')
+    console.log('inside authTest...');
+
     // Accessible only if authenticated
     console.log(req.user)
     const user = req.user
     res.json({ message: 'Protected route accessed', user});
 };
+
+//GET addresses by username
+export const getAddressesbyUser = async(req, res) => {
+    console.log('inside getAddressesbyUser...');
+
+    const user = await User.findOne({ username: req.body.username });
+
+    if(user == null){
+        return res.status(400).send('Cannot find user')
+    }
+   
+    const addresses = user.address;
+    console.log(addresses);
+
+    res.status(200).json(addresses)
+
+}
   
 
 export default router;

@@ -43,8 +43,17 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "username": "newUser1",
-    "password" : "123"
+    "username": "Mayu",
+    "password" : "123",
+    "address": ["Sky home pg","New Vishal PG"]
+}
+
+###
+GET http://localhost:5000/login/getaddressesbyuser
+Content-Type: application/json
+
+{
+    "username": "Mayu"
 }
 
 ###
