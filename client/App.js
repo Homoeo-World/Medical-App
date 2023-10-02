@@ -24,7 +24,7 @@ function App() {
     <NativeBaseProvider>
       <Stack.Navigator>
       {/* working on this screen -- temp*/}
-      <Stack.Screen name="Select Address" component={AddressList}/>
+      
       
       <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
       <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
@@ -43,7 +43,7 @@ function App() {
          borderBottomColor: '#ccc', // Set the border color to grey
        }}} />
       <Stack.Screen name="Cart" component={Cart} options={{title: 'My Cart'}}/>
-
+      <Stack.Screen name="Select Address" component={AddressList}/>
       
     </Stack.Navigator>
     </NativeBaseProvider>

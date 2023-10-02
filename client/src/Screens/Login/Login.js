@@ -41,7 +41,7 @@ function Login() {
       try{
         const creds = {username: email, password : password}
         console.log('--------try--------')
-        const response = await api.validateCredentials(creds)
+        const response = await api.validateCredentials(creds);
 
         //store the token in AsyncStorage
         console.log('token response: ')

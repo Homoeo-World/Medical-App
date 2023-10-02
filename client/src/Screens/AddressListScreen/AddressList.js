@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { StyleSheet, ScrollView, View, Text, Modal, TouchableOpacity } from 'react-native';
 import {Button, NativeBaseProvider} from 'native-base';
 import { Radio, Divider } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
 import AddressFormModal from '../../components/AddressForm/AddressFormModal';
 
 function AddressList() {
+  const navigation = useNavigation();
+
   const addresses = ['Sky Home PG, Narayan Nagar, Hinjewadi Phase 1, Pune, Maharashtra - 411057', 
                     'New Vishal PG, Narayan Nagar, Hinjewadi Phase 1, Pune, Maharashtra - 411057'];
-            
+         
 
   const [selectedAddress, setSelectedAddress] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
@@ -27,6 +30,11 @@ function AddressList() {
     console.log('address', address);
   };
 
+  const onPlaceOrderPress = () => {
+    console.log('onPlaceOrderPress...');
+    navigation.navigate('Cart',{selectedAddress})
+  }
+
   return (
    <View style={styles.container}>
     <ScrollView style={styles.addressContainer}>
@@ -45,7 +53,10 @@ function AddressList() {
         </View>
       ))}
     </ScrollView>
-        <TouchableOpacity onPress={toggleModal} style={styles.checkoutButton}>
+        <TouchableOpacity 
+          onPress={onPlaceOrderPress} 
+          disabled={selectedAddress === ''} 
+          style={[styles.checkoutButton, selectedAddress === '' && styles.disabledButton, ]}>
             <Text style={styles.checkoutButtonText}>Place Order</Text>
         </TouchableOpacity>
 
@@ -107,6 +118,8 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'bold',
       },
-
+      disabledButton: {
+        opacity: 0.5,
+      }
   });
   

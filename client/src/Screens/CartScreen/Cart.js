@@ -2,60 +2,73 @@ import React, {useEffect, useState} from 'react';
 import { View, FlatList, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import {NativeBaseProvider, Card} from 'native-base';
 import * as auth from 'client/src/utils/auth.js' 
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { borderLeft } from 'styled-system';
 
 
 function Cart(){
+  const navigation = useNavigation();
 
-    const [cartItems, setCartItems] = useState([]);
-    const [authToken, setAuthToken] = useState('');
+  const route = useRoute();console.log('route: ', route)
+  
+  const [cartItems, setCartItems] = useState([]);
+  const [authToken, setAuthToken] = useState('');
+  const [selectedAddress, setSelectedAddress] = useState('')
+  const [isAddressSelected, setIsAddressSelected] = useState(false);
 
-    useEffect(() => {
-      async function fetchData(){
-        console.log('fetchData...');
-        try{
-          const response = await auth.getAuthAndCartData();
 
-          if(response){
-            setAuthToken(response.authToken);
-            const cart = response.cart;
-            setCartItems(cart);
-          }
-        }
-        catch(error){
-          console.error('Error fetching the cart data:', error);
+  useEffect(() => {
+    async function fetchData(){
+      console.log('fetchData...');
+      if(route.params!==undefined && route.params.selectedAddress !== undefined) {
+        setSelectedAddress(route.params.selectedAddress);
+        setIsAddressSelected(true);
+        console.log('selectedAddress: ', selectedAddress)
+      }
+      
+      try{
+        const response = await auth.getAuthAndCartData();
+
+        if(response){
+          setAuthToken(response.authToken);
+          const cart = response.cart;
+          setCartItems(cart);
         }
       }
+      catch(error){
+        console.error('Error fetching the cart data:', error);
+      }
+    }
 
-      fetchData();
-    },[]);
+    fetchData();
+  },[route]);
 
-    useEffect(() => {
-      console.log('cartItems changed:', cartItems);
-    }, [cartItems]);
+  useEffect(() => {
+    console.log('cartItems changed:', cartItems);
+  }, [cartItems]);
     
 
-    const removeItemfromCart = async (index) => {
-      console.log('removeItemfromCart...');
+  const removeItemfromCart = async (index) => {
+    console.log('removeItemfromCart...');
 
-      const indexToRemove = index;
+    const indexToRemove = index;
 
-      if(indexToRemove>=0 && indexToRemove < cartItems.length){
+    if(indexToRemove>=0 && indexToRemove < cartItems.length){
+      setCartItems((prevCartItems) => {
+        // Create a copy of the previous cartItems to make modifications
+        const newCartItems = [...prevCartItems];
+        newCartItems.splice(indexToRemove, 1);
+        return newCartItems; // Return the new state
+      });
 
-        setCartItems((prevCartItems) => {
-          // Create a copy of the previous cartItems to make modifications
-          const newCartItems = [...prevCartItems];
-          newCartItems.splice(indexToRemove, 1);
-          return newCartItems; // Return the new state
-        });
-  
-        const response = await auth.storeAuthAndCartData(authToken, cartItems);
-        console.log(response);
-      }
-      else{
-        console.error('invalid index to remove:', indexToRemove)
-      }
-        
+      const response = await auth.storeAuthAndCartData(authToken, cartItems);
+      console.log('respone: ', response);
     }
+    else{
+      console.error('invalid index to remove:', indexToRemove)
+    }
+      
+  }
 
     const incrementQuantity = async (index) => {
       console.log('increment quantity...')
@@ -99,9 +112,15 @@ function Cart(){
         console.error('Error while decrementing: ',error)
       }
     }
-    
-    
 
+    const onSelectAddressPress = async() => {
+      console.log('onSelectAddressPress...');
+      navigation.navigate('Select Address');
+    }
+
+    const onConfirmOrderPress = async() => {
+      console.log('onConfirmOrderPress...')
+    }
 
       // Sample payment details
         const cartTotal = 100;
@@ -149,6 +168,14 @@ function Cart(){
               {cartItems.length!==0 && 
                 <>
                   {cartItems.map((item, index) => renderCartItem(item, index))}
+                  {isAddressSelected &&
+                    <>
+                    <Text style={styles.addressHeaderText}>Deliver to this address</Text>
+                    <Card style={styles.addressCard}>
+                        <Text>{selectedAddress}</Text>
+                      </Card>
+                    </> 
+                    } 
                   <Text style={{fontSize: 18, marginVertical: 12}}>Payment Details</Text>    
                   <Card style={styles.paymentDetailsContainer}>
                   
@@ -173,7 +200,8 @@ function Cart(){
                 </View>
                 </Card>
               </>
-            }         
+            }
+                    
 
         </ScrollView>
 
@@ -181,9 +209,22 @@ function Cart(){
           <Text>No items in the Cart</Text>
         }
           
-          <TouchableOpacity style={styles.checkoutButton}>
-            <Text style={styles.checkoutButtonText}>Select Address</Text>
-          </TouchableOpacity>
+        { !isAddressSelected &&
+          <TouchableOpacity 
+          onPress={onSelectAddressPress} 
+          disabled={cartItems.length===0} 
+          style={[styles.checkoutButton, cartItems.length === 0 && styles.disabledButton, ]}>
+          <Text style={styles.checkoutButtonText}>Select Address</Text>
+        </TouchableOpacity>}
+
+        {isAddressSelected && 
+          <TouchableOpacity 
+          onPress={onConfirmOrderPress} 
+          style={styles.checkoutButton}>
+          <Text style={styles.checkoutButtonText}>Confirm Order</Text>
+        </TouchableOpacity>
+        }
+
         </View>
       );
 }
@@ -312,6 +353,20 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'green',
       },
+      disabledButton: {
+        opacity: 0.5,
+      },
+      addressCard:{
+        backgroundColor: 'white',
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: 'blue'
+      },
+      addressHeaderText:{
+        fontSize: 10,
+        fontWeight: 'bold',
+        color: 'grey'
+      }
   });
   
 

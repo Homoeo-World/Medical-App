@@ -19,9 +19,10 @@ const ProductCard = ({ product }) => {
     navigation.navigate('Product Details', {product});
   }
 
-  const handleBuyPress = () => {
+  const handleBuyPress = async () => {
     console.log('handleBuyPress...')
     console.log(product);
+    await handleAddtoCartPress();
     navigation.navigate('Cart');
   }
 
