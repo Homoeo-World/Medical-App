@@ -67,7 +67,7 @@ export const authTest = async(req, res) => {
 export const getAddressesbyUser = async(req, res) => {
     console.log('inside getAddressesbyUser...');
 
-    const user = await User.findOne({ username: req.query.username });
+    const user = await User.findOne({ username: req.body.username });
 
     if(user == null){
         return res.status(400).send('Cannot find user')
@@ -79,6 +79,52 @@ export const getAddressesbyUser = async(req, res) => {
     res.status(200).json(addresses)
 
 }
+
+// post new address for existing user
+export const postNewAddress = async(req, res) => {
+    console.log('postNewAddress...');
+    try {
+        const { username, newAddress } = req.body;
+        const user = await User.findOne({ username: username });
+        if (!user){
+            return res.status(404).json({ message: 'User not found' });
+        }
+        user.address.push(newAddress);
+        await user.save();
+
+        res.status(200).json({ message: 'Address added successfully!', user });
+    } 
+    catch(error){
+        console.error('Error adding address:', error);
+        res.status(500).json({ message: 'Internal server error!' });
+    }  
+}
+
+//remove nth-index address of a user from the address list
+export const deleteAddress = async(req, res) => {
+    console.log('deleteAddress...');
+    try{
+        const {username, index} = req.body;
+        const user = await User.findOne({username: username});
+        if (!user){
+            return res.status(404).json({ message: 'User not found!' });
+        }
+
+        if(index >= user.address.length || index<0){
+            return res.status(404).json({ message: 'Invalid index!' });
+        }
+
+        user.address.splice(index,1);
+        user.save();
+
+        res.status(200).json({message: 'Address deleted successfully!'})
+    }
+    catch(error){
+        console.error('Error deleteing address:', error);
+        res.status(500).json({ message: 'Internal server error!' });
+    }
+}
+
   
 
 export default router;

@@ -44,8 +44,7 @@ Content-Type: application/json
 
 {
     "username": "Mayu",
-    "password" : "123",
-    "address": ["Sky home pg","New Vishal PG"]
+    "password" : "123"
 }
 
 ###
@@ -54,6 +53,24 @@ Content-Type: application/json
 
 {
     "username": "Mayu"
+}
+
+###
+POST http://localhost:5000/login/addnewaddress
+Content-Type: application/json
+
+{
+    "username": "Mayu",
+    "newAddress" : "Sky Home PG, Narayan Nagar, Hinjewadi Phase 1, Pune, Maharashtra - 411057"
+}
+
+###
+DELETE http://localhost:5000/login/removeAddress
+Content-Type: application/json
+
+{
+    "username": "Mayu",
+    "index": 1
 }
 
 ###
