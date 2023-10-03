@@ -3,7 +3,7 @@ import { View, FlatList, Text, StyleSheet, TouchableOpacity, ScrollView } from '
 import {NativeBaseProvider, Card} from 'native-base';
 import * as auth from 'client/src/utils/auth.js' 
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { borderLeft } from 'styled-system';
+import { borderLeft, marginBottom } from 'styled-system';
 
 
 function Cart(){
@@ -127,6 +127,11 @@ function Cart(){
       navigation.navigate('Select Address');
     }
 
+    const onChangeAddressPress = async() => {
+      console.log('onChangeAddressPress...');
+      navigation.navigate('Select Address')
+    }
+
     const onConfirmOrderPress = async() => {
       console.log('onConfirmOrderPress...')
     }
@@ -179,10 +184,11 @@ function Cart(){
                   {cartItems.map((item, index) => renderCartItem(item, index))}
                   {isAddressSelected &&
                     <>
-                    <Text style={styles.addressHeaderText}>Deliver to this address</Text>
+                    <Text style={styles.addressHeaderText}>Deliver to this address:</Text>
                     <Card style={styles.addressCard}>
-                        <Text>{selectedAddress}</Text>
-                      </Card>
+                        <TouchableOpacity onPress={onChangeAddressPress} style={styles.changeButton}><Text style={{color:'blue'}}>Change</Text></TouchableOpacity>
+                        <Text style={{flex:1}}>{selectedAddress}</Text>
+                    </Card>
                     </> 
                     } 
                   <Text style={{fontSize: 18, marginVertical: 12}}>Payment Details</Text>    
@@ -210,13 +216,13 @@ function Cart(){
                 </Card>
               </>
             }
-                    
+              {cartItems.length === 0 &&
+               <Text>No items in the Cart</Text>
+              }      
 
         </ScrollView>
 
-        {cartItems.length === 0 &&
-          <Text>No items in the Cart</Text>
-        }
+        
           
         { !isAddressSelected &&
           <TouchableOpacity 
@@ -366,16 +372,26 @@ const styles = StyleSheet.create({
         opacity: 0.5,
       },
       addressCard:{
+        padding: 16,
         backgroundColor: 'white',
         borderRadius: 8,
         borderWidth: 1,
-        borderColor: 'blue'
+        borderColor: 'blue',
+        // overflow:'visible'
       },
       addressHeaderText:{
-        fontSize: 10,
+        fontSize: 14,
         fontWeight: 'bold',
-        color: 'grey'
-      }
+        color: 'grey',
+        marginBottom: 8 ,
+        
+      },
+      changeButton: {
+        flex:1,
+        alignItems:'flex-end',
+        paddingBottom: 2,
+        // backgroundColor: 'lightgrey'
+      },
   });
   
 

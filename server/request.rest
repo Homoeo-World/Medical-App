@@ -50,17 +50,15 @@ Content-Type: application/json
 ###
 GET http://localhost:5000/login/getaddressesbyuser
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQW1leWEiLCJpYXQiOjE2OTYzMzk5Mzd9.0cHi06EbJoTtXABajyCxEXjCQet4LR12aAvBwwX7UB0
 
-{
-    "username": "Mayu"
-}
 
 ###
 POST http://localhost:5000/login/addnewaddress
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQW1leWEiLCJpYXQiOjE2OTYzMzk5Mzd9.0cHi06EbJoTtXABajyCxEXjCQet4LR12aAvBwwX7UB0
 
 {
-    "username": "Mayu",
     "newAddress" : "Sky Home PG, Narayan Nagar, Hinjewadi Phase 1, Pune, Maharashtra - 411057"
 }
 

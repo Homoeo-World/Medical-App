@@ -1,27 +1,68 @@
-import React, { useState } from 'react';
-import { StyleSheet, ScrollView, View, Text, Modal, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, ScrollView, View, Text, Modal, TouchableOpacity, AppRegistry } from 'react-native';
 import {Button, NativeBaseProvider} from 'native-base';
 import { Radio, Divider } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import AddressFormModal from '../../components/AddressForm/AddressFormModal';
+import * as api from 'client/src/utils/api.js';
 
 function AddressList() {
   const navigation = useNavigation();
 
-  const addresses = ['Sky Home PG, Narayan Nagar, Hinjewadi Phase 1, Pune, Maharashtra - 411057', 
-                    'New Vishal PG, Narayan Nagar, Hinjewadi Phase 1, Pune, Maharashtra - 411057'];
+  // const addresses = ['Sky Home PG, Narayan Nagar, Hinjewadi Phase 1, Pune, Maharashtra - 411057', 
+  //                   'New Vishal PG, Narayan Nagar, Hinjewadi Phase 1, Pune, Maharashtra - 411057'];
          
-
+  const [addresses, setAddresses] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    async function fetchData(){
+      try{
+        // const response = await api.getAddressesbyUser(username);
+        // console.log(response.data)
+        
+        // setAddresses(response.data);
+      }
+      catch(error){
+
+      }
+    }
+  },[addresses])
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
 
-  const handleSaveAddress = (details) => {
-    // setAddressDetails(details);
-    toggleModal(); // Close the modal after saving
+  const handleSaveAddress = async (addressObject) => {
+    console.log('details: ', addressObject);
+    const addressString = [
+      addressObject.addressLine1,
+      addressObject.addressLine2,
+      addressObject.city,
+      addressObject.state,
+      addressObject.pincode,
+    ]
+      .filter((field) => field !== null && field !== undefined && field !== '')
+      .join(', ');
+    
+    console.log('addressString: ', addressString);
+
+    //get token from AS
+    const jwtToken = await AsyncStorage.getItem('authToken');
+    authToken = JSON.parse(jwtToken);
+    console.log('Stored authToken:', jwtToken);
+    // const username = 
+    const address = addressString;
+
+    //api call to save the address for the current user
+
+    // setAddresses((prevAddress) =>  [...prevAdresess, address])
+    // setSelectedAddress(address);
+    // })
+    
+
+    toggleModal();
   };
 
 

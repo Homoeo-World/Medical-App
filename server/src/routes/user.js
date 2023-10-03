@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.post('/', postLoginCreds);
 router.post('/validate', validateCreds);
-router.get('/getAddressesbyUser', getAddressesbyUser);
-router.post('/addNewAddress', postNewAddress);
+router.get('/getAddressesbyUser', authenticateJWT, getAddressesbyUser);
+router.post('/addNewAddress', authenticateJWT, postNewAddress);
 router.delete('/removeAddress', deleteAddress);
 router.get('/authtest', authenticateJWT, authTest);
 

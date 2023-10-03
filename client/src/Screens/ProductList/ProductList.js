@@ -6,7 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import ProductCard from 'client/src/components/ProductCard/ProductCard';
 import AutocompleteSearchBar from 'client/src/components/AutoCompleteSearchBar/AutocompleteSearchBar.js';
 import * as api from 'client/src/utils/api.js';
-import axios from 'axios'
+
 
 function ProductList(){
   

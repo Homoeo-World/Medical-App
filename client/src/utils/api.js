@@ -10,7 +10,6 @@ export const validateCredentials = async (creds) => await axios.post(`${login_ur
 
 
 //product
-
 export const getProducts = async (page, pageSize) => await axios.get('https://medical-app-5gdu.onrender.com/product/getproducts', {
     params: {
         page: page,
@@ -27,3 +26,9 @@ export const getProductByTitle = async (title) => await axios.get('https://medic
         title: title
     }
 });
+
+//address
+export const postNewAddress = async (username, newAddress) => await axios.post('https://medical-app-5gdu.onrender.com/login/addnewaddress',{newAddress: newAddress});
+export const getAddressesbyUser = async (username) => await axios.get('https://medical-app-5gdu.onrender.com/login/getaddressesbyuser',{
+    
+})

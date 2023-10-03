@@ -58,7 +58,7 @@ export const authTest = async(req, res) => {
     console.log('inside authTest...');
 
     // Accessible only if authenticated
-    // console.log(req.user)
+    console.log(req.user)
     const user = req.user
     res.json({ message: 'Protected route accessed', user});
 };
@@ -67,7 +67,7 @@ export const authTest = async(req, res) => {
 export const getAddressesbyUser = async(req, res) => {
     console.log('inside getAddressesbyUser...');
 
-    const user = await User.findOne({ username: req.query.username });
+    const user = await User.findOne({ username: req.user });
 
     if(user == null){
         return res.status(400).send('Cannot find user')
@@ -84,8 +84,8 @@ export const getAddressesbyUser = async(req, res) => {
 export const postNewAddress = async(req, res) => {
     console.log('postNewAddress...');
     try {
-        const { username, newAddress } = req.body;
-        const user = await User.findOne({ username: username });
+        const {newAddress } = req.body;
+        const user = await User.findOne({ username: req.user });
         if (!user){
             return res.status(404).json({ message: 'User not found' });
         }
@@ -125,6 +125,5 @@ export const deleteAddress = async(req, res) => {
     }
 }
 
-  
 
 export default router;

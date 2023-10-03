@@ -9,7 +9,6 @@ const AddressFormModal = ({ isVisible, onSave, onClose }) => {
     addressLine2: '',
     city: '',
     state: '',
-    country: '',
     pincode: '',
   });
 
@@ -21,7 +20,17 @@ const AddressFormModal = ({ isVisible, onSave, onClose }) => {
   };
 
   const handleSubmit = () => {
+    console.log('formData: ', formData);
     onSave(formData); // Pass the address details to the onSave function
+
+    //clear formdata
+    setFormData({
+      addressLine1: '',
+      addressLine2: '',
+      city: '',
+      state: '',
+      pincode: '',
+    });   
   };
 
 
