@@ -9,6 +9,7 @@ export const storeAuthAndCartData = async (authToken, cartData) => {
     };
     const combinedDataJson = JSON.stringify(combinedData);
     await AsyncStorage.setItem('authAndCartData', combinedDataJson);
+    return combinedData;
     
   } catch (error) {
     console.error('Error storing auth and cart data:', error);

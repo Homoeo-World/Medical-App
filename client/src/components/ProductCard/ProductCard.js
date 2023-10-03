@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
       let updatedCart = [];
 
       const response = await auth.getAuthAndCartData();
-      console.log('response', response);
+      console.log('getAuthAndCartData response', response);
   
       if (response && response.authToken && response.cart) {
         authToken = response.authToken;

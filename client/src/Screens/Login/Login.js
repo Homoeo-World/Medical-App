@@ -30,7 +30,7 @@ function Login() {
     const login = async () =>{
       console.log('login button pressed')
 
-      if(email!='' && password!='') 
+      if(email!=='' && password!=='') 
         setCanLogin(true);
       else {
         setCanLogin(false);

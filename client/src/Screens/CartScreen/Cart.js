@@ -44,8 +44,16 @@ function Cart(){
   },[route]);
 
   useEffect(() => {
-    console.log('cartItems changed:', cartItems);
+    const updateCartData = async () => {
+      console.log('cartItems changed:', cartItems);
+      const response = await auth.storeAuthAndCartData(authToken, cartItems);
+      console.log('storeAuthAndCartData Response: ', response);
+    };
+  
+    updateCartData();
+  
   }, [cartItems]);
+  
     
 
   const removeItemfromCart = async (index) => {
@@ -58,11 +66,11 @@ function Cart(){
         // Create a copy of the previous cartItems to make modifications
         const newCartItems = [...prevCartItems];
         newCartItems.splice(indexToRemove, 1);
-        return newCartItems; // Return the new state
+        return newCartItems;
       });
-
-      const response = await auth.storeAuthAndCartData(authToken, cartItems);
-      console.log('respone: ', response);
+      console.log('cartItems: ', cartItems)
+      // const response = await auth.storeAuthAndCartData(authToken, cartItems);
+      // console.log('storeAuthAndCartData Respone: ', response);
     }
     else{
       console.error('invalid index to remove:', indexToRemove)
@@ -74,8 +82,8 @@ function Cart(){
       console.log('increment quantity...')
 
       try{  
-        const response = await auth.getAuthAndCartData();
-        console.log(response);
+        // const response = await auth.getAuthAndCartData();
+        // console.log(response);
 
         setCartItems((prevCartItems) => {
           // Create a copy of the previous cartItems to make modifications
@@ -93,19 +101,20 @@ function Cart(){
       console.log('decrement quantity...')
 
       try{  
-        const response = await auth.getAuthAndCartData();
-        console.log(response);
+        // const response = await auth.getAuthAndCartData();
+        // console.log(response);
+
+        if(cartItems[index].quantity === 1){
+          await removeItemfromCart(index);
+          return;
+        }
+
         setCartItems((prevCartItems) => {
           // Create a copy of the previous cartItems to make modifications
           const newCartItems = [...prevCartItems];
           newCartItems[index].quantity -= 1;
           return newCartItems; // Return the new state
-        });
-    
-
-        if(cartItems[index].quantity <= 0){
-          await removeItemfromCart(index)
-        }
+        }); 
         
       }
       catch(error){
@@ -278,7 +287,7 @@ const styles = StyleSheet.create({
     },
     quantityButton: {
     //   backgroundColor: 'lightgray',
-     borderWidth: 1,
+      borderWidth: 1,
       borderColor: 'lightgrey',
       width: 25,
       height: 25,

@@ -47,7 +47,7 @@ function ProductList(){
       fetchData();
     }
     
-    console.log(products)
+    // console.log(products)
   }, [page, hasMore]);
 
 
@@ -95,8 +95,6 @@ export default () => {
 }
 
 // export default ProductList;
-
-
 
 // const products = [
 //   // Array of product objects
