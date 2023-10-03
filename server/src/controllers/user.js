@@ -58,7 +58,7 @@ export const authTest = async(req, res) => {
     console.log('inside authTest...');
 
     // Accessible only if authenticated
-    console.log(req.user)
+    // console.log(req.user)
     const user = req.user
     res.json({ message: 'Protected route accessed', user});
 };
@@ -74,7 +74,7 @@ export const getAddressesbyUser = async(req, res) => {
     }
    
     const addresses = user.address;
-    console.log(addresses);
+    // console.log(addresses);
 
     res.status(200).json(addresses)
 

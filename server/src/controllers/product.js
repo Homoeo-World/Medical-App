@@ -50,7 +50,7 @@ export const searchAutocompleteProducts = async (req, res) => {
                 "$limit": 9
             }
             ]);
-            console.log(searchResults)
+            // console.log(searchResults)
         //send result of search query from mongodb
         res.status(200).json(searchResults);
     }
@@ -66,7 +66,7 @@ export const getAllproducts = async (req,res) => {
     console.log('inside getAllproducts');
     try{
         const products = await Product.find();
-        console.log(products)
+        // console.log(products)
         res.status(201).json(products);
     }
     catch(error){
@@ -101,7 +101,7 @@ export const getProductByTitle = async(req, res) => {
     
     try{
         const product = await Product.findOne({title : req.query.title})
-        console.log(product);
+        // console.log(product);
         res.status(200).json(product);
     }
     catch(error){
