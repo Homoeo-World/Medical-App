@@ -5,7 +5,8 @@ import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const medicineImage = require('client/assets/default-medicine.jpg');
-import * as auth from 'client/src/utils/auth.js' 
+import * as auth from 'client/src/utils/auth.js';
+import {theme} from 'client/src/utils/theme.js' ;
 
 const ProductCard = ({ product }) => {
 
@@ -34,13 +35,13 @@ const ProductCard = ({ product }) => {
       let updatedCart = [];
 
       const response = await auth.getAuthAndCartData();
-      console.log('getAuthAndCartData response', response);
+      // console.log('getAuthAndCartData response', response);
   
       if (response && response.authToken && response.cart) {
         authToken = response.authToken;
         const cart = response.cart;
-        console.log('authToken: ', authToken);
-        console.log('cart: ', cart);
+        // console.log('authToken: ', authToken);
+        // console.log('cart: ', cart);
   
         const existingItemIndex = cart.findIndex((item) => item.title === product.title);
   
@@ -55,13 +56,13 @@ const ProductCard = ({ product }) => {
         console.log('response is null...')
         const storedToken = await AsyncStorage.getItem('authToken');
         authToken = JSON.parse(storedToken);
-        console.log('authToken... ', authToken);
+        // console.log('authToken... ', authToken);
         updatedCart = [{ title: product.title, price: product.price, quantity: 1 }];
       }
   
       if (authToken !== null && updatedCart !== null) {
         await auth.storeAuthAndCartData(authToken, updatedCart);
-        console.log('Item added to cart:', updatedCart);
+        // console.log('Item added to cart:', updatedCart);
         setAddedToCart(true);
       }
     } catch (error) {
@@ -90,13 +91,13 @@ const ProductCard = ({ product }) => {
                   style={{
                     width:60,height:40,
                     backgroundColor: 'white',
-                    borderColor: 'red',
+                    borderColor: theme.primaryColor,
                     borderWidth: 1,
                     borderRadius: 5,
                     marginRight:5
                   }}
                 >
-                  <Text style={{ color: 'red' }}>Buy</Text>
+                  <Text style={{ color: theme.primaryColor }}>Buy</Text>
                 </Button>
                 {/* after clicking on add to cart */}
                 {!addedToCart ? 
@@ -105,7 +106,7 @@ const ProductCard = ({ product }) => {
                   small
                   style={{
                     width:80,height:40,
-                    backgroundColor: 'red',
+                    backgroundColor: theme.primaryColor,
                     paddingHorizontal: 10,
                     borderRadius: 5,
                     flexDirection: 'row', 
@@ -124,7 +125,7 @@ const ProductCard = ({ product }) => {
                   small
                   style={{
                     width:80,height:40,
-                    backgroundColor: 'red',
+                    backgroundColor: theme.primaryColor,
                     paddingHorizontal: 10,
                     borderRadius: 5,
                     flexDirection: 'row', 

@@ -5,6 +5,7 @@ import { Radio, Divider } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import AddressFormModal from '../../components/AddressForm/AddressFormModal';
 import * as api from 'client/src/utils/api.js';
+import {theme} from 'client/src/utils/theme.js' ;
 
 function AddressList() {
   const navigation = useNavigation();
@@ -74,14 +75,14 @@ function AddressList() {
     <ScrollView style={styles.addressContainer}>
       <Button onPress={toggleModal} style={styles.button}>+ Add new address</Button>
       {addresses.map((address, index) => (
-        <View key={index} style={styles.address}>
+        <View key={index} style={[styles.address, selectedAddress===address && styles.selectedAddress]}>
           <Radio.Group
             name="addressRadioGroup"
             value={selectedAddress}
             onChange={() => handleAddressSelection(address)}
           >
-            <Radio value={address} style={styles.radio} size="sm">
-              <Text style={styles.addressText}>{address}</Text>
+            <Radio value={address} style={styles.radio} size="sm" colorScheme='black'>
+              <Text style={[styles.addressText, selectedAddress===address && styles.selectedAddressText ]}>{address}</Text>
             </Radio>
           </Radio.Group>
         </View>
@@ -114,14 +115,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
-        backgroundColor: '#F7F7F7',
+        backgroundColor: 'white',
     },
     addressContainer: {
       flexDirection: 'column', // Change to column to ensure proper stacking
       backgroundColor: 'white',
     },
     button:{
-        marginBottom: 20
+        marginBottom: 20,
+        backgroundColor: theme.primaryColor
     },
     address: {
       alignItems: 'center',
@@ -131,18 +133,33 @@ const styles = StyleSheet.create({
       marginBottom: 10,
       overflow: 'hidden', // Hide overflow to prevent text from being cut
     },
-    radio: {
-      flexDirection: 'row', // Use row to align radio button and text horizontally
+    selectedAddress:{
       alignItems: 'center',
-      justifyContent: 'flex-start', // Align items to the start
-      padding: 10, // Add padding to radio to separate from text
+      borderWidth: 1,
+      borderColor: theme.primaryColor,
+      borderRadius: 5,
+      marginBottom: 10,
+      overflow: 'hidden', //
+    },
+    radio: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'flex-start', 
+      padding: 10, 
+      // color: theme.primaryColor
     },
     addressText: {
       fontSize: 12, // Adjust the font size as needed
       flex: 1, // Allow text to wrap to the next line if necessary
     },
+    selectedAddressText:{
+      fontSize: 12, 
+      flex: 1, 
+      color: theme.primaryColor,
+      fontWeight:'bold'
+    },
     checkoutButton: {
-        backgroundColor: 'blue',
+        backgroundColor: theme.primaryColor,
         padding: 16,
         borderRadius: 8,
         alignItems: 'center',

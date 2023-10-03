@@ -4,6 +4,7 @@ import {NativeBaseProvider, Card} from 'native-base';
 import * as auth from 'client/src/utils/auth.js' 
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { borderLeft, marginBottom } from 'styled-system';
+import {theme} from 'client/src/utils/theme.js' ;
 
 
 function Cart(){
@@ -23,7 +24,7 @@ function Cart(){
       if(route.params!==undefined && route.params.selectedAddress !== undefined) {
         setSelectedAddress(route.params.selectedAddress);
         setIsAddressSelected(true);
-        console.log('selectedAddress: ', selectedAddress)
+        // console.log('selectedAddress: ', selectedAddress)
       }
       
       try{
@@ -166,7 +167,7 @@ function Cart(){
             </View>
             <View style={{alignItems:'center', paddingBottom: 20}}>
                 <TouchableOpacity onPress={() => removeItemfromCart(index)}>
-                <Text style={{color:'blue'}}>Remove</Text>
+                <Text style={{color:theme.primaryColor}}>Remove</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -186,7 +187,7 @@ function Cart(){
                     <>
                     <Text style={styles.addressHeaderText}>Deliver to this address:</Text>
                     <Card style={styles.addressCard}>
-                        <TouchableOpacity onPress={onChangeAddressPress} style={styles.changeButton}><Text style={{color:'blue'}}>Change</Text></TouchableOpacity>
+                        <TouchableOpacity onPress={onChangeAddressPress} style={styles.changeButton}><Text style={{color: theme.primaryColor}}>Change</Text></TouchableOpacity>
                         <Text style={{flex:1}}>{selectedAddress}</Text>
                     </Card>
                     </> 
@@ -304,7 +305,7 @@ const styles = StyleSheet.create({
     quantityButtonText: {
       fontSize: 18,
     //   fontWeight: 'bold',
-      color: 'blue'
+      color: theme.primaryColor
     },
     quantity: {
       fontSize: 20,
@@ -334,7 +335,7 @@ const styles = StyleSheet.create({
       marginRight: 16,
     },
     checkoutButton: {
-      backgroundColor: 'blue',
+      backgroundColor: theme.primaryColor,
       padding: 16,
       borderRadius: 8,
       alignItems: 'center',
@@ -366,7 +367,7 @@ const styles = StyleSheet.create({
       orderTotal: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: 'green',
+        color: theme.primaryColor,
       },
       disabledButton: {
         opacity: 0.5,
@@ -376,7 +377,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 8,
         borderWidth: 1,
-        borderColor: 'blue',
+        borderColor: theme.primaryColor,
         // overflow:'visible'
       },
       addressHeaderText:{

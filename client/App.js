@@ -31,7 +31,7 @@ function App() {
       <Stack.Screen 
         name="ProductList" 
         component={ProductList}
-        options={{title: 'Medicines', 
+        options={{title: 'Homoeo World', 
         headerLeft: null,
         headerRight: () => (
           <TouchableOpacity onPress={() => navigation.navigate('Cart')}>

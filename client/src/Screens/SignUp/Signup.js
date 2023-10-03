@@ -6,6 +6,7 @@ import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { alignContent, flex, flexDirection, width } from 'styled-system';
 import * as api from 'client/src/utils/api.js';
+import {theme} from 'client/src/utils/theme.js'
 
 
 function Signup() {
@@ -294,7 +295,7 @@ const styles = StyleSheet.create({
     marginRight:15
   },
   buttonDesign:{
-    backgroundColor:'#026efd'
+    backgroundColor:theme.primaryColor
   },
   // disabledButton: { 
   //   opacity: 0.6, 

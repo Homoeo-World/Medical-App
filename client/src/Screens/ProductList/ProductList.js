@@ -6,6 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import ProductCard from 'client/src/components/ProductCard/ProductCard';
 import AutocompleteSearchBar from 'client/src/components/AutoCompleteSearchBar/AutocompleteSearchBar.js';
 import * as api from 'client/src/utils/api.js';
+import {theme} from 'client/src/utils/theme.js'
 
 
 function ProductList(){
@@ -69,20 +70,10 @@ function ProductList(){
           onEndReachedThreshold={0.1}
           onEndReached={loadMore}
         />
-       {loadingMore && hasMore && (<Spinner size="small" color="blue"  />)}
+       {loadingMore && hasMore && (<Spinner size="small" color={theme.primaryColor}  />)}
     </View>
   );
 };
-
-// ProductList.navigationOptions = {
-//   title: 'Medicines',
-//   headerRight: () => (
-//     <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-//       <Text>cart</Text>
-//       {/* <Icon as={FontAwesome5} name="shopping-cart" size={24} color="blue" /> */}
-//     </TouchableOpacity>
-//   ),
-// };
 
 export default () => {
   return (
@@ -94,7 +85,6 @@ export default () => {
   )
 }
 
-// export default ProductList;
 
 // const products = [
 //   // Array of product objects

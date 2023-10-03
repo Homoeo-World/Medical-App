@@ -8,6 +8,7 @@ import { alignContent, flex, flexDirection, width } from 'styled-system';
 import * as api from 'client/src/utils/api.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as auth from 'client/src/utils/auth.js'
+import {theme} from 'client/src/utils/theme.js'
 
 
 function Login() {
@@ -261,7 +262,7 @@ const styles = StyleSheet.create({
     marginRight:15
   },
   buttonDesign:{
-    backgroundColor:'#026efd'
+    backgroundColor: theme.primaryColor // 
   },
   lineStyle:{
     flexDirection:'row',

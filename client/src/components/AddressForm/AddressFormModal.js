@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { Input, Stack, FormControl, Button, Modal } from 'native-base';
+import {theme} from 'client/src/utils/theme.js' ;
 
 const AddressFormModal = ({ isVisible, onSave, onClose }) => {
 
@@ -106,8 +107,8 @@ const AddressFormModal = ({ isVisible, onSave, onClose }) => {
           </FormControl>
         </Modal.Body>
         <Modal.Footer>
-          <Button onPress={onClose} style={{marginRight:20 }}>Cancel</Button>
-          <Button onPress={handleSubmit} isDisabled={formData.pincode === ''}>
+          <Button onPress={onClose} style={{marginRight:20, backgroundColor: theme.primaryColor }}>Cancel</Button>
+          <Button onPress={handleSubmit} style={{backgroundColor: theme.primaryColor}}  isDisabled={formData.pincode === ''}>
             Save Address
           </Button>   
         </Modal.Footer>

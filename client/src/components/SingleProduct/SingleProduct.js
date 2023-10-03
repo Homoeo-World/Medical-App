@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Image, Dimensions } from 'react-native';
 import { Container, Content, Card, CardItem, Body, Button } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 const medicineImage = require('client/assets/default-medicine.jpg');
+import {theme} from 'client/src/utils/theme.js' ;
 
 const SingleProduct = ({ product }) => {
 
@@ -39,7 +40,7 @@ const SingleProduct = ({ product }) => {
             onPress={handleBuyPress}
             bordered 
             style={styles.buyNow}>
-                <Text style={{ color: 'red' }}>Buy Now</Text>
+                <Text style={{ color: theme.primaryColor }}>Buy Now</Text>
             </Button>
             <Button style={styles.addtoCart}>
                 <Text style={{ color: 'white' }}>Add to Cart</Text>
@@ -104,7 +105,7 @@ const SingleProduct = ({ product }) => {
       buyNow:{
         width:100,height:40,
         backgroundColor: 'white',
-        borderColor: 'red',
+        borderColor: theme.primaryColor,
         borderWidth: 1,
         borderRadius: 5,
         marginRight:5,
@@ -112,8 +113,8 @@ const SingleProduct = ({ product }) => {
       },
       addtoCart:{
         width: 150,height:40,
-        backgroundColor: 'red',
-        borderColor: 'red',
+        backgroundColor: theme.primaryColor,
+        borderColor: theme.primaryColor,
         borderWidth: 1,
         borderRadius: 5,
         marginRight:5
