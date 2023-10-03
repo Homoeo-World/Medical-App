@@ -18,17 +18,17 @@ function AddressList() {
 
   useEffect(() => {
     async function fetchData(){
+      console.log('fetchData...');
       try{
-        // const response = await api.getAddressesbyUser(username);
-        // console.log(response.data)
-        
-        // setAddresses(response.data);
+        const _addresses = await api.getAddressesbyUser();
+        setAddresses(_addresses);
       }
       catch(error){
-
+        console.log("Error while fetching addresses: ", error);
       }
     }
-  },[addresses])
+    fetchData();
+  },[])
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -47,21 +47,14 @@ function AddressList() {
       .join(', ');
     
     console.log('addressString: ', addressString);
-
-    //get token from AS
-    const jwtToken = await AsyncStorage.getItem('authToken');
-    authToken = JSON.parse(jwtToken);
-    console.log('Stored authToken:', jwtToken);
-    // const username = 
     const address = addressString;
 
     //api call to save the address for the current user
+    const response = api.postNewAddress(address);
 
-    // setAddresses((prevAddress) =>  [...prevAdresess, address])
-    // setSelectedAddress(address);
-    // })
+    setAddresses((prevAdresess) =>  [...prevAdresess, address]);
+    setSelectedAddress(address);
     
-
     toggleModal();
   };
 

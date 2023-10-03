@@ -82,7 +82,7 @@ export const getAddressesbyUser = async(req, res) => {
 
 // post new address for existing user
 export const postNewAddress = async(req, res) => {
-    console.log('postNewAddress...');
+    console.log('inside postNewAddress...');
     try {
         const {newAddress } = req.body;
         const user = await User.findOne({ username: req.user });
@@ -92,7 +92,7 @@ export const postNewAddress = async(req, res) => {
         user.address.push(newAddress);
         await user.save();
 
-        res.status(200).json({ message: 'Address added successfully!', user });
+        res.status(200).json({ message: 'Address added successfully!'});
     } 
     catch(error){
         console.error('Error adding address:', error);

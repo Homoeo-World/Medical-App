@@ -1,4 +1,5 @@
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //login-signup
 // const url = 'http://192.168.42.117:5000/login';
@@ -28,7 +29,28 @@ export const getProductByTitle = async (title) => await axios.get('https://medic
 });
 
 //address
-export const postNewAddress = async (username, newAddress) => await axios.post('https://medical-app-5gdu.onrender.com/login/addnewaddress',{newAddress: newAddress});
-export const getAddressesbyUser = async (username) => await axios.get('https://medical-app-5gdu.onrender.com/login/getaddressesbyuser',{
-    
-})
+export const postNewAddress = async (newAddress) => {
+    console.log('postNewAddress...')
+    const jwtToken = await AsyncStorage.getItem('authToken');
+    const authToken = JSON.parse(jwtToken); 
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      };
+      
+    const response = await axios.post('https://medical-app-5gdu.onrender.com/login/addnewaddress',{newAddress: newAddress},{headers});
+    // console.log('response: ', response);
+    return response.data;
+}
+export const getAddressesbyUser = async () => {
+    console.log('getAddressesbyUser...')
+    const jwtToken = await AsyncStorage.getItem('authToken');
+    const authToken = JSON.parse(jwtToken); 
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+      };
+    const response = await axios.get('https://medical-app-5gdu.onrender.com/login/getaddressesbyuser',{headers});
+    // console.log('response: ', response.data);
+    return response.data;
+}
