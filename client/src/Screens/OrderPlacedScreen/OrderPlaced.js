@@ -3,6 +3,8 @@ import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import {NativeBaseProvider} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import {theme} from 'client/src/utils/theme.js';
+
+
 const orderPlacedImg = require('client/assets/approval-256.png');
 
 function OrderPlaced(){

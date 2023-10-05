@@ -1,16 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import { View, FlatList, ActivityIndicator } from 'react-native';
-import {NativeBaseProvider, Icon, Text, Spinner} from 'native-base';
+// import {NativeBaseProvider, Icon, Text, Spinner, Button, Content, Container} from 'native-base';
+import { NativeBaseProvider, Box, Text, Spinner, Heading, VStack, FormControl, Input, Link, Button, Icon, HStack, Center, Pressable } from 'native-base';
+
 import { FontAwesaome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
 import ProductCard from 'client/src/components/ProductCard/ProductCard';
 import AutocompleteSearchBar from 'client/src/components/AutoCompleteSearchBar/AutocompleteSearchBar.js';
+import Footer from '../../components/Footer/Footer';
 import * as api from 'client/src/utils/api.js';
 import * as auth from 'client/src/utils/auth.js' 
-import {theme} from 'client/src/utils/theme.js'
+import {theme} from 'client/src/utils/theme.js';
+
 
 
 function ProductList(){  
+  const [selected, setSelected] = React.useState(1);
+
   const navigation = useNavigation();
   const isFocused = useIsFocused();
 
@@ -72,18 +78,20 @@ function ProductList(){
 
   return (
     <View style={{ flex: 1, padding: 8, backgroundColor: 'white'}}>
-
-      <AutocompleteSearchBar/>   
+      
+      <AutocompleteSearchBar/> 
+      
         <FlatList
           data={products}
           numColumns={2}
-          keyExtractor={(item) => item._id}
+          keyExtractor={(item) => item.title}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => <ProductCard product={item}/>}
           onEndReachedThreshold={0.1}
           onEndReached={loadMore}
         />
        {loadingMore && hasMore && (<Spinner size="small" color={theme.primaryColor}  />)}
+       
     </View>
   );
 };
@@ -93,6 +101,7 @@ export default () => {
     <NativeBaseProvider>
     
         <ProductList />
+        <Footer/>
       
     </NativeBaseProvider>
   )

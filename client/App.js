@@ -27,18 +27,14 @@ function App() {
       {/* working on this screen -- temp*/}
       
       
-      <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
+      {/* <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/> */}
       <Stack.Screen 
         name="ProductList" 
         component={ProductList}
         options={{title: 'Homoeo World', 
-        headerLeft: null,
-        headerRight: () => (
-          <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-            <Icon as={FontAwesome5} name="shopping-cart" size={5} color="blue" style={{marginRight: 0, justifyContent:'center'}}/>
-           </TouchableOpacity>
-        )}}/> 
+        headerLeft: null
+        }}/> 
       <Stack.Screen name="Product Details" component={ProductDetail} options={{headerStyle: {
          borderBottomWidth: 1, // Add a 1-pixel border at the bottom
          borderBottomColor: '#ccc', // Set the border color to grey

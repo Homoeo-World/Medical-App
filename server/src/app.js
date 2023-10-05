@@ -22,9 +22,6 @@ mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: tr
 
 // mongoose.set('useFindAndModify', false);
 
-
-
-
 // mongoose.connect(config.database.url, { useNewUrlParser: true, useUnifiedTopology: true })
 //   .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
 //   .catch((error) => console.log(`${error} did not connect`));

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
-import { Input, List, Text } from 'native-base'
+import { Input, List, Text, Image } from 'native-base'
 import { useNavigation, useRoute } from '@react-navigation/native';
 import * as api from 'client/src/utils/api.js';
 
@@ -43,17 +43,21 @@ const AutocompleteSearchBar = () => {
         <>
          {/* Search Input */}
       <Input
+        size="sm"
         placeholder="Search for the product"
         onChangeText={handleSearch}
         value={searchTerm}
+        variant="rounded"        
+        InputLeftElement={
+          <Image source= {require('client/assets/icons/search-icon.png')} style={styles.searchIcon}/>
+        }
       />
 
       {/* Autocomplete Suggestions */}
       {searchResults.length > 0 && (
         <List>
           {searchResults.map((item, index) => (
-            <TouchableOpacity
-              key={index}
+            <TouchableOpacity key={index}
               onPress={() => gotoProductDetails(item.title)}
               style={{
                 padding: 10,
@@ -72,6 +76,12 @@ const AutocompleteSearchBar = () => {
 
 export default AutocompleteSearchBar;
 
+
+const styles = StyleSheet.create({
+  searchIcon:{
+    marginLeft: 6
+  }
+});
 
 // searchResults
 // [{"title": "Omez 365"}, {"title": "omez"}]

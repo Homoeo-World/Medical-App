@@ -3,6 +3,8 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Input, NativeBaseProvider, Button, Icon, Box, Image, AspectRatio, HStack } from 'native-base';
 import { FontAwesome5 } from '@expo/vector-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { useNavigation } from '@react-navigation/native';
 import { alignContent, flex, flexDirection, marginBottom, width } from 'styled-system';
 import * as api from 'client/src/utils/api.js';
@@ -98,17 +100,7 @@ function Login() {
           <Text style={styles.inputFieldText}>Email or Username </Text>
           <Input
             InputLeftElement={
-              <Icon
-                as={<FontAwesome5 name="user-secret" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
+              <Image source= {require('client/assets/icons/person.png')} style={{height:16, width:16, marginLeft:4 }} />
             }
             variant="outline"
             placeholder="Username or Email"
@@ -130,17 +122,7 @@ function Login() {
         <Text style={styles.inputFieldText}>Password</Text>
           <Input
             InputLeftElement={
-              <Icon
-                as={<FontAwesome5 name="key" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
+              <Image source= {require('client/assets/icons/openeye.png')} style={{height:16, width:16, marginLeft:4}}/>
             }
             variant="outline"
             secureTextEntry={true}
