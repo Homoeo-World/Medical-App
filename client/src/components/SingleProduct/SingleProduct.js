@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, Dimensions } from 'react-native';
 import { Container, Content, Card, CardItem, Body, Button } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as auth from 'client/src/utils/auth.js';
 const medicineImage = require('client/assets/default-medicine.jpg');
 import {theme} from 'client/src/utils/theme.js' ;
 
@@ -9,10 +11,50 @@ const SingleProduct = ({ product }) => {
 
   const navigation = useNavigation();
 
-  const handleBuyPress = () => {
-    console.log('handleBuyPress...')
-    console.log(product);
+  const handleBuyPress = async () => {
+    console.log('handleBuyPress...');
+    let authToken;
+      let updatedCart = [];
+
+      const response = await auth.getAuthAndCartData();
+      
+      console.log('getAuthAndCartData response', response);
+  
+      if (response && response.authToken && response.cart) {
+        authToken = response.authToken;
+        const cart = response.cart;
+        // setCartItems(response.cart);
+        const existingItemIndex = cart.findIndex((item) => item.title === product.title);
+  
+        if (existingItemIndex !== -1) {
+          updatedCart = [...cart];
+          updatedCart[existingItemIndex].quantity += 1;
+          // setQuantity(updatedCart[existingItemIndex].quantity);
+        } else {
+          updatedCart = [...cart, { title: product.title, quantity: 1, price: product.price }];
+        }
+        // setCartItems(updatedCart);
+      } 
+      else {
+        console.log('response is null...')
+        const storedToken = await AsyncStorage.getItem('authToken');
+        authToken = JSON.parse(storedToken);
+        updatedCart = [{ title: product.title, price: product.price, quantity: 1 }];
+        // setCartItems(updatedCart);
+        // setQuantity(updatedCart[0].quantity)
+      }
+  
+      if (authToken !== null && updatedCart !== null) {
+        await auth.storeAuthAndCartData(authToken, updatedCart);
+        // console.log('Item added to cart:', updatedCart);
+        // setAddedToCart(true);
+      }
     navigation.navigate('Cart');
+  }
+
+  const handleAddToCartPress = () => {
+    console.log('handleAddtoCartPress...');
+    
   }
 
     return (
@@ -36,13 +78,10 @@ const SingleProduct = ({ product }) => {
         
 
         <View style={{flexDirection: 'row', justifyContent: 'center', padding: 20}}>
-            <Button 
-            onPress={handleBuyPress}
-            bordered 
-            style={styles.buyNow}>
+            <Button onPress={handleBuyPress} bordered style={styles.buyNow}>
                 <Text style={{ color: theme.primaryColor }}>Buy Now</Text>
             </Button>
-            <Button style={styles.addtoCart}>
+            <Button onPress={handleAddToCartPress} style={styles.addtoCart}>
                 <Text style={{ color: 'white' }}>Add to Cart</Text>
             </Button>
         </View >

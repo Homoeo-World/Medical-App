@@ -4,11 +4,12 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Input, NativeBaseProvider, Button, Icon, Box, Image, AspectRatio, HStack } from 'native-base';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { alignContent, flex, flexDirection, width } from 'styled-system';
+import { alignContent, flex, flexDirection, marginBottom, width } from 'styled-system';
 import * as api from 'client/src/utils/api.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as auth from 'client/src/utils/auth.js'
 import {theme} from 'client/src/utils/theme.js'
+
 
 
 function Login() {
@@ -17,22 +18,33 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [canLogin, setCanLogin] = useState(true);
+    const [disable, setDisable] = useState(true);
 
     const handleEmailInputChange = (value) => {
       setEmail(value);
+      if(email.length > 0 && password.length > 0) 
+        setDisable(false); 
+      if(email.length === 0 ||  password.length === 0) 
+        setDisable(true);
       console.log(email);
     }
   
     const handlePasswordInputChange = (value) => {
-      setPassword(value)
+      setPassword(value);
+      if(password.length > 0 && email.length > 0)
+        setDisable(false);
+      if(email.length === 0 ||  password.length === 0) 
+        setDisable(true)
       console.log(password);
     }
 
     const login = async () =>{
       console.log('login button pressed')
 
-      if(email!=='' && password!=='') 
+      if(email!=='' && password!=='') {
         setCanLogin(true);
+        
+      }
       else {
         setCanLogin(false);
         console.log('Cannot Login! Enter all the details');
@@ -67,20 +79,23 @@ function Login() {
       
     }
 
+
   return (
-    <View style={styles.container}>
+      <View style={styles.container}>
       <View style={styles.Middle}>
-        <Text style={styles.LoginText}>Login</Text>
+        <Text style={styles.WelcomeText}>Homoeo World!</Text>
+        <Text style={styles.LoginText}>Log in to your account</Text>
       </View>
-      <View style={styles.text2}>
+      {/* <View style={styles.text2}>
         <Text>Don't have an account? </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Signup")} ><Text style={styles.signupText}> Sign up</Text></TouchableOpacity>
-      </View>
+      </View> */}
 
       {/* Username or Email Input Field */}
       <View style={styles.buttonStyle}>
         
         <View style={styles.emailInput}>
+          <Text style={styles.inputFieldText}>Email or Username </Text>
           <Input
             InputLeftElement={
               <Icon
@@ -112,6 +127,7 @@ function Login() {
       <View style={styles.buttonStyleX}>
         
         <View style={styles.emailInput}>
+        <Text style={styles.inputFieldText}>Password</Text>
           <Input
             InputLeftElement={
               <Icon
@@ -142,7 +158,7 @@ function Login() {
 
       {/* Button */}
       <View style={styles.buttonStyle}>
-        <Button onPress={login} style={styles.buttonDesign}>
+        <Button onPress={login} style={[styles.buttonDesign, disable && styles.buttonDisabledDesign]} >
             LOGIN
         </Button>
         {!canLogin && <Text style={{color: 'red' }}>Please enter all the details</Text>}
@@ -150,11 +166,11 @@ function Login() {
 
       {/* Line */}
       <View style={styles.lineStyle}>
-        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        <View style={{flex: 1, height: 0, backgroundColor: 'black'}} />
         <View>
-          <Text style={{width: 50, textAlign: 'center'}}>Or</Text>
+          <Text style={{width: 50, textAlign: 'center', color:'grey'}}>-or-</Text>
         </View>
-        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        <View style={{flex: 1, height: 0, backgroundColor: 'black'}} />
       </View>
 
       {/* Box */}
@@ -178,8 +194,8 @@ function Login() {
       alt="image"
       style={{ width: 40, height: 40, marginRight: 10 }}
       />
-      <HStack space={2} alignItems="center">
-      <Text>Login with Google</Text>
+      <HStack space={10} alignItems="center" justifyContent="center">
+          <Text>Login with Google</Text>
       </HStack>
       </Box>
 
@@ -205,8 +221,14 @@ function Login() {
         </AspectRatio>
       </Box> */}
       </View>
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" /> */}
+
+      <View style={styles.text2}>
+        <Text>Don't have an account? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Signup")} ><Text style={styles.signupText}> Sign up</Text></TouchableOpacity>
+      </View>
     </View>
+    
   );
 }
 
@@ -222,11 +244,18 @@ export default () => {
 
 
 const styles = StyleSheet.create({
+ 
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f7f7f7'
   },
   LoginText: {
+    marginTop:20,
+    fontSize:20,
+    color: 'grey',
+    // fontWeight:'bold',
+  },
+  WelcomeText:{
     marginTop:100,
     fontSize:30,
     fontWeight:'bold',
@@ -238,10 +267,12 @@ const styles = StyleSheet.create({
   text2:{
     flexDirection:'row',
     justifyContent:'center',
-    paddingTop:5
+    paddingTop:5,
+    marginTop: 150
   },
   signupText:{
-    fontWeight:'bold'
+    fontWeight:'bold',
+    color: theme.primaryColor
   },
   emailField:{
     marginTop:30,
@@ -264,6 +295,9 @@ const styles = StyleSheet.create({
   buttonDesign:{
     backgroundColor: theme.primaryColor // 
   },
+  buttonDisabledDesign:{
+    opacity: 0.5,
+  },
   lineStyle:{
     flexDirection:'row',
     marginTop:30,
@@ -283,4 +317,10 @@ const styles = StyleSheet.create({
     marginRight:15,
     justifyContent:'space-around'
   },
+  inputFieldText:{
+    marginBottom: 5,
+    color: 'grey',
+    fontWeight:'bold',
+    fontSize: 10
+  }
 });

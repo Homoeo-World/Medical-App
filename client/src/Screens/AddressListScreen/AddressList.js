@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'flex-start', 
       padding: 10, 
-      // color: theme.primaryColor
+      color: theme.primaryColor
     },
     addressText: {
       fontSize: 12, // Adjust the font size as needed

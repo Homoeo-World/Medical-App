@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Input, NativeBaseProvider, Button, Icon, Box, Image, HStack, AspectRatio } from 'native-base';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { alignContent, flex, flexDirection, width } from 'styled-system';
+import { alignContent, flex, flexDirection, marginBottom, marginTop, width } from 'styled-system';
 import * as api from 'client/src/utils/api.js';
 import {theme} from 'client/src/utils/theme.js'
 
@@ -65,18 +65,15 @@ function Signup() {
   return (
     <View style={styles.container}>
       <View style={styles.Middle}>
-        <Text style={styles.LoginText}>Signup</Text>
+        <Text style={styles.SignupText}>Signup</Text>
+        <Text style={styles.LoginText}>Log in to your account</Text>
       </View>
-      <View style={styles.text2}>
-        <Text>Already have account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")} ><Text style={styles.signupText}> Login </Text></TouchableOpacity>
-      </View>
-
 
       {/*Username or Email Input Field */}
       <View style={styles.buttonStyleX}>
         
         <View style={styles.emailInput}>
+        <Text style={styles.inputFieldText}>Email or Username </Text>
           <Input
             InputLeftElement={
               <Icon
@@ -109,6 +106,7 @@ function Signup() {
       <View style={styles.buttonStyleX}>
         
         <View style={styles.emailInput}>
+        <Text style={styles.inputFieldText}>Password </Text>
           <Input
             InputLeftElement={
               <Icon
@@ -142,6 +140,7 @@ function Signup() {
       <View style={styles.buttonStyleX}>
         
         <View style={styles.emailInput}>
+          <Text style={styles.inputFieldText}>Confirm Password</Text>
           <Input
             InputLeftElement={
               <Icon
@@ -182,11 +181,11 @@ function Signup() {
 
       {/* Line */}
       <View style={styles.lineStyle}>
-        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        <View style={{flex: 1, height: 0, backgroundColor: 'black'}} />
         <View>
-          <Text style={{width: 50, textAlign: 'center'}}>Or</Text>
+          <Text style={{width: 50, textAlign: 'center'}}>-or-</Text>
         </View>
-        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        <View style={{flex: 1, height: 0, backgroundColor: 'black'}} />
       </View>
 
       {/* Box */}
@@ -210,7 +209,7 @@ function Signup() {
       style={{ width: 40, height: 40, marginRight: 10 }}
       />
       <HStack space={2} alignItems="center">
-      <Text>Signup with Google</Text>
+      <Text>Login with Google</Text>
       </HStack>
       </Box>
       
@@ -238,7 +237,11 @@ function Signup() {
       </Box> */}
       
       </View>
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" />*/}
+       <View style={styles.text2}>
+        <Text>Already have account? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")} ><Text style={styles.loginText}> Login </Text></TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -259,10 +262,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  LoginText: {
+  SignupText: {
     marginTop:100,
     fontSize:30,
     fontWeight:'bold',
+  },
+  LoginText:{
+    marginTop:20,
+    fontSize:20,
+    color: 'grey',
+    // fontWeight:'bold',
+    
   },
   Middle:{
     alignItems:'center',
@@ -271,10 +281,12 @@ const styles = StyleSheet.create({
   text2:{
     flexDirection:'row',
     justifyContent:'center',
-    paddingTop:5
+    paddingTop:5,
+    marginTop:100,
   },
-  signupText:{
-    fontWeight:'bold'
+  loginText:{
+    fontWeight:'bold',
+    color:theme.primaryColor
   },
   emailField:{
     marginTop:30,
@@ -320,4 +332,10 @@ const styles = StyleSheet.create({
     marginRight:15,
     justifyContent:'space-around'
   },
+  inputFieldText:{
+    marginBottom: 5,
+    color: 'grey',
+    fontWeight:'bold',
+    fontSize: 10
+  }
 });

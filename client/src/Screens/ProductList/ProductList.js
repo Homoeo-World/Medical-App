@@ -2,24 +2,38 @@ import React, {useEffect, useState} from 'react';
 import { View, FlatList, ActivityIndicator } from 'react-native';
 import {NativeBaseProvider, Icon, Text, Spinner} from 'native-base';
 import { FontAwesaome5, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
 import ProductCard from 'client/src/components/ProductCard/ProductCard';
 import AutocompleteSearchBar from 'client/src/components/AutoCompleteSearchBar/AutocompleteSearchBar.js';
 import * as api from 'client/src/utils/api.js';
+import * as auth from 'client/src/utils/auth.js' 
 import {theme} from 'client/src/utils/theme.js'
 
 
-function ProductList(){
-  
+function ProductList(){  
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [_cartItems, setCartItems] = useState([]);
   const [loadingMore, setLoadingMore] = useState(true);
   const [hasMore, setHasMore] = useState(true);
 
   const pageSize = 10;
+
+  // useEffect(() => {
+  //   async function fetchCartData() {
+  //     console.log('fetchCartData...')
+  //     const response = await auth.getAuthAndCartData();
+  //     if(response && response.cart){
+  //       setCartItems(response.cart);
+  //       console.log('product list cartItems: ', _cartItems);
+  //     }
+  //   }
+  //     fetchCartData();
+  // },[isFocused])
 
   useEffect(() => {
     async function fetchData() {
@@ -33,12 +47,11 @@ function ProductList(){
         else{
           setHasMore(false);
         }
-
-        setLoading(false); 
+        // setLoading(false); 
         setLoadingMore(false);
       } catch (error) {
         console.error('Error fetching data:', error);
-        setLoading(false);
+        // setLoading(false);
         setLoadingMore(false); 
       }
       
@@ -66,7 +79,7 @@ function ProductList(){
           numColumns={2}
           keyExtractor={(item) => item._id}
           showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => <ProductCard product={item} />}
+          renderItem={({ item }) => <ProductCard product={item}/>}
           onEndReachedThreshold={0.1}
           onEndReached={loadMore}
         />

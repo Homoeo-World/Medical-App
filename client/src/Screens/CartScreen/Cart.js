@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import { View, FlatList, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import {NativeBaseProvider, Card} from 'native-base';
+import {NativeBaseProvider, Card, Row} from 'native-base';
 import * as auth from 'client/src/utils/auth.js' 
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { borderLeft, marginBottom } from 'styled-system';
+import { borderLeft, flex, marginBottom } from 'styled-system';
 import {theme} from 'client/src/utils/theme.js' ;
 
 
 function Cart(){
   const navigation = useNavigation();
 
-  const route = useRoute();console.log('route: ', route)
+  const route = useRoute();console.log('route: ', route);
   
   const [cartItems, setCartItems] = useState([]);
   const [authToken, setAuthToken] = useState('');
@@ -32,27 +32,29 @@ function Cart(){
 
         if(response){
           setAuthToken(response.authToken);
-          const cart = response.cart;
-          setCartItems(cart);
+          setCartItems(response.cart);
         }
       }
       catch(error){
-        console.error('Error fetching the cart data:', error);
+        console.error('Cart Screen: Error fetching the cart data:', error);
       }
     }
 
     fetchData();
   },[route]);
 
+  const handleGoBack = () => {
+    navigation.goBack(); 
+  };
+
   useEffect(() => {
     const updateCartData = async () => {
-      console.log('cartItems changed:', cartItems);
+      // console.log('cartItems changed:', cartItems);
       const response = await auth.storeAuthAndCartData(authToken, cartItems);
-      console.log('storeAuthAndCartData Response: ', response);
+      // console.log('storeAuthAndCartData Response: ', response);
     };
   
     updateCartData();
-  
   }, [cartItems]);
   
     
@@ -87,10 +89,9 @@ function Cart(){
         // console.log(response);
 
         setCartItems((prevCartItems) => {
-          // Create a copy of the previous cartItems to make modifications
           const newCartItems = [...prevCartItems];
           newCartItems[index].quantity += 1;
-          return newCartItems; // Return the new state
+          return newCartItems; 
         });    
       }
       catch(error){
@@ -134,7 +135,8 @@ function Cart(){
     }
 
     const onConfirmOrderPress = async() => {
-      console.log('onConfirmOrderPress...')
+      console.log('onConfirmOrderPress...');
+      navigation.navigate('Order Placed');
     }
 
       // Sample payment details
@@ -185,11 +187,15 @@ function Cart(){
                   {cartItems.map((item, index) => renderCartItem(item, index))}
                   {isAddressSelected &&
                     <>
-                    <Text style={styles.addressHeaderText}>Deliver to this address:</Text>
-                    <Card style={styles.addressCard}>
-                        <TouchableOpacity onPress={onChangeAddressPress} style={styles.changeButton}><Text style={{color: theme.primaryColor}}>Change</Text></TouchableOpacity>
-                        <Text style={{flex:1}}>{selectedAddress}</Text>
-                    </Card>
+                      <View style={{flexDirection: 'row', justifyContent:'space-between'}}>
+                        <Text style={styles.addressHeaderText}>Deliver to this address:</Text>
+                        <TouchableOpacity onPress={onChangeAddressPress} style={styles.changeButton}>
+                          <Text style={{color: theme.primaryColor}}>Change</Text>
+                        </TouchableOpacity>
+                      </View>
+                      <Card style={styles.addressCard}>
+                          <Text style={{flex:1}}>{selectedAddress}</Text>
+                      </Card>
                     </> 
                     } 
                   <Text style={{fontSize: 18, marginVertical: 12}}>Payment Details</Text>    
