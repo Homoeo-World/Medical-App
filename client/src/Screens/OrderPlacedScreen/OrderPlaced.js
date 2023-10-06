@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: theme.primaryColor
+        backgroundColor: '#7dd3fc'
       },
       content: {
         flex: 1,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         height: 150,
       },
       footer: {
-        backgroundColor: 'blue', 
+        backgroundColor: theme.primaryColor, 
         paddingHorizontal: 20,
         paddingVertical: 5,
       },

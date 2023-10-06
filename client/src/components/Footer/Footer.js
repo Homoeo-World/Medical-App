@@ -1,38 +1,76 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {Image} from 'native-base'
+import { useNavigation } from "@react-navigation/native";
+import { theme } from "client/src/utils/theme.js";
 
 const Footer = () => {
+  const navigation = useNavigation();
+
+  const onHomePress = () => {
+    console.log("onHomePress...");
+    navigation.navigate("ProductList");
+  };
+
+  const onCartPress = () => {
+    console.log("onCartPress...");
+    navigation.navigate("Cart");
+  };
+
+  const onOrdersPress = () => {
+    console.log("onOrdersPress...");
+    // navigation.navigate('')
+  };
+
   return (
     <View style={styles.footer}>
-      <TouchableOpacity style={styles.footerButton}>
-        <Text style={styles.footerButtonText}>Button 1</Text>
+      <TouchableOpacity activeOpacity={.7} onPress={onHomePress} style={styles.footerButton}>
+        <Image source={require("client/assets/icons/home.png")} style={styles.icon}/>
+        <Text style={styles.footerButtonText}>Home</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.footerButton}>
-        <Text style={styles.footerButtonText}>Button 2</Text>
+      <TouchableOpacity activeOpacity={.7} onPress={onCartPress} style={styles.footerButtonAlt}>
+        <Image source={require("client/assets/icons/cart.png")} style={styles.icon}/>
+        <Text style={styles.footerButtonText}>Cart</Text>
       </TouchableOpacity>
-      {/* Add more footer content here */}
+      <TouchableOpacity activeOpacity={.7} onPress={onOrdersPress} style={styles.footerButton}>
+        <Image source={require("client/assets/icons/order-history.png")} style={styles.icon}/>
+        <Text style={styles.footerButtonText}>Orders</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   footer: {
-    flexDirection: 'row', // Horizontal layout
-    justifyContent: 'space-around', // Space evenly between items
-    alignItems: 'center', // Vertically center items
-    backgroundColor: 'lightgray', // Footer background color
-    paddingVertical: 10, // Adjust as needed
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    // backgroundColor:'white'
   },
   footerButton: {
-    backgroundColor: 'blue', // Button background color
-    paddingVertical: 5,
-    // paddingHorizontal: 10,
-    borderRadius: 5,
+    flex: 1,
+    paddingVertical: 7,
+    backgroundColor: "#0284c7",
+    alignItems: "center",
+    // borderWidth: 1,
+    // borderColor: "white",
+  },
+  footerButtonAlt: {
+    flex: 1,
+    paddingVertical: 7,
+    backgroundColor: "#0ea5e9",
+    alignItems: "center",
+    // borderWidth: 1,
+    // borderColor: "white",
   },
   footerButtonText: {
-    color: 'white', // Button text color
-    fontWeight: 'bold',
+    color: "black",
+    fontWeight: "bold",
   },
+  icon:{
+      height: 16,
+      width: 16
+  }
 });
 
 export default Footer;
