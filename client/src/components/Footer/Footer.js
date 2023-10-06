@@ -25,15 +25,15 @@ const Footer = () => {
   return (
     <View style={styles.footer}>
       <TouchableOpacity activeOpacity={.7} onPress={onHomePress} style={styles.footerButton}>
-        <Image source={require("client/assets/icons/home.png")} style={styles.icon}/>
+        <Image source={require("client/assets/icons/home-white.png")} style={styles.icon}/>
         <Text style={styles.footerButtonText}>Home</Text>
       </TouchableOpacity>
       <TouchableOpacity activeOpacity={.7} onPress={onCartPress} style={styles.footerButtonAlt}>
-        <Image source={require("client/assets/icons/cart.png")} style={styles.icon}/>
+        <Image source={require("client/assets/icons/cart-white.png")} style={styles.icon}/>
         <Text style={styles.footerButtonText}>Cart</Text>
       </TouchableOpacity>
       <TouchableOpacity activeOpacity={.7} onPress={onOrdersPress} style={styles.footerButton}>
-        <Image source={require("client/assets/icons/order-history.png")} style={styles.icon}/>
+        <Image source={require("client/assets/icons/order-history-white.png")} style={styles.icon}/>
         <Text style={styles.footerButtonText}>Orders</Text>
       </TouchableOpacity>
     </View>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     // borderColor: "white",
   },
   footerButtonText: {
-    color: "black",
+    color: "white",
     fontWeight: "bold",
   },
   icon:{

@@ -77,7 +77,7 @@ function ProductList(){
   }
 
   return (
-    <View style={{ flex: 1, padding: 8, backgroundColor: 'white'}}>
+    <View style={{ flex: 1, padding: 0, backgroundColor: 'white'}}>
       
       <AutocompleteSearchBar/> 
       

@@ -19,6 +19,11 @@ function Signup() {
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [canRegister, setCanRegister] = useState(true);
 
+  function checkDisable(){
+    return email.length<=0 || password.length<=0 || confirmPassword.length<=0 || !passwordsMatch
+  }
+  const disable = checkDisable();
+
 
   const handleEmailInputChange = (value) => {
     setEmail(value);
@@ -66,7 +71,7 @@ function Signup() {
     <View style={styles.container}>
       <View style={styles.Middle}>
         <Text style={styles.SignupText}>Signup</Text>
-        <Text style={styles.LoginText}>Log in to your account</Text>
+        <Text style={styles.LoginText}>Lets create a new Account</Text>
       </View>
 
       {/*Username or Email Input Field */}
@@ -76,19 +81,9 @@ function Signup() {
         <Text style={styles.inputFieldText}>Email or Username </Text>
           <Input
             InputLeftElement={
-              <Icon
-                as={<MaterialCommunityIcons name="email" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
+              <Image source= {require('client/assets/icons/person.png')} style={{height:16, width:16, marginLeft:10}}/>
             }
-            variant="outline"
+            variant="rounded"
             placeholder="Email"
             _light={{
               placeholderTextColor: "blueGray.400",
@@ -109,19 +104,9 @@ function Signup() {
         <Text style={styles.inputFieldText}>Password </Text>
           <Input
             InputLeftElement={
-              <Icon
-                as={<FontAwesome5 name="key" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
+              <Image source= {require('client/assets/icons/hideeye.png')} style={{height:16, width:16, marginLeft:10}}/>
             }
-            variant="outline"
+            variant="rounded"
             secureTextEntry={true}
             placeholder="Password"
             _light={{
@@ -143,19 +128,9 @@ function Signup() {
           <Text style={styles.inputFieldText}>Confirm Password</Text>
           <Input
             InputLeftElement={
-              <Icon
-                as={<FontAwesome5 name="key" />}
-                size="sm"
-                m={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
+              <Image source= {require('client/assets/icons/hideeye.png')} style={{height:16, width:16, marginLeft:10}}/>
             }
-            variant="outline"
+            variant="rounded"
             secureTextEntry={true}
             placeholder="Confirm Password"
             _light={{
@@ -173,7 +148,7 @@ function Signup() {
 
       {/* Button */}
       <View style={styles.buttonStyle}>
-        <Button onPress={register} style={styles.buttonDesign}>
+        <Button isDisabled={disable} onPress={register} style={styles.buttonDesign}>
             REGISTER NOW
         </Button>
         {!canRegister && <Text style={{color: 'red' }}>Please enter appropriate details</Text>}
@@ -183,7 +158,7 @@ function Signup() {
       <View style={styles.lineStyle}>
         <View style={{flex: 1, height: 0, backgroundColor: 'black'}} />
         <View>
-          <Text style={{width: 50, textAlign: 'center'}}>-or-</Text>
+          <Text style={{width: 50, textAlign: 'center', color:'grey'}}>-or-</Text>
         </View>
         <View style={{flex: 1, height: 0, backgroundColor: 'black'}} />
       </View>

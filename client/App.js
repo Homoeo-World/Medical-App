@@ -14,6 +14,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import {TouchableOpacity, Text } from 'react-native';
 import {Icon, NativeBaseProvider} from 'native-base';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import {Image} from 'native-base'
 
 const Stack = createStackNavigator();
 
@@ -27,13 +28,13 @@ function App() {
       {/* working on this screen -- temp*/}
       
       
-      {/* <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/> */}
+      <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
       <Stack.Screen 
         name="ProductList" 
         component={ProductList}
         options={{title: 'Homoeo World', 
-        headerLeft: null
+        headerLeft: () => <Image source= {require('client/assets/icons/stethoscope-blue.png')} style={{height:40, width:32,marginLeft:10}} />
         }}/> 
       <Stack.Screen name="Product Details" component={ProductDetail} options={{headerStyle: {
          borderBottomWidth: 1, // Add a 1-pixel border at the bottom

@@ -23,7 +23,7 @@ function OrderPlaced(){
           source={orderPlacedImg} 
           style={styles.image}
         />
-        <Text style={{ fontSize: 20 }}>Order Placed</Text>
+        <Text style={{ fontSize: 20, color:'white' }}>Order Placed</Text>
         {/* Add your existing content here */}
       </View>
 

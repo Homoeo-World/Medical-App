@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { View, ScrollView, Text } from 'react-native';
 import {NativeBaseProvider} from 'native-base';
 import SingleProduct from '../../components/SingleProduct/SingleProduct';
+import Footer from '../../components/Footer/Footer';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 
@@ -43,6 +44,7 @@ export default () => {
     <NativeBaseProvider>
      
         <ProductDetail/>
+        <Footer/>
       
     </NativeBaseProvider>
   )

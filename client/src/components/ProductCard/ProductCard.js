@@ -214,10 +214,10 @@ const ProductCard = ({ product }) => {
 
 export const styles = StyleSheet.create({
   cardContainer: {
-    width: "48%",
+    width: "50%",
     backgroundColor: "white",
-    marginTop: 10,
-    marginLeft: 3,
+    // marginTop: 10,
+    // marginLeft: 3,
   },
   image: {
     width: "100%",

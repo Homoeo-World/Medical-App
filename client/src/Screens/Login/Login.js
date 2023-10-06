@@ -20,23 +20,20 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [canLogin, setCanLogin] = useState(true);
-    const [disable, setDisable] = useState(true);
+
+
+    function checkDisable(){
+      return email.length<=0 || password.length<=0
+    }
+    const disable = checkDisable();
 
     const handleEmailInputChange = (value) => {
       setEmail(value);
-      if(email.length > 0 && password.length > 0) 
-        setDisable(false); 
-      if(email.length === 0 ||  password.length === 0) 
-        setDisable(true);
       console.log(email);
     }
   
     const handlePasswordInputChange = (value) => {
       setPassword(value);
-      if(password.length > 0 && email.length > 0)
-        setDisable(false);
-      if(email.length === 0 ||  password.length === 0) 
-        setDisable(true)
       console.log(password);
     }
 
@@ -85,13 +82,12 @@ function Login() {
   return (
       <View style={styles.container}>
       <View style={styles.Middle}>
-        <Text style={styles.WelcomeText}>Homoeo World!</Text>
+        <View style={{flexDirection: 'row', alignItems:'center', justifyContent:'center', marginTop:100,}}>
+          <Image source= {require('client/assets/icons/stethoscope-blue.png')} style={{height:40, width:32,marginRight:5}} />
+          <Text style={styles.WelcomeText}>Homoeo World!</Text>
+        </View>
         <Text style={styles.LoginText}>Log in to your account</Text>
       </View>
-      {/* <View style={styles.text2}>
-        <Text>Don't have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Signup")} ><Text style={styles.signupText}> Sign up</Text></TouchableOpacity>
-      </View> */}
 
       {/* Username or Email Input Field */}
       <View style={styles.buttonStyle}>
@@ -100,9 +96,9 @@ function Login() {
           <Text style={styles.inputFieldText}>Email or Username </Text>
           <Input
             InputLeftElement={
-              <Image source= {require('client/assets/icons/person.png')} style={{height:16, width:16, marginLeft:4 }} />
+              <Image source= {require('client/assets/icons/person.png')} style={{height:16, width:16, marginLeft:10 }} />
             }
-            variant="outline"
+            variant="rounded"
             placeholder="Username or Email"
             _light={{
               placeholderTextColor: "blueGray.400",
@@ -122,9 +118,9 @@ function Login() {
         <Text style={styles.inputFieldText}>Password</Text>
           <Input
             InputLeftElement={
-              <Image source= {require('client/assets/icons/openeye.png')} style={{height:16, width:16, marginLeft:4}}/>
+              <Image source= {require('client/assets/icons/hideeye.png')} style={{height:16, width:16, marginLeft:10}}/>
             }
-            variant="outline"
+            variant="rounded"   
             secureTextEntry={true}
             placeholder="Password"
             _light={{
@@ -140,7 +136,7 @@ function Login() {
 
       {/* Button */}
       <View style={styles.buttonStyle}>
-        <Button onPress={login} style={[styles.buttonDesign, disable && styles.buttonDisabledDesign]} >
+        <Button onPress={login} isDisabled={disable} style={[styles.buttonDesign]} >
             LOGIN
         </Button>
         {!canLogin && <Text style={{color: 'red' }}>Please enter all the details</Text>}
@@ -238,7 +234,7 @@ const styles = StyleSheet.create({
     // fontWeight:'bold',
   },
   WelcomeText:{
-    marginTop:100,
+    // marginTop:100,
     fontSize:30,
     fontWeight:'bold',
   },
