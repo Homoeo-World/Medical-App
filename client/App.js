@@ -10,11 +10,10 @@ import OrderPlaced from './src/Screens/OrderPlacedScreen/OrderPlaced';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { FontAwesome5 } from '@expo/vector-icons';
+// import { FontAwesome5 } from '@expo/vector-icons';
 import {TouchableOpacity, Text } from 'react-native';
-import {Icon, NativeBaseProvider} from 'native-base';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import {Image} from 'native-base'
+import {Icon, Image, NativeBaseProvider} from 'native-base';
+import { useNavigation } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 
@@ -27,19 +26,12 @@ function App() {
       <Stack.Navigator>
       {/* working on this screen -- temp*/}
       
-      
-      <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
-      <Stack.Screen 
-        name="ProductList" 
-        component={ProductList}
-        options={{title: 'Homoeo World', 
+      {/* <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/> */}
+      <Stack.Screen name="Product List" component={ProductList} options={{title: 'Homoeo World', 
         headerLeft: () => <Image source= {require('client/assets/icons/stethoscope-blue.png')} style={{height:40, width:32,marginLeft:10}} />
-        }}/> 
-      <Stack.Screen name="Product Details" component={ProductDetail} options={{headerStyle: {
-         borderBottomWidth: 1, // Add a 1-pixel border at the bottom
-         borderBottomColor: '#ccc', // Set the border color to grey
-       }}} />
+      }}/> 
+      <Stack.Screen name="Product Details" component={ProductDetail} options={{headerStyle: {borderBottomWidth: 1, borderBottomColor: '#ccc', }}} />
       <Stack.Screen name="Cart" component={Cart} options={{title: 'My Cart'}}/>
       <Stack.Screen name="Select Address" component={AddressList}/>
       <Stack.Screen name="Order Placed" component={OrderPlaced} options={{headerShown: false}}/>

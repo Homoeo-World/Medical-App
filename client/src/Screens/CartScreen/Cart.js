@@ -67,7 +67,7 @@ function Cart() {
   }, [cartItems]);
 
   const onAddItemsPress = () => {
-     navigation.navigate('ProductList');
+     navigation.navigate('Product List');
   }
 
   const removeItemfromCart = async (index) => {

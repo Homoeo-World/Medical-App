@@ -13,7 +13,7 @@ function OrderPlaced(){
 
     const handleDonePress = () => {
         console.log('handleDonePress...');
-        navigation.navigate('ProductList');
+        navigation.navigate('Product List');
     }
 
     return (

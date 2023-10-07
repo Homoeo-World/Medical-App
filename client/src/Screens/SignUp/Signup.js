@@ -156,30 +156,21 @@ function Signup() {
 
       {/* Line */}
       <View style={styles.lineStyle}>
-        <View style={{flex: 1, height: 0, backgroundColor: 'black'}} />
         <View>
           <Text style={{width: 50, textAlign: 'center', color:'grey'}}>-or-</Text>
         </View>
-        <View style={{flex: 1, height: 0, backgroundColor: 'black'}} />
       </View>
 
       {/* Box */}
       <View style={styles.boxStyle}>
       <Box
       onPress={() => navigation.navigate("#")} // for navigation
-      style={{ flexDirection: 'row', alignItems: 'center', height: 40, width: '100%' }}
-        shadow={3}
-        _light={{
-        backgroundColor: "gray.50",
-      }}
-      _dark={{
-      backgroundColor: "gray.700",
-      }}
+      style={{ flexDirection: 'row', alignItems: 'center', justifyContent:'center', height: 40, width: '100%' }}
+      shadow={3}
+      _light={{backgroundColor: "gray.50"}}
+      _dark={{backgroundColor: "gray.700"}}
       >
-      <Image
-        source={{
-        uri: "https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png",
-      }}
+      <Image source={{uri: "https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png",}}
       alt="image"
       style={{ width: 40, height: 40, marginRight: 10 }}
       />
@@ -187,31 +178,8 @@ function Signup() {
       <Text>Login with Google</Text>
       </HStack>
       </Box>
-      
-      {/* <Box 
-        onPress={() => navigation.navigate("#")}  // for navigation
-        style={styles.imageStyle}
-        shadow={3}
-        _light={{
-          backgroundColor: "gray.50",
-        }}
-        _dark={{
-          backgroundColor: "gray.700",
-        }}
-      >
-        <AspectRatio ratio={1 / 1}>
-          <Image
-            
-            roundedTop="lg"
-            source={{
-              uri: "https://www.transparentpng.com/thumb/twitter/bird-twitter-socialmedia-icons-png-5.png",
-            }}
-            alt="image"
-          />
-        </AspectRatio>
-      </Box> */}
-      
       </View>
+
       {/* <StatusBar style="auto" />*/}
        <View style={styles.text2}>
         <Text>Already have account? </Text>
@@ -246,8 +214,6 @@ const styles = StyleSheet.create({
     marginTop:20,
     fontSize:20,
     color: 'grey',
-    // fontWeight:'bold',
-    
   },
   Middle:{
     alignItems:'center',
@@ -284,16 +250,13 @@ const styles = StyleSheet.create({
   buttonDesign:{
     backgroundColor:theme.primaryColor
   },
-  // disabledButton: { 
-  //   opacity: 0.6, 
-  //   backgroundColor:"red"
-  // },
   lineStyle:{
     flexDirection:'row',
     marginTop:30,
     marginLeft:15,
     marginRight:15,
-    alignItems:'center'
+    alignItems:'center',
+    justifyContent:'center'
   },
   imageStyle:{
     width:80,

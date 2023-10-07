@@ -9,7 +9,7 @@ const Footer = () => {
 
   const onHomePress = () => {
     console.log("onHomePress...");
-    navigation.navigate("ProductList");
+    navigation.navigate("Product List");
   };
 
   const onCartPress = () => {

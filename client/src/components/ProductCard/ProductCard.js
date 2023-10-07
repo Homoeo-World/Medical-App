@@ -7,7 +7,7 @@ import {
   TouchableWithoutFeedback,
   StyleSheet,
 } from "react-native";
-import { Card, Button, Icon } from "native-base";
+import { Card, Button, Icon, Box } from "native-base";
 import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -140,75 +140,72 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-   
-      <Card style={styles.cardContainer}>
-        <View style={{marginLeft:1}}>
+    <Box shadow={0} style={styles.cardContainer}>
+      <View style={{ marginHorizontal: 10 }}>
         <TouchableOpacity activeOpacity={0.7} onPress={handleCardPress}>
           <>
-          <Image source={medicineImage} style={styles.image} />
-          <Text style={styles.title}>{product.title}</Text>
-          <Text style={styles.quantity}>{product.quantity}</Text>
-          <Text style={styles.price}>{product.price}</Text>
+            <Image source={medicineImage} style={styles.image} />
+            <Text style={styles.title}>{product.title}</Text>
+            <Text style={styles.quantity}>{product.quantity}</Text>
+            <Text style={styles.price}>{product.price}</Text>
           </>
-          
-          </TouchableOpacity>
+        </TouchableOpacity>
 
-          {/* Buy and add-to-cart button */}
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginTop: 10,
-            }}
-          >
-            <Button bordered onPress={handleBuyPress} style={styles.buyButton}>
-              <Text style={{ color: theme.primaryColor }}>Buy</Text>
-            </Button>
-            {/* after clicking on add to cart */}
-            {quantity <= 0 ? (
-              <Button
-                onPress={handleAddtoCartPress}
-                small
-                style={styles.addToCartButton}
-              >
-                <View style={{ flexDirection: "row" }}>
-                  <MaterialCommunityIcons
-                    name="cart-outline"
-                    size={16}
-                    color="white"
-                    style={{ marginRight: 5 }}
-                  />
-                  <Text style={{ color: "white" }}>Add</Text>
-                </View>
-              </Button>
-            ) : (
-              <View style={styles.cartItem}>
-                <View style={styles.quantityContainer}>
-                  <TouchableOpacity
-                    onPress={decrementQuantity}
-                    style={styles.quantityButton}
-                  >
-                    <Text style={styles.buttonText}>-</Text>
-                  </TouchableOpacity>
-
-                  <View style={styles.quantityDisplay}>
-                    <Text style={styles.quantityText}>{quantity}</Text>
-                  </View>
-
-                  <TouchableOpacity
-                    onPress={incrementQuantity}
-                    style={styles.quantityButton}
-                  >
-                    <Text style={styles.buttonText}>+</Text>
-                  </TouchableOpacity>
-                </View>
+        {/* Buy and add-to-cart button */}
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
+            marginVertical: 10,
+          }}
+        >
+          <Button bordered onPress={handleBuyPress} style={styles.buyButton}>
+            <Text style={{ color: theme.primaryColor }}>Buy</Text>
+          </Button>
+          {/* after clicking on add to cart */}
+          {quantity <= 0 ? (
+            <Button
+              onPress={handleAddtoCartPress}
+              small
+              style={styles.addToCartButton}
+            >
+              <View style={{ flexDirection: "row" }}>
+                <MaterialCommunityIcons
+                  name="cart-outline"
+                  size={16}
+                  color="white"
+                  style={{ marginRight: 5 }}
+                />
+                <Text style={{ color: "white" }}>Add</Text>
               </View>
-            )}
-          </View>
+            </Button>
+          ) : (
+            <View style={styles.cartItem}>
+              <View style={styles.quantityContainer}>
+                <TouchableOpacity
+                  onPress={decrementQuantity}
+                  style={styles.quantityButton}
+                >
+                  <Text style={styles.buttonText}>-</Text>
+                </TouchableOpacity>
+
+                <View style={styles.quantityDisplay}>
+                  <Text style={styles.quantityText}>{quantity}</Text>
+                </View>
+
+                <TouchableOpacity
+                  onPress={incrementQuantity}
+                  style={styles.quantityButton}
+                >
+                  <Text style={styles.buttonText}>+</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
         </View>
-      </Card>
-    
+      </View>
+    </Box>
   );
 };
 
