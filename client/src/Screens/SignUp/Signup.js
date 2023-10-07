@@ -257,7 +257,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'center',
     paddingTop:5,
-    marginTop:100,
+    marginTop:50,
   },
   loginText:{
     fontWeight:'bold',

@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ameya_.client"
+      "package": "com.gauriameya.client"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -32,6 +32,6 @@
         "projectId": "0eb8f55b-51e9-4248-b2dc-18a9474b4c9b"
       }
     },
-    "owner": "ameya_"
+    "owner": "gauriameya"
   }
 }
