@@ -1,20 +1,7 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import {
-  Input,
-  NativeBaseProvider,
-  Button,
-  Icon,
-  Box,
-  Image,
-  AspectRatio,
-  HStack,
-} from "native-base";
-// import { FontAwesome5 } from '@expo/vector-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {Input, NativeBaseProvider, Button, Box, Image, HStack,} from "native-base";
 import { useNavigation } from "@react-navigation/native";
-// import { alignContent, flex, flexDirection, marginBottom, width } from 'styled-system';
 import * as api from "client/src/utils/api.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as auth from "client/src/utils/auth.js";
@@ -47,8 +34,7 @@ function Login() {
 
     if (email !== "" && password !== "") {
       setCanLogin(true);
-    } 
-    else {
+    } else {
       setCanLogin(false);
       console.log("Cannot Login! Enter all the details");
       return;
@@ -67,15 +53,12 @@ function Login() {
         await AsyncStorage.setItem("authToken", JSON.stringify(token));
         navigation.navigate("Product List");
         console.log("Authentication is successful");
-      } 
-      else 
-        console.log("---null token---");
+      } else console.log("token is null");
 
       // const storedToken = await AsyncStorage.getItem("authToken");
       // authToken = JSON.parse(storedToken);
       // console.log("Stored authToken:", authToken);
-    } 
-    catch (error) {
+    } catch (error) {
       console.error("Error logging in user:", error);
     }
   };
@@ -83,16 +66,10 @@ function Login() {
   return (
     <View style={styles.container}>
       <View style={styles.Middle}>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: 100,
-          }}
-        >
-          <Image source={require("client/assets/icons/stethoscope-blue.png")}
-            style={{ height: 40, width: 32, marginRight: 5 }}
+        <View style={styles.header}>
+          <Image
+            source={require("client/assets/icons/stethoscope-blue.png")}
+            style={styles.logo}
           />
           <Text style={styles.WelcomeText}>Homoeo World!</Text>
         </View>
@@ -105,9 +82,14 @@ function Login() {
           <Text style={styles.inputFieldText}>Email or Username </Text>
           <Input
             InputLeftElement={
-              <Image source={require("client/assets/icons/person.png")} style={{ height: 16, width: 16, marginLeft: 10 }}/>
+              <Image
+                source={require("client/assets/icons/person.png")}
+                style={styles.personIcon}
+              />
             }
-            variant="rounded" placeholder="Username or Email" onChangeText={handleEmailInputChange}
+            variant="rounded"
+            placeholder="Username or Email"
+            onChangeText={handleEmailInputChange}
           />
         </View>
       </View>
@@ -116,15 +98,27 @@ function Login() {
       <View style={styles.buttonStyleX}>
         <View style={styles.emailInput}>
           <Text style={styles.inputFieldText}>Password</Text>
-          <Input InputLeftElement={<Image source={require("client/assets/icons/hideeye.png")} style={{ height: 16, width: 16, marginLeft: 10 }}/>}
-            variant="rounded" secureTextEntry={true} placeholder="Password" onChangeText={handlePasswordInputChange}
+          <Input
+            InputLeftElement={
+              <Image
+                source={require("client/assets/icons/hideeye.png")}
+                style={{ height: 16, width: 16, marginLeft: 10 }}
+              />
+            }
+            variant="rounded"
+            secureTextEntry={true}
+            placeholder="Password"
+            onChangeText={handlePasswordInputChange}
           />
         </View>
       </View>
 
       {/* Button */}
       <View style={styles.buttonStyle}>
-        <Button onPress={login} isDisabled={disable} style={[styles.buttonDesign]}
+        <Button
+          onPress={login}
+          isDisabled={disable}
+          style={[styles.buttonDesign]}
         >
           LOGIN
         </Button>
@@ -136,28 +130,26 @@ function Login() {
       {/* Line */}
       <View style={styles.lineStyle}>
         <View>
-          <Text style={{ width: 50, textAlign: "center", color: "grey" }}>
-            -or-
-          </Text>
+          <Text style={styles.orText}>-or-</Text>
         </View>
       </View>
 
       <View style={styles.boxStyle}>
-      <Box
-      onPress={() => navigation.navigate("#")} // for navigation
-      style={{ flexDirection: 'row', alignItems: 'center', justifyContent:'center', height: 40, width: '100%' }}
-      shadow={3}
-      _light={{backgroundColor: "gray.50"}}
-      _dark={{backgroundColor: "gray.700"}}
-      >
-      <Image source={{uri: "https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png",}}
-      alt="image"
-      style={{ width: 40, height: 40, marginRight: 10 }}
-      />
-      <HStack space={2} alignItems="center">
-      <Text>Login with Google</Text>
-      </HStack>
-      </Box>
+        <Box
+          onPress={() => navigation.navigate("#")} // for navigation
+          style={styles.loginBox}
+          shadow={3}
+          _light={{ backgroundColor: "gray.50" }}
+          _dark={{ backgroundColor: "gray.700" }}
+        >
+          <Image source={{uri: "https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png",}}
+            alt="image"
+            style={styles.googleLogo}
+          />
+          <HStack space={2} alignItems="center">
+            <Text>Login with Google</Text>
+          </HStack>
+        </Box>
       </View>
 
       <View style={styles.text2}>
@@ -238,7 +230,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginRight: 15,
     alignItems: "center",
-    justifyContent:'center'
+    justifyContent: "center",
   },
   imageStyle: {
     width: 80,
@@ -258,4 +250,38 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 10,
   },
+  logo: {
+    height: 40,
+    width: 32,
+    marginRight: 5,
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 100,
+  },
+  personIcon: {
+    height: 16,
+    width: 16,
+    marginLeft: 10,
+  },
+  orText: {
+    width: 50,
+    textAlign: "center",
+    color: "grey",
+  },
+  loginBox:{
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      height: 40,
+      width: "100%",
+    },
+  googleLogo:{ 
+    width: 40, 
+    height: 40, 
+    marginRight: 10 
+  }
+  
 });
