@@ -7,34 +7,18 @@ import {
   TouchableWithoutFeedback,
   StyleSheet,
 } from "react-native";
-import { Card, Button, Icon, Box } from "native-base";
-import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
-import { useNavigation, useIsFocused } from "@react-navigation/native";
+import {Button, Box } from "native-base";
+import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-const medicineImage = require("client/assets/default-medicine.jpg");
 import * as auth from "client/src/utils/auth.js";
 import { theme } from "client/src/utils/theme.js";
 
 const ProductCard = ({ product }) => {
   const navigation = useNavigation();
-  const isFocused = useIsFocused();
 
   const [addedToCart, setAddedToCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [quantity, setQuantity] = useState(0);
-
-  // useEffect(() => {
-  //   async function fetchCartData() {
-  //     console.log('fetchCartData...')
-  //     const response = await auth.getAuthAndCartData();
-  //     if(response && response.cart){
-  //       setCartItems(response.cart);
-  //       const index = cartItems.findIndex((item) => item.title === product.title);
-  //       setQuantity(cartItems[index].quantity);
-  //     }
-  //   }
-  //     fetchCartData();
-  // },[isFocused])
 
   useEffect(() => {
     const updateCartData = async () => {
@@ -140,11 +124,11 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <Box shadow={0} style={styles.cardContainer}>
+    <Box shadow={0} style={styles.boxContainer}>
       <View style={{ marginHorizontal: 10 }}>
         <TouchableOpacity activeOpacity={0.7} onPress={handleCardPress}>
           <>
-            <Image source={medicineImage} style={styles.image} />
+            <Image source={require("client/assets/default-medicine.jpg")} style={styles.image} />
             <Text style={styles.title}>{product.title}</Text>
             <Text style={styles.quantity}>{product.quantity}</Text>
             <Text style={styles.price}>{product.price}</Text>
@@ -165,28 +149,16 @@ const ProductCard = ({ product }) => {
           </Button>
           {/* after clicking on add to cart */}
           {quantity <= 0 ? (
-            <Button
-              onPress={handleAddtoCartPress}
-              small
-              style={styles.addToCartButton}
-            >
+            <Button onPress={handleAddtoCartPress} small style={styles.addToCartButton}>
               <View style={{ flexDirection: "row" }}>
-                <MaterialCommunityIcons
-                  name="cart-outline"
-                  size={16}
-                  color="white"
-                  style={{ marginRight: 5 }}
-                />
+              <Image source={require("client/assets/icons/cart-white.png")} style={styles.icon}/>
                 <Text style={{ color: "white" }}>Add</Text>
               </View>
             </Button>
           ) : (
             <View style={styles.cartItem}>
               <View style={styles.quantityContainer}>
-                <TouchableOpacity
-                  onPress={decrementQuantity}
-                  style={styles.quantityButton}
-                >
+                <TouchableOpacity onPress={decrementQuantity} style={styles.quantityButton}>
                   <Text style={styles.buttonText}>-</Text>
                 </TouchableOpacity>
 
@@ -194,10 +166,7 @@ const ProductCard = ({ product }) => {
                   <Text style={styles.quantityText}>{quantity}</Text>
                 </View>
 
-                <TouchableOpacity
-                  onPress={incrementQuantity}
-                  style={styles.quantityButton}
-                >
+                <TouchableOpacity onPress={incrementQuantity} style={styles.quantityButton}>
                   <Text style={styles.buttonText}>+</Text>
                 </TouchableOpacity>
               </View>
@@ -210,7 +179,7 @@ const ProductCard = ({ product }) => {
 };
 
 export const styles = StyleSheet.create({
-  cardContainer: {
+  boxContainer: {
     width: "50%",
     backgroundColor: "white",
     // marginTop: 10,
@@ -254,15 +223,6 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  addedToCartButton: {
-    width: 80,
-    height: 40,
-    backgroundColor: theme.primaryColor,
-    paddingHorizontal: 10,
-    borderRadius: 5,
-    flexDirection: "row",
-    alignItems: "center",
-  },
   // buttonText: {
   //   color: theme.primaryColor,
   // },
@@ -284,8 +244,8 @@ export const styles = StyleSheet.create({
     borderColor: theme.primaryColor,
   },
   quantityButton: {
-    width: 25,
-    height: 25,
+    width: 30,
+    height: 30,
     backgroundColor: theme.primaryColor,
     justifyContent: "center",
     alignItems: "center",
@@ -293,8 +253,8 @@ export const styles = StyleSheet.create({
     // marginHorizontal: 5,
   },
   quantityDisplay: {
-    width: 25,
-    height: 25,
+    width: 30,
+    height: 30,
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
@@ -307,6 +267,10 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     color: "white",
   },
+  icon:{
+    height: 16,
+    width: 16
+}
 });
 
 export default ProductCard;
