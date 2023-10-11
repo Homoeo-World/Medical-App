@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import { View, FlatList, ActivityIndicator } from 'react-native';
 // import {NativeBaseProvider, Icon, Text, Spinner, Button, Content, Container} from 'native-base';
 import { NativeBaseProvider, Box, Text, Spinner, Heading, VStack, FormControl, Input, Link, Button, Icon, HStack, Center, Pressable } from 'native-base';
-
 import { FontAwesaome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
 import ProductCard from 'client/src/components/ProductCard/ProductCard';
@@ -11,7 +10,7 @@ import Footer from '../../components/Footer/Footer';
 import * as api from 'client/src/utils/api.js';
 import * as auth from 'client/src/utils/auth.js' 
 import {theme} from 'client/src/utils/theme.js';
-
+import styles from './styles';
 
 
 function ProductList(){  
@@ -77,7 +76,7 @@ function ProductList(){
   }
 
   return (
-    <View style={{ flex: 1, padding: 0, backgroundColor: 'white'}}>
+    <View style={styles.container}>
       
       <AutocompleteSearchBar/> 
       
