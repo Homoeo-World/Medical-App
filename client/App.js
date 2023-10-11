@@ -26,8 +26,8 @@ function App() {
       <Stack.Navigator>
       {/* working on this screen -- temp*/}
       
-      {/* <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/> */}
+      <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
       <Stack.Screen name="Product List" component={ProductList} options={{title: 'Homoeo World', 
         headerLeft: () => <Image source= {require('client/assets/icons/stethoscope-blue.png')} style={{height:40, width:32,marginLeft:10}} />
       }}/> 

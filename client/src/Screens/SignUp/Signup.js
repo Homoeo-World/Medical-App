@@ -149,7 +149,7 @@ function Signup() {
       {/* Button */}
       <View style={styles.buttonStyle}>
         <Button isDisabled={disable} onPress={register} style={styles.buttonDesign}>
-            REGISTER NOW
+            Create an Account
         </Button>
         {!canRegister && <Text style={{color: 'red' }}>Please enter appropriate details</Text>}
       </View>
@@ -248,7 +248,8 @@ const styles = StyleSheet.create({
     marginRight:15
   },
   buttonDesign:{
-    backgroundColor:theme.primaryColor
+    backgroundColor:theme.primaryColor,
+    borderRadius: 20
   },
   lineStyle:{
     flexDirection:'row',

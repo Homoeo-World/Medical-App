@@ -45,9 +45,7 @@ function Login() {
       const response = await api.validateCredentials(creds);
 
       //store the token in AsyncStorage
-      // console.log("token response: ");
       const token = response.data.token;
-      // console.log(token);
 
       if (token != null) {
         await AsyncStorage.setItem("authToken", JSON.stringify(token));
@@ -115,7 +113,7 @@ function Login() {
 
       {/* Button */}
       <View style={styles.buttonStyle}>
-        <Button
+        <Button 
           onPress={login}
           isDisabled={disable}
           style={[styles.buttonDesign]}
@@ -219,7 +217,8 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   buttonDesign: {
-    backgroundColor: theme.primaryColor, //
+    backgroundColor: theme.primaryColor, 
+    borderRadius: 20
   },
   buttonDisabledDesign: {
     opacity: 0.5,
