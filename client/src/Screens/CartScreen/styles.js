@@ -148,6 +148,10 @@ export default styles = StyleSheet.create({
       paddingBottom: 2,
       // backgroundColor: 'lightgrey'
     },
+    removeButtonContainer:{
+       alignItems: "center", 
+       paddingBottom: 20 
+    },
     removeButton: {
       flexDirection:'row',
       borderWidth: 1,

@@ -5,8 +5,6 @@ import { useNavigation } from "@react-navigation/native";
 import { theme } from "client/src/utils/theme.js";
 import styles from "./styles";
 
-const orderPlacedImg = require("client/assets/approval-256.png");
-
 function OrderPlaced() {
   const navigation = useNavigation();
 
@@ -18,7 +16,7 @@ function OrderPlaced() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Image source={orderPlacedImg} style={styles.image} />
+        <Image source={require("client/assets/approval-256.png")} style={styles.image} />
         <Text style={styles.orderPlacedText}>Order Placed</Text>
         {/* Add your existing content here */}
       </View>

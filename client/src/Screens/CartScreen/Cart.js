@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {View, FlatList, Text, StyleSheet, TouchableOpacity, ScrollView} from "react-native";
-import { NativeBaseProvider, Card, Row, Image, Button } from "native-base";
+import { NativeBaseProvider, Card, Box, Row, Image, Button } from "native-base";
 import * as auth from "client/src/utils/auth.js";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { borderLeft, flex, marginBottom } from "styled-system";
@@ -173,7 +173,7 @@ function Cart() {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={{ alignItems: "center", paddingBottom: 20 }}>
+      <View style={styles.removeButtonContainer}>
         <TouchableOpacity onPress={() => removeItemfromCart(index)} style={styles.removeButton}>
            <Image source={require("client/assets/icons/delete.png")} style={styles.icon}/>
             <Text style={{ color: theme.primaryColor }}>Remove</Text>
@@ -219,9 +219,9 @@ function Cart() {
                     <Text style={{ color: theme.primaryColor, fontWeight: 'bold' }}>Change</Text>
                   </TouchableOpacity>
                 </View>
-                <Card style={styles.addressCard}>
+                <Box shadow={1} style={styles.addressCard}>
                   <Text style={{ flex: 1 }}>{selectedAddress}</Text>
-                </Card>
+                </Box>
               </View>
             )}
             <Text style={{ fontSize: 18, marginVertical: 12 }}>
