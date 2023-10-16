@@ -29,7 +29,7 @@ function App() {
       
       <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
       <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
-      <Stack.Screen name="Product List" component={ProductList} options={{title: 'Homoeo World', headerTitleStyle: {fontWeight: 'bold'},
+      <Stack.Screen name="Product List" component={ProductList} options={{title: 'Homoeo World', headerTitleStyle: {fontWeight: '900'},
         headerLeft: () => <Image source= {require('client/assets/icons/stethoscope-blue.png')} style={{height:40, width:32,marginLeft:10}} />
       }}/> 
       <Stack.Screen name="Product Details" component={ProductDetail} options={{headerStyle: {borderBottomWidth: 1, borderBottomColor: '#ccc', }}} />

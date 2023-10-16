@@ -85,7 +85,7 @@ export default AutocompleteSearchBar;
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10,
+    margin: 10,
   },
   searchList: {
     backgroundColor: "#F5F5F5",

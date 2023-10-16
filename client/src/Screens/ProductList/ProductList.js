@@ -1,19 +1,32 @@
-import React, {useEffect, useState} from 'react';
-import { View, FlatList, ActivityIndicator } from 'react-native';
-// import {NativeBaseProvider, Icon, Text, Spinner, Button, Content, Container} from 'native-base';
-import { NativeBaseProvider, Box, Text, Spinner, Heading, VStack, FormControl, Input, Link, Button, Icon, HStack, Center, Pressable } from 'native-base';
-import { FontAwesaome5, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
-import ProductCard from 'client/src/components/ProductCard/ProductCard';
-import AutocompleteSearchBar from 'client/src/components/AutoCompleteSearchBar/AutocompleteSearchBar.js';
-import Footer from '../../components/Footer/Footer';
-import * as api from 'client/src/utils/api.js';
-import * as auth from 'client/src/utils/auth.js' 
-import {theme} from 'client/src/utils/theme.js';
-import styles from './styles';
+import React, { useEffect, useState } from "react";
+import { View, FlatList, ActivityIndicator } from "react-native";
+import {
+  NativeBaseProvider,
+  Box,
+  Text,
+  Spinner,
+  Heading,
+  Button,
+  Icon,
+  HStack,
+  Center,
+  Pressable,
+} from "native-base";
+import { FontAwesaome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  useNavigation,
+  useRoute,
+  useIsFocused,
+} from "@react-navigation/native";
+import ProductCard from "client/src/components/ProductCard/ProductCard";
+import AutocompleteSearchBar from "client/src/components/AutoCompleteSearchBar/AutocompleteSearchBar.js";
+import Footer from "../../components/Footer/Footer";
+import * as api from "client/src/utils/api.js";
+import * as auth from "client/src/utils/auth.js";
+import { theme } from "client/src/utils/theme.js";
+import styles from "./styles";
 
-
-function ProductList(){  
+function ProductList() {
   const [selected, setSelected] = React.useState(1);
 
   const navigation = useNavigation();
@@ -25,6 +38,7 @@ function ProductList(){
   const [_cartItems, setCartItems] = useState([]);
   const [loadingMore, setLoadingMore] = useState(true);
   const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const pageSize = 10;
 
@@ -42,70 +56,73 @@ function ProductList(){
 
   useEffect(() => {
     async function fetchData() {
+      if (page === 1) setIsLoading(true);
       try {
-        const response = await api.getProducts(page, pageSize); 
+        const response = await api.getProducts(page, pageSize);
+        setIsLoading(false);
 
         // paginated response
-        if(response.data.length !== 0){
+        if (response.data.length !== 0) {
           setProducts((prevProducts) => [...prevProducts, ...response.data]);
-        }
-        else{
+        } else {
           setHasMore(false);
         }
-        // setLoading(false); 
+        // setLoading(false);
         setLoadingMore(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         // setLoading(false);
-        setLoadingMore(false); 
+        setLoadingMore(false);
       }
-      
     }
 
-    if(hasMore){
+    if (hasMore) {
       fetchData();
     }
-    
+
     // console.log(products)
   }, [page, hasMore]);
-
 
   const loadMore = () => {
     setLoadingMore(true);
     setPage((prevPage) => prevPage + 1);
-  }
+  };
 
   return (
     <View style={styles.container}>
-      
-      <AutocompleteSearchBar/> 
-      
+      <AutocompleteSearchBar />
+      <View>
+        {isLoading && (
+          <HStack space={10} alignItems="center" justifyContent="center">
+            <Spinner size="lg" color={theme.primaryColor} accessibilityLabel="Loading posts" />
+          </HStack>
+        )}
+
         <FlatList
           data={products}
           numColumns={2}
           keyExtractor={(item) => item.title}
           showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => <ProductCard product={item}/>}
+          renderItem={({ item }) => <ProductCard product={item} />}
           onEndReachedThreshold={0.1}
           onEndReached={loadMore}
         />
-       {loadingMore && hasMore && (<Spinner size="small" color={theme.primaryColor}  />)}
-       
+        {!isLoading && loadingMore && hasMore && (
+          <Spinner size="small" color={theme.primaryColor} />
+        )}
+      </View>
     </View>
   );
-};
+}
 
 export default () => {
   return (
     <NativeBaseProvider>
-    
-        <ProductList />
-        <Footer currentScreen='Product List'/>
-      
+      <ProductList />
+      <Footer currentScreen="Product List" />
     </NativeBaseProvider>
-  )
-}
-
+  );
+};
 
 // const products = [
 //   // Array of product objects

@@ -15,7 +15,7 @@ export default styles = StyleSheet.create({
     WelcomeText: {
       // marginTop:100,
       fontSize: 30,
-      fontWeight: "bold",
+      fontWeight: "1000",
     },
     Middle: {
       alignItems: "center",
