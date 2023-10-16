@@ -7,6 +7,7 @@ import ProductDetail from './src/Screens/ProductDetailScreen/ProductDetail';
 import Cart from './src/Screens/CartScreen/Cart';
 import AddressList from './src/Screens/AddressListScreen/AddressList';
 import OrderPlaced from './src/Screens/OrderPlacedScreen/OrderPlaced';
+import Orders from './src/Screens/OrdersScreen/Orders';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -35,6 +36,7 @@ function App() {
       <Stack.Screen name="Cart" component={Cart} options={{title: 'My Cart'}}/>
       <Stack.Screen name="Select Address" component={AddressList}/>
       <Stack.Screen name="Order Placed" component={OrderPlaced} options={{headerShown: false}}/>
+      <Stack.Screen name="Orders" component={Orders}/>
       
     </Stack.Navigator>
     </NativeBaseProvider>

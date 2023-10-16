@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import {Input, NativeBaseProvider, Button, Box, Image, HStack,} from "native-base";
+import {
+  Input,
+  NativeBaseProvider,
+  Button,
+  Box,
+  Image,
+  HStack,
+  Spinner,
+  Heading,
+  theme,
+} from "native-base";
 import { useNavigation } from "@react-navigation/native";
-import * as api from "client/src/utils/api.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as api from "client/src/utils/api.js";
 import * as auth from "client/src/utils/auth.js";
-import { theme } from "client/src/utils/theme.js";
-import styles from './styles'; //test this  
+// import { theme } from "client/src/utils/theme.js";
+import styles from "./styles";
 
 function Login() {
   const navigation = useNavigation();
@@ -14,6 +24,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [canLogin, setCanLogin] = useState(true);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   function checkDisable() {
     return email.length <= 0 || password.length <= 0;
@@ -32,6 +43,7 @@ function Login() {
 
   const login = async () => {
     console.log("login button pressed");
+    setIsLoggingIn(true);
 
     if (email !== "" && password !== "") {
       setCanLogin(true);
@@ -51,6 +63,7 @@ function Login() {
       if (token != null) {
         await AsyncStorage.setItem("authToken", JSON.stringify(token));
         navigation.navigate("Product List");
+        setIsLoggingIn(false);
         console.log("Authentication is successful");
       } else console.log("token is null");
 
@@ -113,18 +126,36 @@ function Login() {
       </View>
 
       {/* Button */}
-      <View style={styles.buttonStyle}>
-        <Button 
-          onPress={login}
-          isDisabled={disable}
-          style={[styles.buttonDesign]}
-        >
-          LOGIN
-        </Button>
-        {!canLogin && (
-          <Text style={{ color: "red" }}>Please enter all the details</Text>
-        )}
-      </View>
+      {!isLoggingIn && (
+        <View style={styles.buttonStyle}>
+          <Button
+            onPress={login}
+            isDisabled={disable}
+            style={[styles.buttonDesign]}
+          >
+            LOGIN
+          </Button>
+          {!canLogin && (
+            <Text style={{ color: "red" }}>Please enter all the details</Text>
+          )}
+        </View>
+      )}
+
+      {isLoggingIn && (
+        <View style={styles.buttonStyle}>
+          <Button
+            isDisabled={true}
+            style={[styles.buttonDesign]}
+          >
+            <HStack space={2} justifyContent="center">
+              <Spinner accessibilityLabel="loading" />
+              {/* <Heading color={theme.primaryColor} fontSize="md">
+                Logging you in...
+              </Heading> */}
+            </HStack>
+          </Button>
+        </View>
+      )}
 
       {/* Line */}
       <View style={styles.lineStyle}>
@@ -141,7 +172,10 @@ function Login() {
           _light={{ backgroundColor: "gray.50" }}
           _dark={{ backgroundColor: "gray.700" }}
         >
-          <Image source={{uri: "https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png",}}
+          <Image
+            source={{
+              uri: "https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png",
+            }}
             alt="image"
             style={styles.googleLogo}
           />
@@ -218,7 +252,7 @@ export default () => {
 //     marginRight: 15,
 //   },
 //   buttonDesign: {
-//     backgroundColor: theme.primaryColor, 
+//     backgroundColor: theme.primaryColor,
 //     borderRadius: 20
 //   },
 //   buttonDisabledDesign: {
@@ -278,10 +312,10 @@ export default () => {
 //       height: 40,
 //       width: "100%",
 //     },
-//   googleLogo:{ 
-//     width: 40, 
-//     height: 40, 
-//     marginRight: 10 
+//   googleLogo:{
+//     width: 40,
+//     height: 40,
+//     marginRight: 10
 //   }
-  
+
 // });

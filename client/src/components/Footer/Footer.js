@@ -1,38 +1,44 @@
-import React from "react";
+import React,{useState} from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import {Image} from 'native-base'
 import { useNavigation } from "@react-navigation/native";
 import { theme } from "client/src/utils/theme.js";
 
-const Footer = () => {
+const Footer = (props) => {
   const navigation = useNavigation();
+
+  // const [currentScreen, setCurrentScreen] = useState('Home');
+  const {currentScreen} = props;
 
   const onHomePress = () => {
     console.log("onHomePress...");
+    // setCurrentScreen('Product List')
     navigation.navigate("Product List");
   };
 
   const onCartPress = () => {
     console.log("onCartPress...");
+    // setCurrentScreen('Cart')
     navigation.navigate("Cart");
   };
 
   const onOrdersPress = () => {
     console.log("onOrdersPress...");
-    // navigation.navigate('')
+    // setCurrentScreen('Orders')
+    navigation.navigate('Orders')
   };
 
   return (
     <View style={styles.footer}>
-      <TouchableOpacity activeOpacity={.7} onPress={onHomePress} style={styles.footerButton}>
+      <TouchableOpacity activeOpacity={.7} onPress={onHomePress} style={[styles.footerButton, currentScreen==='Product List'&& styles.footerButtonAlt]}>
         <Image source={require("client/assets/icons/home-white.png")} style={styles.icon}/>
         <Text style={styles.footerButtonText}>Home</Text>
       </TouchableOpacity>
-      <TouchableOpacity activeOpacity={.7} onPress={onCartPress} style={styles.footerButtonAlt}>
+      <TouchableOpacity activeOpacity={.7} onPress={onCartPress} style={[styles.footerButton, currentScreen==='Cart' && styles.footerButtonAlt]}>
         <Image source={require("client/assets/icons/cart-white.png")} style={styles.icon}/>
         <Text style={styles.footerButtonText}>Cart</Text>
       </TouchableOpacity>
-      <TouchableOpacity activeOpacity={.7} onPress={onOrdersPress} style={styles.footerButton}>
+      <TouchableOpacity activeOpacity={.7} onPress={onOrdersPress} style={[styles.footerButton, currentScreen==='Orders' && styles.footerButtonAlt]}>
         <Image source={require("client/assets/icons/order-history-white.png")} style={styles.icon}/>
         <Text style={styles.footerButtonText}>Orders</Text>
       </TouchableOpacity>

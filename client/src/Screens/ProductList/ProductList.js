@@ -100,7 +100,7 @@ export default () => {
     <NativeBaseProvider>
     
         <ProductList />
-        <Footer/>
+        <Footer currentScreen='Product List'/>
       
     </NativeBaseProvider>
   )
