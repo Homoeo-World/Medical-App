@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { request } from 'express';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
@@ -13,7 +13,8 @@ dotenv.config()
 export const postLoginCreds = async (req, res) => {
     console.log('inside postLoginCreds')
     try{
-        const { username, password, address } = req.body;
+        const { username, password } = req.body;
+        const address = req.body.address || []
 
         const salt = await bcrypt.genSalt();
         const hashedPassword = await bcrypt.hash(password, salt);

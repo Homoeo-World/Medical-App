@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Input, NativeBaseProvider, Button, Icon, Box, Image, HStack, AspectRatio } from 'native-base';
+import { Input, NativeBaseProvider, Button, Icon, Box, Image, HStack, Spinner, AspectRatio } from 'native-base';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { alignContent, flex, flexDirection, marginBottom, marginTop, width } from 'styled-system';
@@ -19,6 +19,7 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [canRegister, setCanRegister] = useState(true);
+  const [isSigningUp, setIsSigningUp] = useState(false);
 
   function checkDisable(){
     return email.length<=0 || password.length<=0 || confirmPassword.length<=0 || !passwordsMatch
@@ -43,6 +44,7 @@ function Signup() {
   }
 
   const register = async () => {
+    setIsSigningUp(true);
 
     if(email!='' && password!='' && passwordsMatch) 
       setCanRegister(true);
@@ -60,7 +62,7 @@ function Signup() {
 
       const response = await api.postCredentials(creds)
       console.log('User registered');
-
+      setIsSigningUp(false);
       navigation.navigate("Login") // after successfull sign in navigate it to home page
     } 
     catch (error) {
@@ -154,6 +156,19 @@ function Signup() {
         </Button>
         {!canRegister && <Text style={{color: 'red' }}>Please enter appropriate details</Text>}
       </View>
+
+      {isSigningUp && (
+        <View style={styles.buttonStyle}>
+          <Button
+            isDisabled={true}
+            style={[styles.buttonDesign]}
+          >
+            <HStack space={5} justifyContent="center">
+              <Spinner accessibilityLabel="loading" />
+            </HStack>
+          </Button>
+        </View>
+      )}
 
       {/* Line */}
       <View style={styles.lineStyle}>

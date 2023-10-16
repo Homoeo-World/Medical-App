@@ -147,11 +147,8 @@ function Login() {
             isDisabled={true}
             style={[styles.buttonDesign]}
           >
-            <HStack space={2} justifyContent="center">
+            <HStack space={5} justifyContent="center">
               <Spinner accessibilityLabel="loading" />
-              {/* <Heading color={theme.primaryColor} fontSize="md">
-                Logging you in...
-              </Heading> */}
             </HStack>
           </Button>
         </View>
