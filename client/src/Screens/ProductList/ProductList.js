@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, FlatList, ActivityIndicator } from "react-native";
+import { View, FlatList, ActivityIndicator, ScrollView } from "react-native";
 import {
   NativeBaseProvider,
   Box,
@@ -91,7 +91,8 @@ function ProductList() {
   return (
     <View style={styles.container}>
       <AutocompleteSearchBar />
-      <View>
+
+      <View style={styles.flatlistContainer}>
         {isLoading && (
           <HStack space={10} alignItems="center" justifyContent="center">
             <Spinner size="lg" color={theme.primaryColor} accessibilityLabel="Loading posts" />
@@ -107,10 +108,14 @@ function ProductList() {
           onEndReachedThreshold={0.1}
           onEndReached={loadMore}
         />
-        {!isLoading && loadingMore && hasMore && (
-          <Spinner size="small" color={theme.primaryColor} />
+
+      {!isLoading && loadingMore && hasMore && (
+          <View style={styles.spinnerContainer}>
+            <Spinner size="small" color={theme.primaryColor} />
+          </View>
         )}
       </View>
+
     </View>
   );
 }
