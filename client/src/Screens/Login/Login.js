@@ -23,8 +23,13 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [canLogin, setCanLogin] = useState(true);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   function checkDisable() {
     return email.length <= 0 || password.length <= 0;
@@ -112,13 +117,23 @@ function Login() {
           <Text style={styles.inputFieldText}>Password</Text>
           <Input
             InputLeftElement={
-              <Image
-                source={require("client/assets/icons/hideeye.png")}
-                style={{ height: 16, width: 16, marginLeft: 10 }}
-              />
+              <TouchableOpacity activeOpacity={1} onPress={handleTogglePasswordVisibility}>
+                {!passwordVisible && (
+                  <Image
+                    source={require("client/assets/icons/hideeye.png")}
+                    style={{ height: 16, width: 16, marginLeft: 10 }}
+                  />
+                )}
+                {passwordVisible && (
+                  <Image
+                    source={require("client/assets/icons/openeye.png")}
+                    style={{ height: 16, width: 16, marginLeft: 10 }}
+                  />
+                )}
+              </TouchableOpacity>
             }
             variant="rounded"
-            secureTextEntry={true}
+            secureTextEntry={!passwordVisible}
             placeholder="Password"
             onChangeText={handlePasswordInputChange}
           />
@@ -143,10 +158,7 @@ function Login() {
 
       {isLoggingIn && (
         <View style={styles.buttonStyle}>
-          <Button
-            isDisabled={true}
-            style={[styles.buttonDesign]}
-          >
+          <Button isDisabled={true} style={[styles.buttonDesign]}>
             <HStack space={5} justifyContent="center">
               <Spinner accessibilityLabel="loading" />
             </HStack>
