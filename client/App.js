@@ -2,12 +2,18 @@ import React from 'react';
 
 import Login from './src/Screens/Login/Login';
 import Signup from './src/Screens/SignUp/Signup';
+
+// User Screens
 import ProductList from './src/Screens/ProductList/ProductList';
 import ProductDetail from './src/Screens/ProductDetailScreen/ProductDetail';
 import Cart from './src/Screens/CartScreen/Cart';
 import AddressList from './src/Screens/AddressListScreen/AddressList';
 import OrderPlaced from './src/Screens/OrderPlacedScreen/OrderPlaced';
 import Orders from './src/Screens/OrdersScreen/Orders';
+
+//Admin Screens
+import AdminHome from'./src/Screens/Admin/AdminHomeScreen/AdminHome';
+import ManageProducts from './src/Screens/Admin/ManageProductsScreen/ManageProducts';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -26,6 +32,8 @@ function App() {
     <NativeBaseProvider>
       <Stack.Navigator>
       {/* working on this screen -- temp*/}
+      <Stack.Screen name="Admin Home" component={AdminHome}/>
+      <Stack.Screen name="Manage Products" component={ManageProducts}/>
       
       <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
       <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>

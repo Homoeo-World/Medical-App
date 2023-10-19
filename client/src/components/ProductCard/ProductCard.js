@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from "react-native";
 import {Button, Box } from "native-base";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as auth from "client/src/utils/auth.js";
 import { theme } from "client/src/utils/theme.js";
@@ -19,6 +19,44 @@ const ProductCard = ({ product }) => {
   const [addedToCart, setAddedToCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [quantity, setQuantity] = useState(0);
+
+  // useFocusEffect(
+  //   React.useCallback(() => {
+  //     const loadCartData = async () => {
+  //       console.log('==================loadCartData==========================')
+  //           try {
+  //             // const cartData = await AsyncStorage.getItem("cartItems");
+  //             const response = await auth.getAuthAndCartData();console.log("getAuthAndCartData response", response);
+        
+  //             if (response && response.authToken && response.cart) {
+  //               authToken = response.authToken;
+  //               const cartData = response.cart;
+  //               setCartItems(cartData);
+  //             }
+        
+  //             // if (cartData) {
+  //             //   const parsedCartData = JSON.parse(cartData);
+  //             //   setCartItems(parsedCartData);
+  //             // }
+  //           } catch (error) {
+  //             console.error("Error loading cart data: ", error);
+  //           }
+  //         };
+        
+  //           loadCartData();
+          
+  //         //updating the quantities
+  //         const existingItemIndex = cartItems.findIndex(
+  //           (item) => item.title === product.title
+  //         );
+  //         if (existingItemIndex !== -1) {
+  //           updatedCart = [...cartItems];
+  //           setQuantity(updatedCart[existingItemIndex].quantity)
+  //         } 
+  //   }, [])
+  // );
+  
+  
 
   useEffect(() => {
     const updateCartData = async () => {
@@ -39,13 +77,12 @@ const ProductCard = ({ product }) => {
 
   const incrementQuantity = async () => {
     console.log("increment quantity...");
-    setQuantity(quantity + 1);
 
     const existingItemIndex = cartItems.findIndex(
       (item) => item.title === product.title
     );
     if (existingItemIndex !== -1) {
-      updatedCart = [...cart];
+      updatedCart = [...cartItems];
       updatedCart[existingItemIndex].quantity += 1;
       // setQuantity(updatedCart[existingItemIndex].quantity);
     } else {
@@ -55,10 +92,27 @@ const ProductCard = ({ product }) => {
       ];
     }
     setCartItems(updatedCart);
+    setQuantity(quantity + 1);
   };
 
   const decrementQuantity = async () => {
     console.log("decrement quantity...");
+
+    const existingItemIndex = cartItems.findIndex(
+      (item) => item.title === product.title
+    );
+    if (existingItemIndex !== -1) {
+      updatedCart = [...cartItems];
+      if(quantity!==0)
+      updatedCart[existingItemIndex].quantity -= 1;
+      else{
+        updatedCart.splice(existingItemIndex,1);
+        setAddedToCart(false);
+      }
+      
+      // setQuantity(updatedCart[existingItemIndex].quantity);
+    } 
+    setCartItems(updatedCart);
     if (quantity >= 1) setQuantity(quantity - 1);
   };
 
@@ -123,6 +177,8 @@ const ProductCard = ({ product }) => {
     navigation.navigate("Cart");
   };
 
+
+
   return (
     <Box shadow={0} style={styles.boxContainer}>
       <View style={{ marginHorizontal: 10 }}>
@@ -148,7 +204,7 @@ const ProductCard = ({ product }) => {
             <Text style={{ color: theme.primaryColor }}>Buy</Text>
           </Button>
           {/* after clicking on add to cart */}
-          {quantity <= 0 ? (
+          {quantity <= 0  ? (
             <Button onPress={handleAddtoCartPress} small style={styles.addToCartButton}>
               <View style={{ flexDirection: "row" }}>
               <Image source={require("client/assets/icons/cart-white.png")} style={styles.icon}/>
@@ -274,3 +330,140 @@ export const styles = StyleSheet.create({
 });
 
 export default ProductCard;
+
+
+
+// useEffect(() => {
+//   const loadCartData = async () => {
+//     try {
+//       // const cartData = await AsyncStorage.getItem("cartItems");
+//       const response = await auth.getAuthAndCartData();console.log("getAuthAndCartData response", response);
+
+//       if (response && response.authToken && response.cart) {
+//         authToken = response.authToken;
+//         const cartData = response.cart;
+//         setCartItems(cartData);
+//       }
+
+//       // if (cartData) {
+//       //   const parsedCartData = JSON.parse(cartData);
+//       //   setCartItems(parsedCartData);
+//       // }
+//     } catch (error) {
+//       console.error("Error loading cart data: ", error);
+//     }
+//   };
+
+//   if (cartItems.length === 0) {
+//     loadCartData();
+//   }
+// }, []);
+
+
+// useEffect(() => {
+//   const saveCartData = async () => {
+//     try {
+//        // await AsyncStorage.setItem("cartItems", JSON.stringify(cartItems));
+//       const jwtToken = await AsyncStorage.getItem("authToken");
+//       const authToken = JSON.parse(jwtToken);
+
+//       if (cartItems != undefined && cartItems != null) {
+//         const response = await auth.storeAuthAndCartData(authToken, cartItems);
+//         console.log(response);
+//       } 
+//     } catch (error) {
+//       console.error("Error saving cart data: ", error);
+//     }
+//   };
+
+//   saveCartData();
+// }, [cartItems, quantity]);
+
+
+// const incrementQuantity = () => {
+//   setQuantity(quantity + 1);
+
+//   const existingItemIndex = cartItems.findIndex(
+//     (item) => item.title === product.title
+//   );
+//   if (existingItemIndex !== -1) {
+//     const updatedCart = [...cartItems];
+//     updatedCart[existingItemIndex].quantity += 1;
+//     setCartItems(updatedCart);
+//   } else {
+//     const updatedCart = [
+//       ...cartItems,
+//       { title: product.title, quantity: 1, price: product.price },
+//     ];
+//     setCartItems(updatedCart);
+//   }
+// };
+
+
+// const decrementQuantity = () => {
+//   if (quantity > 0) {
+//     setQuantity(quantity - 1);
+//     const existingItemIndex = cartItems.findIndex(
+//       (item) => item.title === product.title
+//     );
+//     if (existingItemIndex !== -1) {
+//       const updatedCart = [...cartItems];
+//       updatedCart[existingItemIndex].quantity -= 1;
+//       setCartItems(updatedCart);
+//     }
+//   }
+// };
+
+
+// const handleAddtoCartPress = async () => {
+//   console.log("handleAddtoCartPress...");
+//   setQuantity(quantity + 1);
+
+//   let updatedCart = [];
+
+//   // Create a copy of the existing cart items
+//   const existingCart = [...cartItems];
+
+//   const existingItemIndex = existingCart.findIndex(
+//     (item) => item.title === product.title
+//   );
+
+//   if (existingItemIndex !== -1) {
+//     existingCart[existingItemIndex].quantity += 1;
+//     setQuantity(existingCart[existingItemIndex].quantity);
+//     updatedCart = existingCart;
+//   } else {
+//     updatedCart = [
+//       ...existingCart,
+//       { title: product.title, quantity: 1, price: product.price },
+//     ];
+//     setQuantity(1);
+//   }
+
+//   // Save the updated cart items to AsyncStorage
+//   try {
+//     // await AsyncStorage.setItem("cartItems", JSON.stringify(updatedCart));
+//     const jwtToken = await AsyncStorage.getItem("authToken");
+//     const authToken = JSON.parse(jwtToken);
+
+//     if (cartItems != undefined && cartItems != null) {
+//       const response = await auth.storeAuthAndCartData(authToken, cartItems);
+//     }
+//     setCartItems(updatedCart);
+//   } catch (error) {
+//     console.error("Error saving cart data: ", error);
+//   }
+// };
+
+// const handleCardPress = () => {
+//   console.log("handleCardPress...");
+//   console.log(product);
+//   navigation.navigate("Product Details", { product });
+// };
+
+// const handleBuyPress = async () => {
+//   console.log("handleBuyPress...");
+//   console.log(product);
+//   await handleAddtoCartPress();
+//   navigation.navigate("Cart");
+// };

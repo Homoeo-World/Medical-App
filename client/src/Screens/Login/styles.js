@@ -4,7 +4,7 @@ import { theme } from "client/src/utils/theme.js";
 export default styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#f7f7f7",
+      backgroundColor: "white", //#f7f7f7
     },
     LoginText: {
       marginTop: 20,
