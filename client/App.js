@@ -14,6 +14,8 @@ import Orders from './src/Screens/OrdersScreen/Orders';
 //Admin Screens
 import AdminHome from'./src/Screens/Admin/AdminHomeScreen/AdminHome';
 import ManageProducts from './src/Screens/Admin/ManageProductsScreen/ManageProducts';
+import AddNewProduct from './src/Screens/Admin/AddNewProductScreen/AddNewProduct';
+import UpdateProduct from './src/Screens/Admin/UpdateProductScreen/UpdateProduct';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -34,9 +36,11 @@ function App() {
       {/* working on this screen -- temp*/}
       <Stack.Screen name="Admin Home" component={AdminHome}/>
       <Stack.Screen name="Manage Products" component={ManageProducts}/>
+      <Stack.Screen name="Add New Product" component={AddNewProduct}/>
+      <Stack.Screen name = "Update Product" component={UpdateProduct}/>
       
-      <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
+      {/* <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/> */}
       <Stack.Screen name="Product List" component={ProductList} options={{title: 'Homoeo World', headerTitleStyle: {fontWeight: '900'},
         headerLeft: () => <Image source= {require('client/assets/icons/stethoscope-blue.png')} style={{height:40, width:32,marginLeft:10}} />
       }}/> 
@@ -56,7 +60,7 @@ function App() {
 export default () => {
   return (
     <NavigationContainer>
-     
+
         <App />
       
     </NavigationContainer>

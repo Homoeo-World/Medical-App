@@ -18,7 +18,7 @@ function AdminHome() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={goToStatisticsScreen}>
+      <TouchableOpacity activeOpacity={0.8} onPress={goToStatisticsScreen}>
         <Box
           shadow={2}
           rounded="lg"
@@ -34,7 +34,7 @@ function AdminHome() {
         </Box>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={goToManageProductsScreen}>
+      <TouchableOpacity activeOpacity={0.8} onPress={goToManageProductsScreen}>
         <Box
           shadow={2}
           rounded="lg"
@@ -50,7 +50,7 @@ function AdminHome() {
         </Box>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.8}>
         <Box
           shadow={2}
           rounded="lg"

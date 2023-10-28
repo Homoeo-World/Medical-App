@@ -5,11 +5,22 @@ import { useNavigation } from "@react-navigation/native";
 import styles from "./styles";
 import { theme } from "client/src/utils/theme.js";
 
+
 function ManageProducts() {
+
+  const navigation = useNavigation();
+
+  const onAddNewProductPress = () => {
+    navigation.navigate('Add New Product')
+  }
+
+  const onUpdateProductPress = () => {
+    navigation.navigate('Update Product')
+  }
 
   return (
     <View style={styles.container}>
-       <TouchableOpacity >
+       <TouchableOpacity activeOpacity={0.8} onPress={onAddNewProductPress}>
         <Box
           shadow={2}
           rounded="lg"
@@ -25,7 +36,7 @@ function ManageProducts() {
         </Box>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.8} onPress={onUpdateProductPress}>
         <Box
           shadow={2}
           rounded="lg"
@@ -41,7 +52,7 @@ function ManageProducts() {
         </Box>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.8}>
         <Box
           shadow={2}
           rounded="lg"
