@@ -87,7 +87,7 @@ const AddNewProduct = () => {
         onChangeText={setProductMRP}
         style={styles.input}
         placeholder="Enter MRP"
-        keyboardType="numeric"
+        
       />
 
       <Text style={styles.label}>Discounted Price</Text>
@@ -96,7 +96,7 @@ const AddNewProduct = () => {
         onChangeText={setProductDiscountedPrice}
         style={styles.input}
         placeholder="Enter price"
-        keyboardType="numeric"
+        
       />
 
     <Text style={styles.label}>Availability Status</Text>

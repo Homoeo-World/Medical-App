@@ -12,12 +12,19 @@ export default styles = StyleSheet.create({
       marginBottom: 8,
       fontWeight:'bold'
     },
+    // input: {
+    //   fontSize: 12,
+    //   backgroundColor: '#f0f0f0',
+    //   padding: 8,
+    //   marginBottom: 30,
+    //   borderRadius: 4,
+    // },
     input: {
-      fontSize: 12,
-      backgroundColor: '#f0f0f0',
-      padding: 8,
-      marginBottom: 30,
-      borderRadius: 4,
+      height: 40,
+      borderColor: 'gray',
+      borderWidth: 1,
+      marginBottom: 16,
+      paddingHorizontal: 8,
     },
     multilineInput: {
       height: 100,

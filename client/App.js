@@ -10,12 +10,16 @@ import Cart from './src/Screens/CartScreen/Cart';
 import AddressList from './src/Screens/AddressListScreen/AddressList';
 import OrderPlaced from './src/Screens/OrderPlacedScreen/OrderPlaced';
 import Orders from './src/Screens/OrdersScreen/Orders';
+import AdminOrders from './src/Screens/Admin/AdminOrdersScreen/AdminOrders';
+import AdminDeliveryOrders from './src/Screens/Admin/AdminOrdersScreen/AdminDeliveryOrdersScreen/AdminDeliveryOrders';
+import AdminTakeawayOrders from './src/Screens/Admin/AdminOrdersScreen/AdminTakeawayOrdersScreen/AdminTakeawayOrders';
 
 //Admin Screens
 import AdminHome from'./src/Screens/Admin/AdminHomeScreen/AdminHome';
 import ManageProducts from './src/Screens/Admin/ManageProductsScreen/ManageProducts';
 import AddNewProduct from './src/Screens/Admin/AddNewProductScreen/AddNewProduct';
 import UpdateProduct from './src/Screens/Admin/UpdateProductScreen/UpdateProduct';
+import UpdateProductForm from './src/Screens/Admin/UpdateProductScreen/UpdateProductForm';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -37,7 +41,11 @@ function App() {
       <Stack.Screen name="Admin Home" component={AdminHome}/>
       <Stack.Screen name="Manage Products" component={ManageProducts}/>
       <Stack.Screen name="Add New Product" component={AddNewProduct}/>
-      <Stack.Screen name = "Update Product" component={UpdateProduct}/>
+      <Stack.Screen name="Update Product" component={UpdateProduct}/>
+      <Stack.Screen name="Update Product Form" component={UpdateProductForm}/>
+      <Stack.Screen name='Admin Orders' component={AdminOrders}/>
+      <Stack.Screen name="Admin Delivery Orders" component={AdminDeliveryOrders}/>
+      <Stack.Screen name="Admin Takeaway Orders" component={AdminTakeawayOrders}/>
       
       {/* <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
       <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/> */}

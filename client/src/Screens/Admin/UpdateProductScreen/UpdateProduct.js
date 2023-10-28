@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Alert, StyleSheet } from "react-native";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 import {
   Input,
   List,
@@ -10,6 +10,7 @@ import {
 } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { theme } from "client/src/utils/theme.js";
+import * as api from "client/src/utils/api.js";
 // import styles from "./styles";
 
 const UpdateProduct = () => {
@@ -41,7 +42,7 @@ const UpdateProduct = () => {
     console.log(product);
 
     // const product = response.data;
-    navigation.navigate("Product Details", { product: productData });
+    navigation.navigate("Update Product Form", { product: productData });
   };
 
   return (

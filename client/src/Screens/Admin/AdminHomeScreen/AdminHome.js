@@ -16,6 +16,10 @@ function AdminHome() {
       navigation.navigate('Manage Products')
   }
 
+  const goToOrdersScreen = () => {
+    navigation.navigate('Admin Orders')
+  }
+
   return (
     <View style={styles.container}>
       <TouchableOpacity activeOpacity={0.8} onPress={goToStatisticsScreen}>
@@ -50,7 +54,7 @@ function AdminHome() {
         </Box>
       </TouchableOpacity>
 
-      <TouchableOpacity activeOpacity={0.8}>
+      <TouchableOpacity activeOpacity={0.8} onPress={goToOrdersScreen}>
         <Box
           shadow={2}
           rounded="lg"
