@@ -11,8 +11,6 @@ import AddressList from './src/Screens/AddressListScreen/AddressList';
 import OrderPlaced from './src/Screens/OrderPlacedScreen/OrderPlaced';
 import Orders from './src/Screens/OrdersScreen/Orders';
 import AdminOrders from './src/Screens/Admin/AdminOrdersScreen/AdminOrders';
-import AdminDeliveryOrders from './src/Screens/Admin/AdminOrdersScreen/AdminDeliveryOrdersScreen/AdminDeliveryOrders';
-import AdminTakeawayOrders from './src/Screens/Admin/AdminOrdersScreen/AdminTakeawayOrdersScreen/AdminTakeawayOrders';
 
 //Admin Screens
 import AdminHome from'./src/Screens/Admin/AdminHomeScreen/AdminHome';
@@ -44,8 +42,6 @@ function App() {
       <Stack.Screen name="Update Product" component={UpdateProduct}/>
       <Stack.Screen name="Update Product Form" component={UpdateProductForm}/>
       <Stack.Screen name='Admin Orders' component={AdminOrders}/>
-      <Stack.Screen name="Admin Delivery Orders" component={AdminDeliveryOrders}/>
-      <Stack.Screen name="Admin Takeaway Orders" component={AdminTakeawayOrders}/>
       
       {/* <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
       <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/> */}
