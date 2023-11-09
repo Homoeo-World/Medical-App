@@ -36,15 +36,15 @@ function App() {
     <NativeBaseProvider>
       <Stack.Navigator>
       {/* working on this screen -- temp*/}
-      <Stack.Screen name="Admin Home" component={AdminHome}/>
+      {/* <Stack.Screen name="Admin Home" component={AdminHome}/>
       <Stack.Screen name="Manage Products" component={ManageProducts}/>
       <Stack.Screen name="Add New Product" component={AddNewProduct}/>
       <Stack.Screen name="Update Product" component={UpdateProduct}/>
       <Stack.Screen name="Update Product Form" component={UpdateProductForm}/>
-      <Stack.Screen name='Admin Orders' component={AdminOrders}/>
+      <Stack.Screen name='Admin Orders' component={AdminOrders}/> */}
       
-      {/* <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/> */}
+      <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+      <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
       <Stack.Screen name="Product List" component={ProductList} options={{title: 'Homoeo World', headerTitleStyle: {fontWeight: '900'},
         headerLeft: () => <Image source= {require('client/assets/icons/stethoscope-blue.png')} style={{height:40, width:32,marginLeft:10}} />
       }}/> 
