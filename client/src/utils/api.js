@@ -1,17 +1,11 @@
 import axios from 'axios'
-import Config from 'react-native-config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const apiBaseUrl = Config.API_BASE_URL;
-
-//login-signup
-// const url = 'http://192.168.42.117:5000/login';
-// const render_url = 'https://medical-app-5gdu.onrender.com'
-// const login_url = 'https://medical-app-5gdu.onrender.com/login'
+// const apiBaseUrl = Config.API_BASE_URL;
+const apiBaseUrl = 'https://medical-app-5gdu.onrender.com'
 
 export const postCredentials = async (creds) => await axios.post(`${apiBaseUrl}/login`,creds);  //on signup page
 export const validateCredentials = async (creds) => await axios.post(`${apiBaseUrl}/login/validate`, creds); //login page for authentication
-
 
 //product
 export const getProducts = async (page, pageSize) => await axios.get(`${apiBaseUrl}/product/getproducts`, {
