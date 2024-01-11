@@ -10,7 +10,7 @@ import Cart from './src/Screens/CartScreen/Cart';
 import AddressList from './src/Screens/AddressListScreen/AddressList';
 import OrderPlaced from './src/Screens/OrderPlacedScreen/OrderPlaced';
 import Orders from './src/Screens/OrdersScreen/Orders';
-import AdminOrders from './src/Screens/Admin/AdminOrdersScreen/AdminOrders';
+
 
 //Admin Screens
 import AdminHome from'./src/Screens/Admin/AdminHomeScreen/AdminHome';
@@ -18,6 +18,7 @@ import ManageProducts from './src/Screens/Admin/ManageProductsScreen/ManageProdu
 import AddNewProduct from './src/Screens/Admin/AddNewProductScreen/AddNewProduct';
 import UpdateProduct from './src/Screens/Admin/UpdateProductScreen/UpdateProduct';
 import UpdateProductForm from './src/Screens/Admin/UpdateProductScreen/UpdateProductForm';
+import AdminOrders from './src/Screens/Admin/AdminOrdersScreen/AdminOrders';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';

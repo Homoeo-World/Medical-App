@@ -9,7 +9,7 @@ const Router = express.Router();
 //post new product
 export const postNewProduct = async (req, res) => {
     console.log('inside postNewProduct\n' + req.body);
-    //impement mechanism for auto-increment of id   
+    //implement mechanism for auto-increment of id   
     try{
         const newProduct =  new Product(req.body);
         await newProduct.save();
@@ -31,10 +31,10 @@ export const searchAutocompleteProducts = async (req, res) => {
                 '$search': {
                     index: 'autoCompleteProducts',
                     "autocomplete": {
-                      query: req.query.searchTerm,
+                      query: req.query.searchTerm, //o, om, om
                       path: 'title',
                     //   fuzzy:{
-                    //       maxEdits:2,
+                    //       maxEdits:2, //spelling mistake
                     //       maxExpansions: 1
                     //   }
                     },

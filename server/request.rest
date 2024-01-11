@@ -11,23 +11,23 @@ Content-Type: application/json
 POST http://localhost:5000/product
 Content-Type: application/json
 
-{ "title": "Betadine", 
+{ 
+  "title": "trailMedicine101", 
   "company": "Torrento Pharmaceuticals", 
   "quantity":"10pc", 
-  "image": "image_url", 
-  "price": "₹ 19.39", 
- "description": "In the PRINCE2 project management method, a product description is a structured format that presents information about a project product. It is a management product, usually created by the project manager during the process of initiating a project in the initial stage of the PRINCE2 project management method." }
+  "price": 19.39, 
+  "discountedPrice": 20,
+  "description": "In the PRINCE2 project management method" ,
+   "category": "homeopathic",
+   "availabilityStatus": "yes"
+  }
 
-# {
-#     "title" : "Omez 365",
-#     "company":"Mankind",
-#     "quantity":"10 pc",
-#     "price": "Rs 10",
-#     "description" : "lorem ipsum lorem ipsum"
-# }
 
 ###
 GET http://localhost:5000/product/allproducts
+
+###
+GET https://medical-app-5gdu.onrender.com/product/allproducts
 
 ###
 GET http://localhost:5000/product/getproducts
@@ -67,7 +67,7 @@ DELETE http://localhost:5000/login/removeAddress
 Content-Type: application/json
 
 {
-    "username": "Mayu",
+    "username": "Gauri",
     "index": 1
 }
 
@@ -76,11 +76,11 @@ POST http://localhost:5000/login/validate
 Content-Type: application/json
 
 {
-    "username": "Ameya",
+    "username": "Gauri",
     "password" : "123"
 }
 
 ###
 GET http://localhost:5000/login/authtest
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQW1leWEiLCJpYXQiOjE2OTU4NDI2NTF9.zF-iUPNQ0K_gS8Z-3hteFAw4o4lduWs6zsniPnwdPgw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiR2F1cmkiLCJpYXQiOjE3MDQ5MDM5OTR9.UfvEuZG19Ey4wBVTwEJ_FVZnpP5GPBKUnweTpgOOMwU
