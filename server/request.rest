@@ -13,7 +13,7 @@ POST https://medical-app-5gdu.onrender.com/product
 Content-Type: application/json
 
 { 
-  "title": "trailMedicine111", 
+  "title": "trailMedicine112", 
   "company": "Torrento Pharmaceuticals", 
   "quantity":"10pc", 
   "price": 19.39, 

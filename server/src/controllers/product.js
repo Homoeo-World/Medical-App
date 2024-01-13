@@ -7,9 +7,12 @@ dotenv.config();
 
 //post new product
 export const postNewProduct = async (req, res) => {
-    console.log('inside postNewProduct\n' + req.body);
+    console.log('inside postNewProduct\n' + req.body.productData);
+    const {productData } = req.body;
+    console.log(productData);
+
     try{
-        const newProduct =  new Product(req.body);
+        const newProduct =  new Product(productData);
         await newProduct.save();
         res.status(201).json('data inserted');
     }
