@@ -4,19 +4,17 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 
 dotenv.config();
-const Router = express.Router();
 
 //post new product
 export const postNewProduct = async (req, res) => {
     console.log('inside postNewProduct\n' + req.body);
-    //implement mechanism for auto-increment of id   
     try{
         const newProduct =  new Product(req.body);
         await newProduct.save();
         res.status(201).json('data inserted');
     }
     catch(error){
-        console.log('error while inserting data')
+        console.log('error while inserting data', error)
         res.status(500).json({ message: error.message });
     }
 }
