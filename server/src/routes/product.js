@@ -13,7 +13,7 @@ router.get('/getproducts', getProducts);
 router.get('/getproductbytitle', getProductByTitle);
 router.get('/searchproducts', searchAutocompleteProducts);
 
-router.post('/uploadimages', upload.single('file'), uploadMedicineImagesPOC); // make it post after POC
-// router.post('uploadimages',uploadMedicineImagesPOC)
+// router.post('/uploadimages', upload.single('file'), uploadMedicineImagesPOC); // make it post after POC
+router.post('uploadimages',uploadMedicineImagesPOC)
 
 export default router;
