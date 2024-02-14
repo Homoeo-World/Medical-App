@@ -31,6 +31,9 @@ GET https://medical-app-5gdu.onrender.com/product/allproducts
 GET https://medical-app-5gdu.onrender.com/product/allproducts
 
 ###
+GET http://192.168.29.83:5000/product/allproducts
+
+###
 GET http://localhost:5000/product/getproducts
 Content-Type: application/json
 
@@ -85,3 +88,8 @@ Content-Type: application/json
 GET http://localhost:5000/login/authtest
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiR2F1cmkiLCJpYXQiOjE3MDQ5MDM5OTR9.UfvEuZG19Ey4wBVTwEJ_FVZnpP5GPBKUnweTpgOOMwU
+
+###
+POST http://localhost:5000/product/uploadimages
+
+

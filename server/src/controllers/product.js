@@ -3,11 +3,25 @@ import Product from '../models/Product.js';
 import dotenv from 'dotenv';
 import fs from 'fs';
 
+import { Storage } from '@google-cloud/storage';
+import { Readable } from 'stream';
+
+// Initialize storage
+const storage = new Storage({
+    keyFilename: `/etc/secrets/credentials.json`
+//   keyFilename: `C:/Users/Gauri/FULL_STACK/credentials_hw.json`,
+})
+
+const bucketName = 'homoeo-world-medicine-images';
+const bucket = storage.bucket(bucketName);
+
+
+
 dotenv.config();
 
 //post new product
 export const postNewProduct = async (req, res) => {
-    console.log('inside postNewProduct\n' + req.body.productData);
+    console.log('inside postNewProduct\n' + req.body);
     const {productData } = req.body;
     console.log(productData);
 
@@ -109,5 +123,40 @@ export const getProductByTitle = async(req, res) => {
         console.log(error)
         res.send(500).json(error);
     }
+}
+
+export const uploadMedicineImagesPOC = async(req, res) =>{
+    console.log('inside uploadMedicineImagesPOC...')
+
+    // if(req.file == null || undefined){
+    //     res.status(202).json('no file found to be uploaded!!')
+    //     return
+    // }
+
+    // const fileBuffer = req.file.buffer; // Access the file buffer from the request
+    const imageBlob = req.body.data;
+    if (!imageBlob) {
+        return res.status(400).json({ error: 'No image data found in the request.' });
+    }
+
+    const destinationFileName = `images/sample2.jpeg`;
+    const fileUpload = bucket.file(destinationFileName);
+
+    const stream = fileUpload.createWriteStream({});  
+
+    stream.on('error', (err) => {
+        console.error(`Error uploading file: ${err}`);
+        res.status(500).json({ error: 'Error uploading file.' });
+    });
+
+    stream.on('finish', () => {
+        res.status(200).json('File uploaded successfully');
+        console.log(`File uploaded to ${bucketName}.`);
+    });
+
+    // Create a readable stream from the file buffer
+    const buffer = Buffer.from(imageBlob, 'base64');
+    const readableStream = Readable.from([buffer]);
+    readableStream.pipe(stream);
     
 }
