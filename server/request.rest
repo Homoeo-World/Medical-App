@@ -31,7 +31,7 @@ GET https://medical-app-5gdu.onrender.com/product/allproducts
 GET https://medical-app-5gdu.onrender.com/product/allproducts
 
 ###
-GET http://192.168.29.83:5000/product/allproducts
+GET http://192.168.1.1:5000/product/allproducts
 
 ###
 GET http://localhost:5000/product/getproducts

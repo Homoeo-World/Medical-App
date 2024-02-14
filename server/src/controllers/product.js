@@ -135,11 +135,13 @@ export const uploadMedicineImagesPOC = async(req, res) =>{
 
     // const fileBuffer = req.file.buffer; // Access the file buffer from the request
     const imageBlob = req.body.data;
+    const productTitle = req.body.productTitle;
+    const filename = req.body.filename;
     if (!imageBlob) {
         return res.status(400).json({ error: 'No image data found in the request.' });
     }
 
-    const destinationFileName = `images/sample2.jpeg`;
+    const destinationFileName = `images/${productTitle}/${filename}`;
     const fileUpload = bucket.file(destinationFileName);
 
     const stream = fileUpload.createWriteStream({});  
