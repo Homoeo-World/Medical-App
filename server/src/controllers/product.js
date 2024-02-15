@@ -8,8 +8,8 @@ import { Readable } from 'stream';
 
 // Initialize storage
 const storage = new Storage({
-    // keyFilename: `/etc/secrets/credentials.json`
-  keyFilename: `C:/Users/Gauri/FULL_STACK/credentials_hw.json`,
+    keyFilename: `/etc/secrets/credentials.json`
+//   keyFilename: `C:/Users/Gauri/FULL_STACK/credentials_hw.json`,
 })
 
 const bucketName = 'homoeo-world-medicine-images';
@@ -23,7 +23,7 @@ dotenv.config();
 export const postNewProduct = async (req, res) => {
     console.log('inside postNewProduct\n' + req.body);
     const {productData } = req.body;
-    console.log(productData);
+    // console.log(productData);
 
     try{
         const newProduct =  new Product(productData);
@@ -137,7 +137,7 @@ export const uploadMedicineImagesPOC = async(req, res) =>{
     console.log('productImages', productImages)
     console.log('productTitle', productTitle);
 
-    if (!imageBlobs) {
+    if (!productImages) {
         return res.status(400).json({ error: 'No image data found in the request.' });
     }
 
