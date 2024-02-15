@@ -10,6 +10,6 @@ router.get('/getproducts', getProducts);
 router.get('/getproductbytitle', getProductByTitle);
 router.get('/searchproducts', searchAutocompleteProducts);
 
-router.post('uploadimages',uploadMedicineImagesPOC)
+router.post('/uploadimages',uploadMedicineImagesPOC)
 
 export default router;

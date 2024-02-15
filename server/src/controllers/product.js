@@ -8,8 +8,8 @@ import { Readable } from 'stream';
 
 // Initialize storage
 const storage = new Storage({
-    keyFilename: `/etc/secrets/credentials.json`
-//   keyFilename: `C:/Users/Gauri/FULL_STACK/credentials_hw.json`,
+    // keyFilename: `/etc/secrets/credentials.json`
+  keyFilename: `C:/Users/Gauri/FULL_STACK/credentials_hw.json`,
 })
 
 const bucketName = 'homoeo-world-medicine-images';
@@ -125,45 +125,50 @@ export const getProductByTitle = async(req, res) => {
     }
 }
 
+let successfulUploads = 0;
+
 export const uploadMedicineImagesPOC = async(req, res) =>{
     console.log('inside uploadMedicineImagesPOC...')
 
-    // if(req.file == null || undefined){
-    //     res.status(202).json('no file found to be uploaded!!')
-    //     return
-    // }
-
-    // const fileBuffer = req.file.buffer; // Access the file buffer from the request
-    const imageBlob = req.body.data;
+    const imageBlobs = req.body.data._j;
+    const productImages = req.body.productImages;
     const productTitle = req.body.productTitle;
-    const filename = req.body.filename;
-    console.log('productTitle', productTitle);
-    console.log('filename', filename)
 
-    if (!imageBlob) {
+    console.log('productImages', productImages)
+    console.log('productTitle', productTitle);
+
+    if (!imageBlobs) {
         return res.status(400).json({ error: 'No image data found in the request.' });
     }
 
-    const destinationFileName = `images/sample.jpeg`
-    // const destinationFileName = `images/${productTitle}/${filename}`;
-    console.log('destinationFileName', destinationFileName)
-    const fileUpload = bucket.file(destinationFileName);
+    for(let i=0;i<productImages.length;i++){
+            const destinationFileName = `images/${productTitle}/${productImages[i].name}`;
+            const fileUpload = bucket.file(destinationFileName);
 
-    const stream = fileUpload.createWriteStream({});  
+            const imageBlob = imageBlobs[i]
 
-    stream.on('error', (err) => {
-        console.error(`Error uploading file: ${err}`);
-        res.status(500).json({ error: 'Error uploading file.' });
-    });
+            const stream = fileUpload.createWriteStream({});  
 
-    stream.on('finish', () => {
-        res.status(200).json('File uploaded successfully');
-        console.log(`File uploaded to ${bucketName}.`);
-    });
+            stream.on('error', (err) => {
+                console.error(`Error uploading file: ${err}`);
+                if(successfulUploads === 0){
+                    res.status(500).json({ error: 'Error uploading file.' });
+                } 
+            });
 
-    // Create a readable stream from the file buffer
-    const buffer = Buffer.from(imageBlob, 'base64');
-    const readableStream = Readable.from([buffer]);
-    readableStream.pipe(stream);
-    
+            stream.on('finish', () => {
+                successfulUploads+=1;
+                if(successfulUploads === productImages.length){
+                    res.status(200).json('File uploaded successfully');
+                    console.log(`All files uploaded to ${bucketName}.`); 
+                }
+                
+            });
+
+            // Create a readable stream from the file buffer
+            const buffer = Buffer.from(imageBlob, 'base64');
+            const readableStream = Readable.from([buffer]);
+            readableStream.pipe(stream);
+    }
+
 }
