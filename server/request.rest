@@ -3,7 +3,7 @@ GET http://localhost:5000/product/searchproducts
 Content-Type: application/json
 
 {
-    "searchTerm": "rabvid"
+    "searchTerm": "Om"
 }
 
 # POST http://localhost:5000/product
@@ -23,6 +23,23 @@ Content-Type: application/json
   "availabilityStatus": "yes"
 }
 
+###
+PUT http://localhost:5000/product/updateproduct/Deploy123
+Content-Type: application/json
+
+{
+    "title":"Deploy123",
+    "company": "Torrento Pharmaceuticals updated updated", 
+    "quantity":"10pc", 
+    "price": 19.39, 
+    "discountedPrice": 20,
+    "description": "In the PRINCE2 project management method" ,
+    "category": "homeopathic",
+    "availabilityStatus": "yes"
+}
+
+###
+GET http://localhost:5000/product/downloadimages/Deploy123
 
 ###
 GET https://medical-app-5gdu.onrender.com/product/allproducts
@@ -31,7 +48,7 @@ GET https://medical-app-5gdu.onrender.com/product/allproducts
 GET https://medical-app-5gdu.onrender.com/product/allproducts
 
 ###
-GET http://192.168.1.100:5000/product/allproducts
+GET http://192.168.1.101:5000/product/allproducts
 
 ###
 GET http://localhost:5000/product/getproducts

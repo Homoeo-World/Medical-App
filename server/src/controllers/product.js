@@ -8,14 +8,12 @@ import { Readable } from 'stream';
 
 // Initialize storage
 const storage = new Storage({
-    keyFilename: `/etc/secrets/credentials.json`
-//   keyFilename: `C:/Users/Gauri/FULL_STACK/credentials_hw.json`,
+    // keyFilename: `/etc/secrets/credentials.json`
+  keyFilename: `C:/Users/Gauri/FULL_STACK/credentials_hw.json`,
 })
 
 const bucketName = 'homoeo-world-medicine-images';
 const bucket = storage.bucket(bucketName);
-
-
 
 dotenv.config();
 
@@ -36,9 +34,28 @@ export const postNewProduct = async (req, res) => {
     }
 }
 
+//update existing product
+export const updateProductDetails = async (req, res) => {
+    console.log('update product details...' + req.body)
+    const productTitle = req.params.title;
+    console.log('req.params.title', req.params.title)
+    const {productData}  = req.body;
+    console.log('productData:', productData);
+
+    try{
+        await Product.updateOne({title: productTitle}, productData)
+        res.status(200).json('data updated successfully!')
+    }
+    catch(error){
+        console.log('error while updating data', error)
+        res.status(500).json({ message: error.message });
+    }
+}
+
 // get products based on search-query | search-term
 export const searchAutocompleteProducts = async (req, res) => {
-    console.log('searching for:-' + req.query.searchTerm);
+    console.log('inside searchAutocompleteProducts...')
+    // console.log(req);
     try {
         
         const searchResults = await Product.aggregate([
@@ -46,7 +63,7 @@ export const searchAutocompleteProducts = async (req, res) => {
                 '$search': {
                     index: 'autoCompleteProducts',
                     "autocomplete": {
-                      query: req.query.searchTerm, //o, om, om
+                      query: req.query.searchTerm, //o, om, ome
                       path: 'title',
                     //   fuzzy:{
                     //       maxEdits:2, //spelling mistake
@@ -65,7 +82,7 @@ export const searchAutocompleteProducts = async (req, res) => {
                 "$limit": 9
             }
             ]);
-            // console.log(searchResults)
+            console.log(searchResults)
         //send result of search query from mongodb
         res.status(200).json(searchResults);
     }
@@ -92,7 +109,7 @@ export const getAllproducts = async (req,res) => {
 //get paginated response
 export const getProducts = async (req, res) => {
     console.log('getProducts...')
-    console.log(req.query)
+    // console.log(req)
     try{
         const page = parseInt(req.query.page) || 1;
         const pageSize = parseInt(req.query.pageSize) || 10;
@@ -127,7 +144,7 @@ export const getProductByTitle = async(req, res) => {
 
 let successfulUploads = 0;
 
-export const uploadMedicineImagesPOC = async(req, res) =>{
+export const uploadMedicineImages = async(req, res) =>{
     console.log('inside uploadMedicineImagesPOC...')
 
     const imageBlobs = req.body.data._j;
@@ -171,4 +188,32 @@ export const uploadMedicineImagesPOC = async(req, res) =>{
             readableStream.pipe(stream);
     }
 
+}
+
+
+export const downloadMedicineImages = async(req, res) => {
+    console.log('downloadMedicineImages...')
+
+    const productTitle = req.params.title;
+
+    try{
+        
+        // List all objects (files) from the specified productTitle folder
+        const [files] = await bucket.getFiles({prefix: 'images/' + productTitle + '/'});
+
+        
+        let imagesBlobs = []
+        for(const file of files){
+            console.log(file.name)
+            const blob = await bucket.file(file.name).download()
+            imagesBlobs.push(blob)
+        }
+        console.log(typeof(imagesBlobs[0]))
+        console.log(imagesBlobs)
+        res.json(imagesBlobs);
+    }
+    catch(error){
+        console.error('Error fetching images from GCS: '+ error)
+        res.status(500).json({message:'Internal Server Error'})
+    }
 }
