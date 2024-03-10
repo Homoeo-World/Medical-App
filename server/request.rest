@@ -42,7 +42,7 @@ Content-Type: application/json
 GET http://localhost:5000/product/downloadimages/Deploy123
 
 ###
-GET https://medical-app-5gdu.onrender.com/product/allproducts
+GET http://localhost:5000/product/allproducts
 
 ###
 GET https://medical-app-5gdu.onrender.com/product/allproducts
@@ -64,7 +64,7 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "username": "Kunal11",
+    "username": "Gauri",
     "password" : "123"
 }
 
@@ -77,7 +77,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQW1leWEiL
 ###
 POST http://localhost:5000/login/addnewaddress
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQW1leWEiLCJpYXQiOjE2OTYzMzk5Mzd9.0cHi06EbJoTtXABajyCxEXjCQet4LR12aAvBwwX7UB0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiR2F1cmkiLCJpYXQiOjE3MDkwMzQ1MTF9.EIyURkxa2NxQ3GbVJMl-t8xEOn9cuVVJQEN9AuzeU8k
 
 {
     "newAddress" : "Sky Home PG, Narayan Nagar, Hinjewadi Phase 1, Pune, Maharashtra - 411057"
@@ -97,14 +97,14 @@ POST http://localhost:5000/login/validate
 Content-Type: application/json
 
 {
-    "username": "Gauri",
+    "username": "Ameya",
     "password" : "123"
 }
 
 ###
 GET http://localhost:5000/login/authtest
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiR2F1cmkiLCJpYXQiOjE3MDQ5MDM5OTR9.UfvEuZG19Ey4wBVTwEJ_FVZnpP5GPBKUnweTpgOOMwU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQW1leWEiLCJpYXQiOjE3MDk5MTM0NjJ9.i5OMCDGo0WrJLyRrIM1sl9uvH_O8wrtJ8yuyUrxLYT8
 
 ###
 POST http://192.168.1.104:5000/product/uploadimages
@@ -116,4 +116,17 @@ Content-Type: application/json
     "productTitle":"dummy 1"
 }
 
+###
+GET http://localhost:5000/medicine/addallmedicines
 
+###
+GET http://localhost:5000/medicine/getmedicinenames
+
+###
+GET http://localhost:5000/medicine/getmedicinedetails
+Content-Type: application/json
+
+{
+    "title": "Silicea 6X",
+    "company": "Schwabe"
+}

@@ -1,0 +1,1640 @@
+{"data":[
+    {
+        "Medicine Name ": "Calcarea Fluorica 6x",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Piles, ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Calcarea phosphorica 6x",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Fracture, dentition, suppliment for children, useful during pregnancy, puberty, old age",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Calcarea Sulphurica 6X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Acne, Skin, boils, eczema, fibroids etc",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Ferrum Phosphoricum 6X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Anaemia, feverish condition, cattrahal condition of respiratory tract etc.",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Five Phos 6X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Weakness and prostration ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            },
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 185,
+                "Discounted Percentage": 5
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Silicea 6X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Acne, Piles, Skin, bones ,etc.",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Ammi Visnaga MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Skin - Leucoderma / Vitiligo",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 220
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Agnus Castus MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Sexual Wellness",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 125
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Apocynum Cannabinum MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Urinary, Dropsy  etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 265
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Aesculus Hippocastanum MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Piles, Back, spondylitis etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Allium cepa MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": " coryza, Allergic rhinitis, etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 100
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Azadirachta Indica MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Skin, etc",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Alfalfa MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "General tonic, weakness, fatigue, loss of appetite etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 100
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Apis mellifica MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Skin, kidney, cyst, dropsy / swelling etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 220
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Arnica Montana MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Hair, injury, bone etc",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 240
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Ambroma Augusta MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "To control blood sugar",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Avena Sativa MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "General tonic, loss of appetite etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Allium Sativum MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Cholesterol, blood pressure etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Berberis Vulgaris MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Stone in kidney, bladder, gall bladder stone etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Boerhaavia Diffusa MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Berberis Aquifolium MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Acne, Skin",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 240
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Belladonna MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Headache, fever, pain, tonsils etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bramhi (Bacopa Monnieri) MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "For weakness of Memory ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Baptisia Tinctoria MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Fever, Typhoid fever etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 280
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bellis Perrinis",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Nerve injury , nerves etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 115
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Blatta orientalis MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Respiratory, Asthma etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 150
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Chionanthus Virginica MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 365
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Cantharis MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Urinary, Urinary tract infection, burning in urination, etc., hair fall, dandruff, ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 330
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Curcuma Longa MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 100
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Cephalandra Indica MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Diabetes etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Calendula Officinalis MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Skin wound healing, antiseptic etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Crataegus oxyacantha MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Cardiac Weakness, Heart tonic etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Chelidonium Majus MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Liver Diseases, Digestive Problem",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 150
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Ceanothus Americanus",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 315
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Cardus Marianus MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Liver Diseases",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 150
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Calotropis Gigantea MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Caprica Papaya MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Collinsonia Canadensis MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Piles",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 220
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Damiana MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Sexual Wellness",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 150
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Echinacea Angustifolia MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 220
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Embelica Officinalis MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 100
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Fucus vesiculosus MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Weight Managment",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 140
+            },
+            {
+                "Package": "Q 30ml",
+                "MRP": 150
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Ginseng MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 365
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Ginkgo Biloba MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 220
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Guiacum MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 495
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Gymnema Sylvestre MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture, Diabetes ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Guatteria Gaumeri MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Cholesterol etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 330
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Gaultheria Procumbens MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 330
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Grindelia Robusta MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture, Asthma, respiratory etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 240
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Hydrangea Arborescens MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Urinary, Stone kidney, bladder etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 150
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Hydrastis Canadensis MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture cancer cachexia, Digestive system etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 425
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Justicia Adhatoda MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Cough, respiratory etc.",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Jaborandi MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Dandruff, Hair fall etc",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 150
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Janosia Ashoka MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Female, uterine tonic",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Natrum phosporicum 6X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Sour eructation, vomiting, heart burn, indigestion, acidity, nocturnal enuresis, etc.",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Natrum Sulphuricum 6X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Liver Diseases, Gastric biliousness, liver dysfunction, uric acid diathesis etc.",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Natrum Muriaticum 6X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Sun stroke, headache, eye strain, constipation, etc.",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Magnesium Phosporica 6X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Muscular cramps, pains, convulsions, flatulent colic etc.",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Kali Muriaticum ",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Sub acute catarrhal affection of middle ear, throat, glandular inflammation etc.",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 95,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Kali phosphoricum 6X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Weakness, exhaustion, mental & physical weakness, sleeplessness, melancholy, examination fear, back pain, etc.",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Kali Sulphuricum 6X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Dandruff, itchy skin, catarrh with yellowish discharge (bronchitis, pharyngitis, chronic suppuration, otitis media,seasonal rashesh",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "6x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Lycopodium MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Liver Diseases, Sexual Wellness, Digestive Problem, Kidney stone",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 150
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Muira Puama MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 410
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Myrica Cerifera MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Liver Diseases",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 365
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Ocimum Canum MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 100
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Ocimum Sanctum MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Phytolacca MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 125
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Plantago Major MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Toothache ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Pareira Brava MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Urinary, Kidney stone ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 220
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Phytolacca Berry MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Weight Managment",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 240
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Passiflora Incarnata MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Insomnia, Anxiety, stress ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 125
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Robinia Pseudocacia MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Digestive Problem, HyperAcidity ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 120
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Ruta Graveolens MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Bone, ligaments, eye strain, injury ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 130
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Rhus Toxicodendron MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Joint, bone, skin",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 315
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Ratanhia MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Piles",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 150
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Rauwolfia Serpentina MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Heart, blood pressure ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Syzygium Jambolanum MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Diabetes ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Symphytum Officinale MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Bone, fracture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 130
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Sarsaparilla MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Urinary, Kidney stone, bladder stone ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 220
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Sarsaparilla MY",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Urinary, Kidney stone, bladder stone ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 195
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Solidago Virgaurea MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 330
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Spongia Tosta MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Respiratory, cough ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 345
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Sabal Serrulata MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Prostate hypertrophy in male ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 280
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Thalaspi Bursa Pastoris MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 220
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Terminalia Arjuna MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Heart, blood pressure ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Thuja Occidentalis MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 150
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Tinospora Cordifolia MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Tribulus Terrestris MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Urtica Urens MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Uva Ursi MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 315
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Withania S, Ashwagandha MT",
+        "Company ": null,
+        "Category": "Mother Tinctures",
+        "Tags": "Mother tincture ",
+        "subcategories": [
+            {
+                "Package": "Q 30ml",
+                "MRP": 105
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio combination No 1, 3X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Anaemia ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 95,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 2, 3X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Breathlessness ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 3, 3X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Colic",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 95,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 4, 3X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Constipation ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 5",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Coryza ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 6,3X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Cough, cold, catarrh",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 7,3X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Bio Combination ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 8, 3X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Diarrhoea ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 9",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Dysentery ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 95,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 10, 3X",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Enlarged Tonsils",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 11",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Bio Combination ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 12",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Headache ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 13",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Leucorrhoea ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 95,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 14",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Measles ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 95,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 15",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Uterine tonic ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 16",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Stress, exhaustion ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 17",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Piles, enlarged rectal veins",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 18",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Pyorrhoea",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 95,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 19",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Joint, muscle pain",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 20",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Skin disease ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 21",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Teething trouble ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 22",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Scrofula ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 95,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 23",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Toothache ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 24",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Debility, exhaustion ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 95,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 25",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Acidity, flatulence, indigestion ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 26",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Easy Parturition ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 110,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 27",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Lack of vitality ",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 95,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Bio Combination No 28",
+        "Company ": null,
+        "Category": "Biochemics",
+        "Tags": "Tonic",
+        "subcategories": [
+            {
+                "Package": "Tablets",
+                "Size": "3x 25g",
+                "MRP": 105,
+                "Discounted Percentage": 10
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Y lax ",
+        "Company ": null,
+        "Category": "Patents",
+        "Tags": "Constipation ",
+        "subcategories": [
+            {
+                "MRP": 500
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Y Lax Tablets ",
+        "Company ": null,
+        "Category": "Patents",
+        "Tags": "Constipation ",
+        "subcategories": [
+            {
+                "MRP": 215
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Phytolacca Berry MT Tablets ",
+        "Company ": null,
+        "Category": "Patents",
+        "Tags": "Weight Managment",
+        "subcategories": [
+            {
+                "MRP": 160
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Arsenicum Album 30C",
+        "Company ": null,
+        "Category": "Centesimal potency",
+        "Tags": "Dilution ",
+        "subcategories": [
+            {
+                "Package": "CM 10ml",
+                "MRP": 100
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Argentum Nitricum 30C",
+        "Company ": null,
+        "Category": "Centesimal potency",
+        "Tags": "Dilution ",
+        "subcategories": [
+            {
+                "Package": "30CH 30ml",
+                "MRP": 100
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Allium Cepa 30C",
+        "Company ": null,
+        "Category": "Centesimal potency",
+        "Tags": "Dilution ",
+        "subcategories": [
+            {
+                "Package": "30CH 30ml",
+                "MRP": 100
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Arsenicum Bromatum 30C",
+        "Company ": null,
+        "Category": "Centesimal potency",
+        "Tags": "Dilution ",
+        "subcategories": [
+            {
+                "Package": "30CH 30ml",
+                "MRP": 95
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Acidum Nitricum 30C",
+        "Company ": null,
+        "Category": "Centesimal potency",
+        "Tags": "Dilution ",
+        "subcategories": [
+            {
+                "Package": "30CH 30ml",
+                "MRP": 100
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Avena Sativa 30C",
+        "Company ": null,
+        "Category": "Centesimal potency",
+        "Tags": "Dilution ",
+        "subcategories": [
+            {
+                "Package": "30CH 30ml",
+                "MRP": 100
+            }
+        ]
+    },
+    {
+        "Medicine Name ": "Acidum Muriaticum 30CH",
+        "Company ": null,
+        "Category": "Centesimal potency",
+        "Tags": "Dilution ",
+        "subcategories": [
+            {
+                "Package": "30CH 30ml",
+                "MRP": 90
+            }
+        ]
+    }
+]
+}

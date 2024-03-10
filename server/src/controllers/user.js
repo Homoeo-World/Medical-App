@@ -78,7 +78,6 @@ export const getAddressesbyUser = async(req, res) => {
     // console.log(addresses);
 
     res.status(200).json(addresses)
-
 }
 
 // post new address for existing user

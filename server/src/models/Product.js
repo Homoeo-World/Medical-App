@@ -29,9 +29,6 @@ const productSchema = mongoose.Schema({
 })
 
 
-// productSchema.plugin(autoIncrement.plugin, 
-//     {model: 'product', field:'productId', startAt: 0, incrementBy: 1});
-
 var Product = mongoose.model('product', productSchema);
   
 
