@@ -59,6 +59,46 @@ export const getDetailsByTitleandCompany = async(req, res) => {
     }
 }
 
+// get products based on search-query | search-term
+export const searchAutocompleteMedicines = async (req, res) => {
+    console.log('inside searchAutocompleteMedicines...')
+    console.log(req.body.searchTerm);
+    try {
+        
+        const searchResults = await Medicine.aggregate([
+            {
+                '$search': {
+                    index: 'default',
+                    "autocomplete": {
+                      query: req.query.searchTerm, //o, om, ome
+                      path: 'title',
+                    //   fuzzy:{
+                    //       maxEdits:2, //spelling mistake
+                    //       maxExpansions: 1
+                    //   }
+                    },
+                }
+            },
+            { 
+                "$project": {
+                  "title": 1,
+                  "_id":0
+                }
+            },
+            {
+                "$limit": 9
+            }
+            ]);
+            console.log(searchResults)
+        //send result of search query from mongodb
+        res.status(200).json(searchResults);
+    }
+    catch(error){
+        console.log('error')
+        res.status(500).json({ message: error.message });
+    }
+}
+
 
 // const data = [
 //     {

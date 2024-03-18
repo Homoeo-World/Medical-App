@@ -6,6 +6,14 @@ Content-Type: application/json
     "searchTerm": "Om"
 }
 
+###
+GET http://localhost:5000/medicine/getsearchresults
+Content-Type: application/json
+
+{
+    "searchTerm": "Bio "
+}
+
 # POST http://localhost:5000/product
 
 ###
@@ -49,6 +57,9 @@ GET https://medical-app-5gdu.onrender.com/product/allproducts
 
 ###
 GET http://192.168.1.101:5000/product/allproducts
+
+###
+GET http://localhost:5000/product/allproducts
 
 ###
 GET http://localhost:5000/product/getproducts
@@ -130,3 +141,29 @@ Content-Type: application/json
     "title": "Silicea 6X",
     "company": "Schwabe"
 }
+
+###
+POST http://localhost:5000/order/postorder
+Content-Type: application/json
+
+{
+    "user_id": "65dd8ffc3f33f89b5111f936",
+    "order_items": [
+        {"title": "Calcarea phosphorica 6x",
+        "company": "Schwabe",
+        "package": "Tablets",
+        "size": "6x 25g",
+        "MRP": 105,
+        "discountedPercentage": 10,
+        "quantity": 2
+        }],
+    "order_status": "PENDING",
+    "shipping_address": "Sky home PG",
+    "order_total": 210,
+    "order_instruction": "order_instruction",
+    "delivery_date": "2024-03-24",
+    "order_timestamp": "2024-03-17"
+}
+
+###
+GET http://localhost:5000/order/orderhistory
