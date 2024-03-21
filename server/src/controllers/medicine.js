@@ -22,7 +22,7 @@ export const addAllMedicines = async (req, res) => {
 }
 
 export const getMedicineNames = async(req, res) => {
-    console.log('inside getMedicineNames')
+    console.log('inside getMedicineNames...')
     console.log(req.query.category)
     try{
         const response = await Medicine.find({category: req.query.category }).select('title')
