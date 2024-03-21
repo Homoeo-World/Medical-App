@@ -2,7 +2,7 @@ import Medicine from '../models/Medicine.js';
 
 //add all medicines  
 export const addAllMedicines = async (req, res) => {
-
+    console.log('addAllMedicines...')
     data.forEach(async item => {
         try{
             const medicine = new Medicine({
