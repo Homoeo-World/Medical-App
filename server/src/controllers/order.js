@@ -1,5 +1,4 @@
 import express from 'express';
-import twilio from 'twilio';
 import Order from '../models/Order.js';
 
 
@@ -13,8 +12,8 @@ export const postOrderDetails = async (req, res) => {
     let messagePart1 = "Order Items";
 
     try{
-        // const newOrder = new Order(orderDetails)
-        // await newOrder.save();
+        const newOrder = new Order(orderDetails)
+        await newOrder.save();
 
         //send order details as text message
         orderDetails.order_items.forEach(orderItem => {
