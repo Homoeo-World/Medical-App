@@ -24,19 +24,6 @@ export const postOrderDetails = async (req, res) => {
         const orderDetailsMessage = messagePart1 + '\n\n' + messagePart2
         console.log('orderDetailsMessage', orderDetailsMessage)
 
-        // twilio
-        const accountSid = 'AC6e874ff83e4ebdb14c6375c413f41880';
-        const authToken = 'e2545fe8f51e6c46f60f6de3abcd9f5e';
-        const client = twilio(accountSid, authToken);
-    
-        client.messages
-            .create({
-                body: orderDetailsMessage,
-                from: 'whatsapp:+14155238886',
-                to: 'whatsapp:+918999828044'
-            })
-            .then(message => console.log(message.sid))
-
         res.status(201).json('order details inserted')
     }
     catch(error){
