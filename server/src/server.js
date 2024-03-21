@@ -26,7 +26,7 @@ app.use('/product', productRoutes);
 app.use('/medicine', medicineRoutes)
 app.use('/order', orderRoutes)
 
-const port = process.env.PORT || config.server.port;
+const port =  config.server.port || 3000;
 app.listen(port);
 console.log('Server started on port: ' + port);
 
