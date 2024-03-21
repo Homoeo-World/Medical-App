@@ -33,7 +33,6 @@ export const postOrderDetails = async (req, res) => {
 
 // get all orders for order history
 export const getAllOrders = async (req, res) => {
-    console.log('getAllOrders...')
 
     try{
         const orderHistory = await Order.find({})

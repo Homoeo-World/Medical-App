@@ -15,10 +15,6 @@ const config = {
     }
   },
 
-  key: {
-    privateKey: '',
-    tokenExpireInSeconds: 1440
-  },
   pagination: {
     defaultPage: 1,
     defaultLimit: 10
