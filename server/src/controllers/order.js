@@ -1,14 +1,11 @@
 import express from 'express';
 import Order from '../models/Order.js';
 
-
 //post new product
 export const postOrderDetails = async (req, res) => {
     console.log('postOrderDetails...')
 
-
     const orderDetails = req.body
-    // console.log('orderDetails', orderDetails.order_items[0].title)
     let messagePart1 = "Order Items";
 
     try{

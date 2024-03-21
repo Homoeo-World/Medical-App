@@ -1,21 +1,17 @@
-import express from 'express';
 import Product from '../models/Product.js';
-import dotenv from 'dotenv';
-import fs from 'fs';
-
+import config from '../config/dev.js'
 import { Storage } from '@google-cloud/storage';
 import { Readable } from 'stream';
 
 // Initialize storage
 const storage = new Storage({
     // keyFilename: `/etc/secrets/credentials.json`
-  keyFilename: `C:/Users/Gauri/FULL_STACK/credentials_hw.json`,
+  keyFilename: config.storage.keyFilename,
 })
 
 const bucketName = 'homoeo-world-medicine-images';
 const bucket = storage.bucket(bucketName);
 
-dotenv.config();
 
 //post new product
 export const postNewProduct = async (req, res) => {
@@ -193,14 +189,12 @@ export const uploadMedicineImages = async(req, res) =>{
 
 export const downloadMedicineImages = async(req, res) => {
     console.log('downloadMedicineImages...')
-
     const productTitle = req.params.title;
 
     try{
         
         // List all objects (files) from the specified productTitle folder
         const [files] = await bucket.getFiles({prefix: 'images/' + productTitle + '/'});
-
         
         let imagesBlobs = []
         for(const file of files){

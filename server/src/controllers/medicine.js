@@ -1,14 +1,4 @@
-import express, { request } from 'express';
-import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken'
-import dotenv  from "dotenv"
-// import data from 'C:/Users/Gauri/FULL_STACK/Medical App/Medical-App/server/src/medicines.json'
-
 import Medicine from '../models/Medicine.js';
-
-const router = express.Router();
-dotenv.config()
 
 //add all medicines  
 export const addAllMedicines = async (req, res) => {

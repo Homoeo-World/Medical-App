@@ -1,10 +1,7 @@
 import jwt from 'jsonwebtoken'
-import dotenv  from "dotenv"
-
-dotenv.config()
+import config from '../config/dev.js';
 
 const authenticateJWT = (req, res, next) =>  {
-
     const token = req.header('Authorization');
 
     if (!token) {
@@ -22,7 +19,7 @@ const authenticateJWT = (req, res, next) =>  {
         console.log('jwtToken'); 
         console.log(jwtToken)
 
-        const payload = jwt.verify(jwtToken, process.env.SECRET_KEY);
+        const payload = jwt.verify(jwtToken, config.jwt.SECRET_KEY);
         req.user = payload.user; 
         console.log(req.user);
         next();

@@ -1,4 +1,4 @@
-const host =  process.env.DB_HOST || 'localhost';
+// const host =  process.env.DB_HOST || 'localhost';
 
 const username = encodeURIComponent("gauriwalke99");
 const password = encodeURIComponent("Gauri123");
@@ -14,11 +14,17 @@ const config = {
         useNewUrlParser: true, useUnifiedTopology: true
     }
   },
-
   pagination: {
     defaultPage: 1,
     defaultLimit: 10
+  },
+  jwt:{
+    SECRET_KEY : "jwt-secret-key"
+  },
+  storage:{
+    keyFilename: `C:/Users/Gauri/FULL_STACK/credentials_hw.json`,
   }
+  
 };
 
 export default config;

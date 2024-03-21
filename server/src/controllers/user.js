@@ -1,13 +1,11 @@
-import express, { request } from 'express';
-import mongoose from 'mongoose';
+import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
-import dotenv  from "dotenv"
 
 import User from '../models/User.js';
+import config from '../config/dev.js';
 
 const router = express.Router();
-dotenv.config()
 
 //post login creds 
 export const postLoginCreds = async (req, res) => {
@@ -41,8 +39,7 @@ export const validateCreds = async(req, res) => {
     try{
         if(await bcrypt.compare(req.body.password, user.password)){
             // Create a JWT and send it to the client
-            const token = jwt.sign({user: user.username}, process.env.SECRET_KEY)
-
+            const token = jwt.sign({user: user.username}, config.jwt.SECRET_KEY)
             res.status(200).json({token:token, message:'Success'})
         }
         else{
