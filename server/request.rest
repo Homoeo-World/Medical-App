@@ -150,17 +150,26 @@ Content-Type: application/json
     "user_id": "65dd8ffc3f33f89b5111f936",
     "order_items": [
         {"title": "Calcarea phosphorica 6x",
-        "company": "Schwabe",
+        "company": "SBL",
         "package": "Tablets",
         "size": "6x 25g",
         "MRP": 105,
         "discountedPercentage": 10,
         "quantity": 2
-        }],
+        },
+        {"title": "Calcarea Flurocia 3x",
+        "company": "Schwabe",
+        "package": "Tablets",
+        "size": "6x 50g",
+        "MRP": 105,
+        "discountedPercentage": 10,
+        "quantity": 3
+        }
+    ],
     "order_status": "PENDING",
     "shipping_address": "Sky home PG",
     "order_total": 210,
-    "order_instruction": "order_instruction",
+    "order_instruction": "keep it outside the door",
     "delivery_date": "2024-03-24",
     "order_timestamp": "2024-03-17"
 }

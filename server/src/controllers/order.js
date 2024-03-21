@@ -1,17 +1,42 @@
 import express from 'express';
+import twilio from 'twilio';
 import Order from '../models/Order.js';
 
 
 //post new product
 export const postOrderDetails = async (req, res) => {
-    console.log('postOrderDetails...', req.body)
+    console.log('postOrderDetails...')
+
 
     const orderDetails = req.body
-    console.log('orderDetails', orderDetails)
+    // console.log('orderDetails', orderDetails.order_items[0].title)
+    let messagePart1 = "Order Items";
 
     try{
-        const newOrder = new Order(orderDetails)
-        await newOrder.save();
+        // const newOrder = new Order(orderDetails)
+        // await newOrder.save();
+
+        //send order details as text message
+        orderDetails.order_items.forEach(orderItem => {
+            messagePart1 = messagePart1 + '\n\n' + `*Title:* ${orderItem.title}, \n*Company:* ${orderItem.company}, \n*Package:* ${orderItem.package}, \n*Size:* ${orderItem.size}, \n*MRP*: ${orderItem.MRP}, \n*Discount:* ${orderItem.discountedPercentage}, \n*Quantity:* ${orderItem.quantity}`
+        })
+        let messagePart2 =  `*Shipping Address:* ${orderDetails.shipping_address}, \n*Order Total:* ${orderDetails.order_total}, \n*Order Instruction:* ${orderDetails.order_instruction}`
+        const orderDetailsMessage = messagePart1 + '\n\n' + messagePart2
+        console.log('orderDetailsMessage', orderDetailsMessage)
+
+        // twilio
+        const accountSid = 'AC6e874ff83e4ebdb14c6375c413f41880';
+        const authToken = 'e2545fe8f51e6c46f60f6de3abcd9f5e';
+        const client = twilio(accountSid, authToken);
+    
+        client.messages
+            .create({
+                body: orderDetailsMessage,
+                from: 'whatsapp:+14155238886',
+                to: 'whatsapp:+918999828044'
+            })
+            .then(message => console.log(message.sid))
+
         res.status(201).json('order details inserted')
     }
     catch(error){

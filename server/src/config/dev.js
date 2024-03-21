@@ -1,4 +1,4 @@
-const host = process.env.DB_HOST || 'localhost';
+const host =  process.env.DB_HOST || 'localhost';
 
 const username = encodeURIComponent("gauriwalke99");
 const password = encodeURIComponent("Gauri123");
