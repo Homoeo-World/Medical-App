@@ -3,14 +3,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import mongoose from'mongoose';
-// import morgan from 'morgan';
 import jwt from'jsonwebtoken';
 
 import db from './db/db.js';
 import config from './config/dev.js';
 import userRoutes from './routes/user.js';
-import productRoutes from './routes/product.js'
 import medicineRoutes from './routes/medicine.js'
 import orderRoutes from './routes/order.js'
 
