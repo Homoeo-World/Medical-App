@@ -22,7 +22,7 @@ app.use(cors());
 // app.use(morgan('dev'));
 
 app.use('/login', userRoutes);
-app.use('/product', productRoutes);
+// app.use('/product', productRoutes);
 app.use('/medicine', medicineRoutes)
 app.use('/order', orderRoutes)
 
